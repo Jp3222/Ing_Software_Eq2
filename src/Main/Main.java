@@ -4,13 +4,7 @@ import Controlador.Sistema;
 import javax.swing.SwingUtilities;
 import Vista.Vista_Login;
 import Modelo.BD;
-import Modelo.Const;
 import Modelo.Excepciones;
-import Modelo.func;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  *
