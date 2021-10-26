@@ -2,6 +2,12 @@ package Modelo;
 
 import java.util.Objects;
 
+/*
+ obj 
+ obj. 
+ obj.
+ 
+ */
 /**
  *
  * @author jp

@@ -1,0 +1,6 @@
+"--- Inventario ---"
+Esta es una seccion con los siguientes propositos.
+
+1.- Informar sobre el estado de los productos
+2.- Ver productos con pocas ventas
+3.- Mejorar las estrategias de ventas

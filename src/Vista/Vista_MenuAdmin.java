@@ -1,8 +1,9 @@
 package Vista;
 
 import Controlador.Con_MenuAdmin;
-import Controlador.Con_Relog;
+import Controlador.Sistema;
 import Modelo.Empleado;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -12,24 +13,31 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     private final Con_MenuAdmin controlador;
     private Empleado Usuario;
-    private Vista_Productos productos;
     //
-    private Con_Relog relog;
+    private Vista_Productos productos;
+    private Vista_Inventario inventario;
+    //
+    private Sistema relog;
 
     public Vista_MenuAdmin(Vista_Login login) {
         productos = new Vista_Productos(this);
+        inventario = new Vista_Inventario(this);
         //
         initComponents();
         //
         controlador = new Con_MenuAdmin(this, login);
         cont();
         escuchas();
-        relog = Con_Relog.getNodo();
-        relog.setLblRelog(jlbRelog);
+        relog = Sistema.getNodo();
+        relog.setJlbRelog(jlbRelog);
+        relog.setJlbFecha(jlbFecha);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
     }
 
     private void cont() {
         controlador.setProductos(productos);
+        controlador.setInventario(inventario);
+
     }
 
     private void escuchas() {
@@ -68,6 +76,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jlbNombre = new javax.swing.JLabel();
         jlbCargo = new javax.swing.JLabel();
         jlbRelog = new javax.swing.JLabel();
+        jlbFecha = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -89,6 +98,8 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jtfNombre = new javax.swing.JTextField();
         jtfMarca = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -167,6 +178,11 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel3.add(jlbRelog);
         jlbRelog.setBounds(700, 0, 200, 30);
 
+        jlbFecha.setForeground(new java.awt.Color(0, 0, 0));
+        jlbFecha.setText("DD/MM/YY");
+        jPanel3.add(jlbFecha);
+        jlbFecha.setBounds(700, 30, 200, 30);
+
         jPanel1.add(jPanel3);
         jPanel3.setBounds(300, 0, 900, 100);
 
@@ -174,7 +190,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jPanel4.setBackground(new java.awt.Color(132, 30, 254));
+        jPanel4.setBackground(new java.awt.Color(171, 178, 185));
         jPanel4.setLayout(null);
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
@@ -295,15 +311,28 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(180, 180, 180));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 886, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Agenda", new javax.swing.ImageIcon(getClass().getResource("/Img/reloj.png")), jPanel5); // NOI18N
@@ -346,8 +375,10 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton jbtAgregar;
     private javax.swing.JButton jbtBuscar;
     private javax.swing.JButton jbtEmpleados;
@@ -358,6 +389,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jbtSalir;
     private javax.swing.JComboBox<String> jcbType;
     private javax.swing.JLabel jlbCargo;
+    private javax.swing.JLabel jlbFecha;
     private javax.swing.JLabel jlbNombre;
     private javax.swing.JLabel jlbRelog;
     private javax.swing.JSpinner jspPiezas;

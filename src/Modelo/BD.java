@@ -24,10 +24,11 @@ public class BD {
         return Nodo;
     }
 
+    //'juan', 'campos','20'
     public static String getValues(String... values) {
         String v = "";
         for (String value : values) {
-            v += "'" + value + "',";
+            v += "'" + IN(value) + "',";
         }
         v = v.substring(0, v.length() - 1);
         return v;
@@ -42,8 +43,12 @@ public class BD {
         return v;
     }
 
-    public static String clear(String v) {
+    public static String IN(String v) {
         return v.trim().replace(" ", "_").toLowerCase();
+    }
+
+    public static String OUT(String v) {
+        return v.trim().replace("_", " ");
     }
 
     private final String user;
@@ -55,6 +60,7 @@ public class BD {
     private Statement st;
 
     private BD(String user, String pass, String url) {
+        System.out.println("xdddd");
         //Constantes
         this.psECall1 = SELECT("Empleados", "*", "usuario = ?");
         this.psPCall1 = SELECT("Productos", "*", "calve = ?");
@@ -62,7 +68,7 @@ public class BD {
         this.user = user;
         this.pass = pass;
         this.url = url;
-        Conectar();
+        Conectar(user, pass, url);
         ConstltasPreparadas();
     }
 
@@ -71,7 +77,7 @@ public class BD {
             ps1 = cn.prepareCall(psECall1);
             ps2 = cn.prepareCall(psPCall1);
         } catch (SQLException ex) {
-            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en las cosultas preparadas");
         }
     }
 
@@ -83,6 +89,7 @@ public class BD {
     public void Insertar(String Tabla, String colums, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, colums, values));
+
     }
 
     /**
@@ -114,20 +121,22 @@ public class BD {
         }
     }
 
-    public ResultSet Buscar(String Tabla, String Where) throws SQLException {
-        return null;
+    public ResultSet Buscar(String Tabla) throws SQLException {
+        st = cn.createStatement();
+        return st.executeQuery(SELECT(Tabla, "*"));
     }
 
     public ResultSet Buscar(String Tabla, String Campos, String Where) throws SQLException {
-        return null;
+        st = cn.createStatement();
+        return st.executeQuery(SELECT(Tabla, Campos, Where));
     }
 
-    private void Conectar() {
+    private void Conectar(String user, String pass, String url) {
         try {
             cn = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexion establecida");
         } catch (SQLException ex) {
-            System.out.println("Error de conecion\n" + ex.getCause().getMessage());
+            System.out.println("Error de conexion\n");
         }
     }
 

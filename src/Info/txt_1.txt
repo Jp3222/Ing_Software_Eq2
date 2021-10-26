@@ -1,0 +1,14 @@
+"-- -- -- Productos -- -- --"
+Este apartado tiene los siguientes propositos:
+
+1.- Tener un control de la base de datos
+    relacionada a los productos.
+
+1.1.- Las tareas programadas son:
+1.1.1.-Hacer Insercciones en la base de datos.
+1.1.1.-Hacer Consultas en la base de datos.
+1.1.1.-Hacer Actualizaciones en la base de datos.
+1.1.1.-Hacer Bajas en la base de datos.
+
+------------------- Advertencias -----------------
+Si no le sabes no le muevas

@@ -2,6 +2,11 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class Operaciones {
 
@@ -31,10 +36,40 @@ public class Operaciones {
 
     public void createProducto(String values) {
         try {
-            conexion.Insertar("Productos", BD.getColums(Const.getProductos()), values);
-            System.out.println("Inserccion hecha");
+            conexion.Insertar("Productos", BD.getColums(func.exp(Const.getProductos(), 0)), values);
+            Const.getMessage("El producto", "se ha agregado correctamente");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public DefaultTableModel Tabla(String Table) {
+        DefaultTableModel obj = new DefaultTableModel();
+        try {
+            for (String campo : Const.getProductos()) {
+                obj.addColumn(campo);
+            }
+            String x[] = new String[Const.getProductos().length];
+            ResultSet r = conexion.Buscar(Table);
+            Calendar c = Calendar.getInstance();
+         
+            while (r.next()) {
+                int i = 0;
+                for (String campo : Const.getProductos()) {
+                    x[i] = r.getString(campo);
+                    x[i] = BD.OUT(x[i]);
+                    i++;
+                }
+                System.out.println("obj");
+                obj.addRow(x);
+            }
+            System.out.println("xd");
+            return obj;
+        } catch (SQLException ex) {
+            System.out.println("error");
+            ex.printStackTrace();
+        } finally {
+            return obj;
         }
     }
 

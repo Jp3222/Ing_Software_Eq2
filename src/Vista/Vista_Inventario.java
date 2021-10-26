@@ -1,16 +1,28 @@
 package Vista;
 
+import Controlador.Con_Inventario;
+
 /**
  *
  * @author jp
  */
 public class Vista_Inventario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Vista_Movimientos
-     */
-    public Vista_Inventario() {
+    private Vista_MenuAdmin admin;
+    private Con_Inventario controlador;
+    private Vista_Info vista;
+
+    public Vista_Inventario(Vista_MenuAdmin admin) {
+        this.admin = admin;
+        vista = Vista_Info.getNodo();
+        //
+        this.controlador = new Con_Inventario(admin, this);
         initComponents();
+        addControlador();
+    }
+
+    private void addControlador() {
+        jbtSalir.addActionListener(controlador);
     }
 
     /**
@@ -22,23 +34,234 @@ public class Vista_Inventario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jbtSalir = new javax.swing.JButton();
+        jbtInventario = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jlbNombre = new javax.swing.JLabel();
+        jlbCargo = new javax.swing.JLabel();
+        jlbRelog = new javax.swing.JLabel();
+        jlbFecha = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        txt1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel1.setForeground(new java.awt.Color(171, 178, 185));
+        jPanel1.setLayout(null);
+
+        jPanel2.setBackground(new java.awt.Color(255, 0, 193));
+        jPanel2.setLayout(null);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login.png"))); // NOI18N
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(0, 0, 300, 200);
+
+        jbtSalir.setBackground(new java.awt.Color(255, 0, 0));
+        jbtSalir.setForeground(new java.awt.Color(0, 0, 0));
+        jbtSalir.setText("Atras");
+        jbtSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jbtSalir);
+        jbtSalir.setBounds(0, 550, 300, 50);
+
+        jbtInventario.setBackground(new java.awt.Color(200, 0, 255));
+        jbtInventario.setForeground(new java.awt.Color(0, 0, 0));
+        jbtInventario.setText("Info");
+        jbtInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtInventarioActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jbtInventario);
+        jbtInventario.setBounds(0, 320, 300, 50);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 300, 600);
+
+        jPanel3.setBackground(new java.awt.Color(0, 255, 239));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setPreferredSize(new java.awt.Dimension(900, 100));
+        jPanel3.setLayout(null);
+
+        jlbNombre.setBackground(new java.awt.Color(1, 1, 1));
+        jlbNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jlbNombre.setText("Nombre :");
+        jPanel3.add(jlbNombre);
+        jlbNombre.setBounds(0, 0, 250, 30);
+
+        jlbCargo.setBackground(new java.awt.Color(1, 1, 1));
+        jlbCargo.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCargo.setText("Cargo");
+        jPanel3.add(jlbCargo);
+        jlbCargo.setBounds(0, 30, 250, 30);
+
+        jlbRelog.setForeground(new java.awt.Color(0, 0, 0));
+        jlbRelog.setText("DD/MM/YY");
+        jPanel3.add(jlbRelog);
+        jlbRelog.setBounds(700, 0, 200, 30);
+
+        jlbFecha.setForeground(new java.awt.Color(0, 0, 0));
+        jlbFecha.setText("DD/MM/YY");
+        jPanel3.add(jlbFecha);
+        jlbFecha.setBounds(700, 30, 200, 30);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(300, 0, 900, 100);
+
+        jTabbedPane1.setBackground(new java.awt.Color(0, 255, 250));
+        jTabbedPane1.setForeground(new java.awt.Color(1, 1, 1));
+        jTabbedPane1.setFocusable(false);
+
+        jPanel4.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel4.setBorder(null);
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel4.setLayout(null);
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setEnabled(false);
+        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel4.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 479, 462);
+
+        txt1.setForeground(new java.awt.Color(0, 0, 0));
+        txt1.setText("Buscar:");
+        jPanel4.add(txt1);
+        txt1.setBounds(480, 0, 70, 25);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Marca" }));
+        jPanel4.add(jComboBox1);
+        jComboBox1.setBounds(750, 0, 110, 25);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTextField1);
+        jTextField1.setBounds(550, 0, 200, 25);
+
+        jButton1.setBackground(new java.awt.Color(213, 216, 220));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Buscar");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.add(jButton1);
+        jButton1.setBounds(480, 60, 390, 25);
+
+        jTabbedPane1.addTab("Prouctos en inventario", null, jPanel4, "Consulta un listado de los productos\nen inventario ");
+
+        jPanel5.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel5.setBorder(null);
+        jPanel5.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 880, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Actualizacion de inventario", null, jPanel5, "Consulta un listado de los productos\nen inventario ");
+
+        jPanel6.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel6.setBorder(null);
+        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 880, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 462, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Estadisticas", null, jPanel6, "Consulta un listado de los productos\nen inventario ");
+
+        jPanel1.add(jTabbedPane1);
+        jTabbedPane1.setBounds(300, 100, 900, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtInventarioActionPerformed
+        vista.setVisible(true);
+        vista.setTxt(2);
+    }//GEN-LAST:event_jbtInventarioActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtInventario;
+    private javax.swing.JButton jbtSalir;
+    private javax.swing.JLabel jlbCargo;
+    private javax.swing.JLabel jlbFecha;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbRelog;
+    private javax.swing.JLabel txt1;
     // End of variables declaration//GEN-END:variables
 }

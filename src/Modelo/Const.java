@@ -28,14 +28,26 @@ public class Const {
         "Contra"
     };
 
-    private static final String Dias_Semana[] = {
+    private static final String Dias[] = {
+        "Domingo",
         "Lunes",
         "Martes",
         "Miercoles",
         "Juves",
         "Viernes",
-        "Sabado",
-        "Domingo"};
+        "Sabado"
+    };
+    private static final String meses[] = {
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre", "Noviembre", "Diciembre",};
 
     public static final String UDM[] = {"Lt", "ml", "Kg", "gr"};
 
@@ -63,8 +75,12 @@ public class Const {
         return UDM;
     }
 
-    public static String[] getDias_Semana() {
-        return Dias_Semana;
+    public static String getDay(int i) {
+        return Dias[i - 1];
+    }
+
+    public static String getMes(int i) {
+        return meses[i];
     }
 
     public static void getMessage(String obj, String txt) {

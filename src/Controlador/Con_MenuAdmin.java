@@ -1,13 +1,12 @@
 package Controlador;
 
 import Modelo.Excepciones;
+import Vista.Vista_Inventario;
 import Vista.Vista_Login;
 import Vista.Vista_MenuAdmin;
 import Vista.Vista_Productos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Con_MenuAdmin implements ActionListener {
 
@@ -15,22 +14,19 @@ public class Con_MenuAdmin implements ActionListener {
     private Vista_Login login;
     //
     private Vista_Productos productos;
+    private Vista_Inventario inventario;
 
     public Con_MenuAdmin(Vista_MenuAdmin admin, Vista_Login login) {
-        try {
-            if (admin == null || login == null) {
-                throw new Excepciones(Excepciones.getMensaje(Excepciones.ERROR_IN_CLASS_CON_MENU));
-            }
-            this.admin = admin;
-            this.login = login;
-        } catch (Excepciones ex) {
-            System.out.println(ex.getMessage());
-        }
-
+        this.admin = admin;
+        this.login = login;
     }
 
     public void setProductos(Vista_Productos productos) {
         this.productos = productos;
+    }
+
+    public void setInventario(Vista_Inventario inventario) {
+        this.inventario = inventario;
     }
 
     @Override
@@ -69,7 +65,8 @@ public class Con_MenuAdmin implements ActionListener {
     }
 
     public void Inventario() {
-        System.out.println("Inventario");
+        admin.dispose();
+        inventario.setVisible(true);
     }
 
 }
