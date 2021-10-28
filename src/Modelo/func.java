@@ -13,7 +13,7 @@ public class func {
 
     public static String getID(String str, String cont, String precio) {
         System.out.println(str);
-        String array[] = str.split("_");
+        String array[] = str.split(" ");
         String c = "";
         for (String string : array) {
             c += "" + string.charAt(0);

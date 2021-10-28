@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 /**
@@ -36,28 +32,57 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Panel_Create = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jbtQuitar1 = new javax.swing.JButton();
-        jbtAgregar1 = new javax.swing.JButton();
-        jtfClave = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        txt1 = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
-        jtfContenido = new javax.swing.JTextField();
-        jtfPrecio = new javax.swing.JTextField();
-        jbtQuitar2 = new javax.swing.JButton();
-        jcbUDM = new javax.swing.JComboBox<>();
+        txt2 = new javax.swing.JLabel();
         jcbMarcas = new javax.swing.JComboBox<>();
+        txt3 = new javax.swing.JLabel();
+        jtfContenido = new javax.swing.JTextField();
+        txt4 = new javax.swing.JLabel();
+        jcbUDM = new javax.swing.JComboBox<>();
+        txt5 = new javax.swing.JLabel();
+        jtfPrecio = new javax.swing.JTextField();
+        jbtGC = new javax.swing.JButton();
+        jtfClave = new javax.swing.JTextField();
+        jbtAgregar = new javax.swing.JButton();
+        jbtCancelar = new javax.swing.JButton();
         Panel_Read = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jtConsultas = new javax.swing.JTable();
+        jbtConsultar = new javax.swing.JButton();
         Panel_Update = new javax.swing.JPanel();
+        txt6 = new javax.swing.JLabel();
+        jcbMB = new javax.swing.JComboBox<>();
+        jtfMD = new javax.swing.JTextField();
+        jbtBuscar = new javax.swing.JButton();
+        txt7 = new javax.swing.JLabel();
+        jtfID = new javax.swing.JTextField();
+        txt8 = new javax.swing.JLabel();
+        jtfClave_2 = new javax.swing.JTextField();
+        txt9 = new javax.swing.JLabel();
+        jtfNombre_2 = new javax.swing.JTextField();
+        txt10 = new javax.swing.JLabel();
+        jcbMarcas_2 = new javax.swing.JComboBox<>();
+        txt11 = new javax.swing.JLabel();
+        jtfContenido_2 = new javax.swing.JTextField();
+        txt12 = new javax.swing.JLabel();
+        jcbUDM_2 = new javax.swing.JComboBox<>();
+        txt13 = new javax.swing.JLabel();
+        jtfPrecio_2 = new javax.swing.JTextField();
+        jbtActualizar = new javax.swing.JButton();
+        jbtCancelar_2 = new javax.swing.JButton();
         Panel_Delete = new javax.swing.JPanel();
+        txt14 = new javax.swing.JLabel();
+        jcbMB_2 = new javax.swing.JComboBox<>();
+        jftMB = new javax.swing.JTextField();
+        jbtBuscar_2 = new javax.swing.JButton();
+        jbtRemover = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jbtCancelar_3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,39 +139,67 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.setLayout(null);
 
-        jLabel11.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel11.setText("Nombre");
-        Panel_Create.add(jLabel11);
-        jLabel11.setBounds(30, 20, 200, 25);
+        txt1.setForeground(new java.awt.Color(1, 1, 1));
+        txt1.setText("Nombre");
+        Panel_Create.add(txt1);
+        txt1.setBounds(30, 20, 200, 25);
 
-        jLabel12.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel12.setText("Marca");
-        Panel_Create.add(jLabel12);
-        jLabel12.setBounds(30, 70, 200, 25);
+        jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Create.add(jtfNombre);
+        jtfNombre.setBounds(230, 20, 300, 25);
 
-        jLabel13.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel13.setText("Unidad de medida");
-        Panel_Create.add(jLabel13);
-        jLabel13.setBounds(30, 190, 200, 25);
+        txt2.setForeground(new java.awt.Color(1, 1, 1));
+        txt2.setText("Marca");
+        Panel_Create.add(txt2);
+        txt2.setBounds(30, 70, 200, 25);
 
-        jLabel14.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel14.setText("Precio");
-        Panel_Create.add(jLabel14);
-        jLabel14.setBounds(30, 260, 200, 25);
+        jcbMarcas.setBackground(new java.awt.Color(255, 255, 255));
+        jcbMarcas.setForeground(new java.awt.Color(0, 0, 0));
+        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
+        Panel_Create.add(jcbMarcas);
+        jcbMarcas.setBounds(230, 70, 300, 25);
 
-        jbtQuitar1.setBackground(new java.awt.Color(182, 182, 182));
-        jbtQuitar1.setForeground(new java.awt.Color(0, 0, 0));
-        jbtQuitar1.setText("Generar Clave");
-        jbtQuitar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Panel_Create.add(jbtQuitar1);
-        jbtQuitar1.setBounds(30, 320, 140, 25);
+        txt3.setForeground(new java.awt.Color(1, 1, 1));
+        txt3.setText("Contenido");
+        Panel_Create.add(txt3);
+        txt3.setBounds(30, 130, 200, 25);
 
-        jbtAgregar1.setBackground(new java.awt.Color(182, 182, 182));
-        jbtAgregar1.setForeground(new java.awt.Color(0, 0, 0));
-        jbtAgregar1.setText("Agregar");
-        jbtAgregar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Panel_Create.add(jbtAgregar1);
-        jbtAgregar1.setBounds(580, 30, 140, 50);
+        jtfContenido.setBackground(new java.awt.Color(255, 255, 255));
+        jtfContenido.setForeground(new java.awt.Color(0, 0, 0));
+        jtfContenido.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Create.add(jtfContenido);
+        jtfContenido.setBounds(230, 130, 300, 25);
+
+        txt4.setForeground(new java.awt.Color(1, 1, 1));
+        txt4.setText("Unidad de medida");
+        Panel_Create.add(txt4);
+        txt4.setBounds(30, 190, 200, 25);
+
+        jcbUDM.setBackground(new java.awt.Color(255, 255, 255));
+        jcbUDM.setForeground(new java.awt.Color(0, 0, 0));
+        jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
+        Panel_Create.add(jcbUDM);
+        jcbUDM.setBounds(230, 190, 300, 25);
+
+        txt5.setForeground(new java.awt.Color(1, 1, 1));
+        txt5.setText("Precio");
+        Panel_Create.add(txt5);
+        txt5.setBounds(30, 260, 200, 25);
+
+        jtfPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        jtfPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Create.add(jtfPrecio);
+        jtfPrecio.setBounds(230, 260, 300, 25);
+
+        jbtGC.setBackground(new java.awt.Color(213, 216, 220));
+        jbtGC.setForeground(new java.awt.Color(0, 0, 0));
+        jbtGC.setText("Generar Clave");
+        jbtGC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Create.add(jbtGC);
+        jbtGC.setBounds(30, 320, 140, 25);
 
         jtfClave.setBackground(new java.awt.Color(255, 255, 255));
         jtfClave.setForeground(new java.awt.Color(0, 0, 0));
@@ -155,43 +208,19 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Create.add(jtfClave);
         jtfClave.setBounds(230, 320, 300, 25);
 
-        jLabel15.setForeground(new java.awt.Color(1, 1, 1));
-        jLabel15.setText("Contenido");
-        Panel_Create.add(jLabel15);
-        jLabel15.setBounds(30, 130, 200, 25);
+        jbtAgregar.setBackground(new java.awt.Color(213, 216, 220));
+        jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtAgregar.setText("Agregar");
+        jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Create.add(jbtAgregar);
+        jbtAgregar.setBounds(580, 30, 140, 50);
 
-        jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
-        jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Panel_Create.add(jtfNombre);
-        jtfNombre.setBounds(230, 20, 300, 25);
-
-        jtfContenido.setBackground(new java.awt.Color(255, 255, 255));
-        jtfContenido.setForeground(new java.awt.Color(0, 0, 0));
-        jtfContenido.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Panel_Create.add(jtfContenido);
-        jtfContenido.setBounds(230, 130, 300, 25);
-
-        jtfPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        jtfPrecio.setForeground(new java.awt.Color(0, 0, 0));
-        jtfPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Panel_Create.add(jtfPrecio);
-        jtfPrecio.setBounds(230, 260, 300, 25);
-
-        jbtQuitar2.setBackground(new java.awt.Color(182, 182, 182));
-        jbtQuitar2.setForeground(new java.awt.Color(0, 0, 0));
-        jbtQuitar2.setText("Cancelar");
-        jbtQuitar2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Panel_Create.add(jbtQuitar2);
-        jbtQuitar2.setBounds(740, 30, 140, 50);
-
-        jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
-        Panel_Create.add(jcbUDM);
-        jcbUDM.setBounds(230, 190, 300, 25);
-
-        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
-        Panel_Create.add(jcbMarcas);
-        jcbMarcas.setBounds(230, 70, 300, 25);
+        jbtCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        jbtCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtCancelar.setText("Cancelar");
+        jbtCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Create.add(jbtCancelar);
+        jbtCancelar.setBounds(740, 30, 140, 50);
 
         jTabbedPane1.addTab("Insertar", Panel_Create);
 
@@ -199,36 +228,192 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Read.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Read.setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtConsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Clave", "Nombre", "Marca", "Contenido", "udm", "precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
         jScrollPane1.setBounds(0, 102, 890, 360);
 
-        jButton1.setText("Mostrar");
-        Panel_Read.add(jButton1);
-        jButton1.setBounds(0, 0, 150, 28);
+        jbtConsultar.setText("Mostrar");
+        Panel_Read.add(jbtConsultar);
+        jbtConsultar.setBounds(0, 0, 150, 28);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
         Panel_Update.setBackground(new java.awt.Color(180, 180, 180));
         Panel_Update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.setLayout(null);
+
+        txt6.setForeground(new java.awt.Color(1, 1, 1));
+        txt6.setText("Buscar");
+        Panel_Update.add(txt6);
+        txt6.setBounds(70, 10, 120, 25);
+
+        jcbMB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        Panel_Update.add(jcbMB);
+        jcbMB.setBounds(210, 10, 100, 25);
+
+        jtfMD.setBackground(new java.awt.Color(255, 255, 255));
+        jtfMD.setForeground(new java.awt.Color(0, 0, 0));
+        jtfMD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfMD);
+        jtfMD.setBounds(330, 10, 300, 25);
+
+        jbtBuscar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtBuscar.setText("Buscar");
+        jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Update.add(jbtBuscar);
+        jbtBuscar.setBounds(650, 10, 120, 25);
+
+        txt7.setForeground(new java.awt.Color(1, 1, 1));
+        txt7.setText("ID");
+        Panel_Update.add(txt7);
+        txt7.setBounds(70, 60, 200, 25);
+
+        jtfID.setBackground(new java.awt.Color(255, 255, 255));
+        jtfID.setForeground(new java.awt.Color(0, 0, 0));
+        jtfID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfID);
+        jtfID.setBounds(270, 60, 300, 25);
+
+        txt8.setForeground(new java.awt.Color(1, 1, 1));
+        txt8.setText("Clave");
+        Panel_Update.add(txt8);
+        txt8.setBounds(70, 110, 200, 25);
+
+        jtfClave_2.setBackground(new java.awt.Color(255, 255, 255));
+        jtfClave_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfClave_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfClave_2);
+        jtfClave_2.setBounds(270, 110, 300, 25);
+
+        txt9.setForeground(new java.awt.Color(1, 1, 1));
+        txt9.setText("Nombre");
+        Panel_Update.add(txt9);
+        txt9.setBounds(70, 160, 200, 25);
+
+        jtfNombre_2.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNombre_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfNombre_2);
+        jtfNombre_2.setBounds(270, 160, 300, 25);
+
+        txt10.setForeground(new java.awt.Color(1, 1, 1));
+        txt10.setText("Marca");
+        Panel_Update.add(txt10);
+        txt10.setBounds(70, 210, 200, 25);
+
+        jcbMarcas_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
+        Panel_Update.add(jcbMarcas_2);
+        jcbMarcas_2.setBounds(270, 210, 300, 25);
+
+        txt11.setForeground(new java.awt.Color(1, 1, 1));
+        txt11.setText("Contenido");
+        Panel_Update.add(txt11);
+        txt11.setBounds(70, 260, 200, 25);
+
+        jtfContenido_2.setBackground(new java.awt.Color(255, 255, 255));
+        jtfContenido_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfContenido_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfContenido_2);
+        jtfContenido_2.setBounds(270, 260, 300, 25);
+
+        txt12.setForeground(new java.awt.Color(1, 1, 1));
+        txt12.setText("Unidad de medida");
+        Panel_Update.add(txt12);
+        txt12.setBounds(70, 310, 200, 25);
+
+        jcbUDM_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
+        Panel_Update.add(jcbUDM_2);
+        jcbUDM_2.setBounds(270, 310, 300, 25);
+
+        txt13.setForeground(new java.awt.Color(1, 1, 1));
+        txt13.setText("Precio");
+        Panel_Update.add(txt13);
+        txt13.setBounds(70, 360, 200, 25);
+
+        jtfPrecio_2.setBackground(new java.awt.Color(255, 255, 255));
+        jtfPrecio_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPrecio_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfPrecio_2);
+        jtfPrecio_2.setBounds(270, 360, 300, 25);
+
+        jbtActualizar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtActualizar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtActualizar.setText("Actualizar");
+        jbtActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Update.add(jbtActualizar);
+        jbtActualizar.setBounds(650, 60, 140, 50);
+
+        jbtCancelar_2.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCancelar_2.setForeground(new java.awt.Color(0, 0, 0));
+        jbtCancelar_2.setText("Cancelar");
+        jbtCancelar_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Update.add(jbtCancelar_2);
+        jbtCancelar_2.setBounds(650, 130, 140, 50);
+
         jTabbedPane1.addTab("Modificar", Panel_Update);
 
         Panel_Delete.setBackground(new java.awt.Color(180, 180, 180));
         Panel_Delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Delete.setLayout(null);
+
+        txt14.setForeground(new java.awt.Color(1, 1, 1));
+        txt14.setText("Buscar");
+        Panel_Delete.add(txt14);
+        txt14.setBounds(70, 10, 120, 25);
+
+        jcbMB_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        Panel_Delete.add(jcbMB_2);
+        jcbMB_2.setBounds(210, 10, 100, 25);
+
+        jftMB.setBackground(new java.awt.Color(255, 255, 255));
+        jftMB.setForeground(new java.awt.Color(0, 0, 0));
+        jftMB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Delete.add(jftMB);
+        jftMB.setBounds(330, 10, 300, 25);
+
+        jbtBuscar_2.setBackground(new java.awt.Color(182, 182, 182));
+        jbtBuscar_2.setForeground(new java.awt.Color(0, 0, 0));
+        jbtBuscar_2.setText("Buscar");
+        jbtBuscar_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Delete.add(jbtBuscar_2);
+        jbtBuscar_2.setBounds(650, 10, 120, 25);
+
+        jbtRemover.setBackground(new java.awt.Color(182, 182, 182));
+        jbtRemover.setForeground(new java.awt.Color(0, 0, 0));
+        jbtRemover.setText("Remover");
+        jbtRemover.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Delete.add(jbtRemover);
+        jbtRemover.setBounds(140, 260, 140, 50);
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        Panel_Delete.add(jScrollPane2);
+        jScrollPane2.setBounds(70, 80, 700, 150);
+
+        jbtCancelar_3.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCancelar_3.setForeground(new java.awt.Color(0, 0, 0));
+        jbtCancelar_3.setText("Cancelar");
+        jbtCancelar_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Delete.add(jbtCancelar_3);
+        jbtCancelar_3.setBounds(450, 260, 140, 50);
+
         jTabbedPane1.addTab("Borrar", Panel_Delete);
 
         jPanel1.add(jTabbedPane1);
@@ -251,71 +436,65 @@ public class Vista_Empleados extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista_Empleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista_Empleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista_Empleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista_Empleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vista_Empleados().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Create;
     private javax.swing.JPanel Panel_Delete;
     private javax.swing.JPanel Panel_Read;
     private javax.swing.JPanel Panel_Update;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbtAgregar1;
-    private javax.swing.JButton jbtQuitar1;
-    private javax.swing.JButton jbtQuitar2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbtActualizar;
+    private javax.swing.JButton jbtAgregar;
+    private javax.swing.JButton jbtBuscar;
+    private javax.swing.JButton jbtBuscar_2;
+    private javax.swing.JButton jbtCancelar;
+    private javax.swing.JButton jbtCancelar_2;
+    private javax.swing.JButton jbtCancelar_3;
+    private javax.swing.JButton jbtConsultar;
+    private javax.swing.JButton jbtGC;
+    private javax.swing.JButton jbtRemover;
     private javax.swing.JButton jbtSalir;
+    private javax.swing.JComboBox<String> jcbMB;
+    private javax.swing.JComboBox<String> jcbMB_2;
     private javax.swing.JComboBox<String> jcbMarcas;
+    private javax.swing.JComboBox<String> jcbMarcas_2;
     private javax.swing.JComboBox<String> jcbUDM;
+    private javax.swing.JComboBox<String> jcbUDM_2;
+    private javax.swing.JTextField jftMB;
     private javax.swing.JLabel jlbCargo;
     private javax.swing.JLabel jlbNombre;
+    private javax.swing.JTable jtConsultas;
     private javax.swing.JTextField jtfClave;
+    private javax.swing.JTextField jtfClave_2;
     private javax.swing.JTextField jtfContenido;
+    private javax.swing.JTextField jtfContenido_2;
+    private javax.swing.JTextField jtfID;
+    private javax.swing.JTextField jtfMD;
     private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfNombre_2;
     private javax.swing.JTextField jtfPrecio;
+    private javax.swing.JTextField jtfPrecio_2;
+    private javax.swing.JLabel txt1;
+    private javax.swing.JLabel txt10;
+    private javax.swing.JLabel txt11;
+    private javax.swing.JLabel txt12;
+    private javax.swing.JLabel txt13;
+    private javax.swing.JLabel txt14;
+    private javax.swing.JLabel txt2;
+    private javax.swing.JLabel txt3;
+    private javax.swing.JLabel txt4;
+    private javax.swing.JLabel txt5;
+    private javax.swing.JLabel txt6;
+    private javax.swing.JLabel txt7;
+    private javax.swing.JLabel txt8;
+    private javax.swing.JLabel txt9;
     // End of variables declaration//GEN-END:variables
 }

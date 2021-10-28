@@ -1,5 +1,6 @@
 package Modelo;
 
+import Controlador.Sistema;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
@@ -7,17 +8,26 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Operaciones {
-
+    
     private final BD conexion;
     private ResultSet rs;
     private final String campos[] = Const.getUsuarios();
-
+    
     public Operaciones(BD conexion) {
         this.conexion = conexion;
     }
-
+    
+    public void Movimientos(String tipo, String usuario) {
+        try {
+            conexion.Insertar("Movimientos", BD.getColums(func.exp(Const.getMovimientos(), 0)), BD.getValues(false, Sistema.getNodo().getDate(), tipo, usuario));
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @SuppressWarnings("FinallyDiscardsException")
     public Empleado getEmpleado(String usuario) throws Excepciones, SQLException {
         Empleado obj = new Empleado();
@@ -33,7 +43,7 @@ public class Operaciones {
         }
         throw new Excepciones(Excepciones.getMensaje(15));
     }
-
+    
     public void createProducto(String values) {
         try {
             conexion.Insertar("Productos", BD.getColums(func.exp(Const.getProductos(), 0)), values);
@@ -42,17 +52,15 @@ public class Operaciones {
             e.printStackTrace();
         }
     }
-
+    
     public DefaultTableModel Tabla(String Table) {
         DefaultTableModel obj = new DefaultTableModel();
+        for (String producto : Const.getProductos()) {
+            obj.addColumn(producto);
+        }
         try {
-            for (String campo : Const.getProductos()) {
-                obj.addColumn(campo);
-            }
             String x[] = new String[Const.getProductos().length];
             ResultSet r = conexion.Buscar(Table);
-            Calendar c = Calendar.getInstance();
-         
             while (r.next()) {
                 int i = 0;
                 for (String campo : Const.getProductos()) {
@@ -60,10 +68,8 @@ public class Operaciones {
                     x[i] = BD.OUT(x[i]);
                     i++;
                 }
-                System.out.println("obj");
                 obj.addRow(x);
             }
-            System.out.println("xd");
             return obj;
         } catch (SQLException ex) {
             System.out.println("error");
@@ -72,5 +78,5 @@ public class Operaciones {
             return obj;
         }
     }
-
+    
 }

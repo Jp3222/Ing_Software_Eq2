@@ -11,6 +11,7 @@ import Vista.Vista_Productos.Update;
 import Vista.Vista_Productos.Delete;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -50,7 +51,7 @@ public class Con_Productos implements ActionListener {
                 Cancelar(e.getSource());
             case "Buscar" ->
                 Buscar(e.getSource());
-            case "Generar clave" ->
+            case "Generar Clave" ->
                 key();
             case "Agregar" ->
                 Agregar();
@@ -78,12 +79,12 @@ public class Con_Productos implements ActionListener {
             return;
         }
         key();
-        operaciones.createProducto(BD.getValues(values));
+        operaciones.createProducto(BD.getValues(true, values));
         create.Empty();
     }
 
     private void key() {
-        if (values[0].equalsIgnoreCase("-1")) {
+        if (!create.isEmpty() && values[0].equals("NA")) {
             values[0] = func.getID(values[1], values[3], values[5]);
             create.getJtfClave().setText(values[0]);
         } else {

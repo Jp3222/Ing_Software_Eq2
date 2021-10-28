@@ -5,7 +5,6 @@ import Modelo.Const;
 import Modelo.Empleado;
 import Modelo.Excepciones;
 import Modelo.Operaciones;
-import Vista.Vista_MenuEmp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -14,6 +13,8 @@ import java.awt.event.KeyEvent;
 import Vista.Vista_Login;
 import Vista.Vista_MenuAdmin;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,8 +26,8 @@ public class Con_Login extends KeyAdapter implements ActionListener {
 
     private log logs;
 
-    public Con_Login(Vista_Login login, Vista_MenuAdmin admin, Vista_MenuEmp emp) {
-        this.logs = new log(login, admin, emp);
+    public Con_Login(Vista_Login login, Vista_MenuAdmin admin) {
+        this.logs = new log(login, admin);
     }
 
     @Override
@@ -49,14 +50,12 @@ class log {
 
     private final Vista_Login login;
     private final Vista_MenuAdmin admin;
-    private final Vista_MenuEmp emp;
     private final BD conexion = BD.getNodo();
     private final Operaciones operacion;
 
-    public log(Vista_Login login, Vista_MenuAdmin admin, Vista_MenuEmp emp) {
+    public log(Vista_Login login, Vista_MenuAdmin admin) {
         this.login = login;
         this.admin = admin;
-        this.emp = emp;
         operacion = new Operaciones(conexion);
     }
 
@@ -73,15 +72,13 @@ class log {
                 login.getjtfUsuario().setBorder(Const.getOkBorder());
                 if (empleado.getPassword().equals(pass)) {
                     login.getjpfPassword().setBorder(Const.getOkBorder());
+                    conexion.Insertar("Movimientos", BD.getColums("Dia", "tipo", "usuario"), BD.getValues(false, Sistema.getNodo().getDate(), "inicio de seson", empleado.getUsuario()));
                     switch (empleado.getCargo()) {
                         case "Gerente":
                             login.dispose();
                             admin.setVisible(true);
                             admin.setUsuario(empleado);
                             break;
-                        case "Empleado":
-                            login.dispose();
-                            emp.setVisible(true);
                         default:
                             System.out.println("No reconocido");
                     }

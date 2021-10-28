@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,10 +26,14 @@ public class BD {
     }
 
     //'juan', 'campos','20'
-    public static String getValues(String... values) {
+    public static String getValues(boolean clear, String... values) {
         String v = "";
         for (String value : values) {
-            v += "'" + IN(value) + "',";
+            if (clear) {
+                v += "'" + IN(value) + "',";
+            } else {
+                v += "'" + value + "',";
+            }
         }
         v = v.substring(0, v.length() - 1);
         return v;
@@ -68,8 +73,29 @@ public class BD {
         this.user = user;
         this.pass = pass;
         this.url = url;
-        Conectar(user, pass, url);
-        ConstltasPreparadas();
+
+    }
+    
+    /**
+     * Conectar
+     */
+    public void Conectar() {
+        try {
+            cn = DriverManager.getConnection(url, user, pass);
+            ConstltasPreparadas();
+            System.out.println("Conexion establecida");
+        } catch (SQLException ex) {
+            System.out.println("Error de conexion\n");
+        }
+    }
+
+    public void desConectar() {
+        try {
+            cn.close();
+            System.out.println("Desconectando");
+        } catch (SQLException ex) {
+            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void ConstltasPreparadas() {
@@ -131,15 +157,6 @@ public class BD {
         return st.executeQuery(SELECT(Tabla, Campos, Where));
     }
 
-    private void Conectar(String user, String pass, String url) {
-        try {
-            cn = DriverManager.getConnection(url, user, pass);
-            System.out.println("Conexion establecida");
-        } catch (SQLException ex) {
-            System.out.println("Error de conexion\n");
-        }
-    }
-
     private String SELECT(String Tabla, String Campo, String Where) {
         return "select " + Campo + " from " + Tabla + " Where " + Where;
     }
@@ -154,15 +171,6 @@ public class BD {
 
     private String INSERT(String Tabla, String Values) {
         return "insert into " + Tabla + " Values (" + Values + ")";
-    }
-
-    private void desConectar() {
-        try {
-            cn.close();
-            System.out.println("Desconectando");
-        } catch (SQLException ex) {
-            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override

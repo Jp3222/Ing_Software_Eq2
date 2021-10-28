@@ -14,7 +14,6 @@ public class Vista_Login extends javax.swing.JFrame {
 
     private final Con_Login controlador;
     private final Vista_MenuAdmin admin;
-    private final Vista_MenuEmp emp;
     private Empleado empleado;
 
     /**
@@ -24,8 +23,7 @@ public class Vista_Login extends javax.swing.JFrame {
         initComponents();
         //
         admin = new Vista_MenuAdmin(this);
-        emp = new Vista_MenuEmp();
-        controlador = new Con_Login(this, admin, emp);
+        controlador = new Con_Login(this, admin);
         jbtLogin.addActionListener(controlador);
         jbtLogin.addKeyListener(controlador);
         jtfUsuario.addKeyListener(controlador);
@@ -53,6 +51,7 @@ public class Vista_Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de sesión");
         setBackground(new java.awt.Color(4, 0, 255));
+        setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(0, 189, 255));
         jPanel3.setFocusCycleRoot(true);

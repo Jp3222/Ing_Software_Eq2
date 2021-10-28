@@ -28,6 +28,13 @@ public class Const {
         "Contra"
     };
 
+    public static final String Movimientos[] = {
+        "ID",
+        "Dia",
+        "Tipo",
+        "Usuario"
+    };
+
     private static final String Dias[] = {
         "Domingo",
         "Lunes",
@@ -47,9 +54,10 @@ public class Const {
         "Julio",
         "Agosto",
         "Septiembre",
-        "Octubre", "Noviembre", "Diciembre",};
-
-    public static final String UDM[] = {"Lt", "ml", "Kg", "gr"};
+        "Octubre",
+        "Noviembre",
+        "Diciembre"
+    };
 
     private static final LineBorder OkBorder = new LineBorder(Color.black);
 
@@ -63,6 +71,10 @@ public class Const {
         return Usuarios;
     }
 
+    public static String[] getMovimientos() {
+        return Movimientos;
+    }
+
     public static Border getOkBorder() {
         return OkBorder;
     }
@@ -70,11 +82,7 @@ public class Const {
     public static Border getBadBorder() {
         return BadBorder;
     }
-
-    public static String[] getUDM() {
-        return UDM;
-    }
-
+    
     public static String getDay(int i) {
         return Dias[i - 1];
     }

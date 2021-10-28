@@ -29,7 +29,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         cont();
         escuchas();
         relog = Sistema.getNodo();
-        relog.setJlbRelog(jlbRelog);
+        relog.addRelog(0, jlbRelog);
         relog.setJlbFecha(jlbFecha);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
     }

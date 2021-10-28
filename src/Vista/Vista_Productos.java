@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Vista_Productos extends javax.swing.JFrame {
-
+    
     private Con_Productos controlador;
     private Create create;
     private Read read;
@@ -19,7 +19,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     private Sistema relog;
     //
     private Vista_Info info;
-
+    
     public Vista_Productos(Vista_MenuAdmin admin) {
         //tareas
         this.create = new Create();
@@ -28,14 +28,14 @@ public class Vista_Productos extends javax.swing.JFrame {
         this.delete = new Delete();
         this.relog = Sistema.getNodo();
         //sistema
-        relog.setJlbRelog(jlbRelog);
+        relog.addRelog(1, jlbRelog);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
         //
         info = Vista_Info.getNodo();
         initComponents();
         addControladores(admin);
     }
-
+    
     private void addControladores(Vista_MenuAdmin admin) {
         controlador = new Con_Productos(this, admin);
         jbtAtras.addActionListener(controlador);
@@ -46,30 +46,30 @@ public class Vista_Productos extends javax.swing.JFrame {
         //Read
         jbtConsultar.addActionListener(controlador);
         jbtConsultar.addActionListener(controlador);
-
+        
     }
-
+    
     public Create getCreate() {
         return create;
     }
-
+    
     public Read getRead() {
         return read;
     }
-
+    
     public Update getUpdate() {
         return update;
     }
-
+    
     public Delete getDelete() {
         return delete;
     }
-
+    
     public class Create {
-
+        
         public String[] values() {
             String values[] = new String[6];
-            values[0] = "-1";
+            values[0] = "NA";
             values[1] = jtfNombre.getText();
             values[2] = (String) jcbMarcas.getSelectedItem();
             values[3] = jtfContenido.getText();
@@ -77,7 +77,7 @@ public class Vista_Productos extends javax.swing.JFrame {
             values[5] = jtfPrecio.getText();
             return values;
         }
-
+        
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
@@ -99,9 +99,9 @@ public class Vista_Productos extends javax.swing.JFrame {
                 jtfPrecio.setBorder(Const.getOkBorder());
             }
             return i != 0;
-
+            
         }
-
+        
         public void Empty() {
             jtfNombre.setText("");
             jcbMarcas.setSelectedIndex(0);
@@ -110,51 +110,37 @@ public class Vista_Productos extends javax.swing.JFrame {
             jtfPrecio.setText("");
             jtfClave.setText("");
         }
-
+        
         public JTextField getJtfClave() {
             return jtfClave;
         }
-
+        
         public JButton getJbtCancelar() {
             return jbtCancelar;
         }
-
+        
     }
-
+    
     public class Read {
-
-        private DefaultTableModel modelo;
-
-        public Read() {
-            jtConsultas = new JTable();
-            modelo = new DefaultTableModel();
-            for (String producto : Const.getProductos()) {
-                modelo.addColumn(producto);
-            }
-            jtConsultas.setModel(modelo);
-        }
-
+        
         public JTable getJtConsultas() {
             return jtConsultas;
         }
-
+        
         public JButton getJbtConsultar() {
             return jbtConsultar;
         }
-
+        
     }
-
+    
     public class Update {
-
+        
     }
-
+    
     public class Delete {
-
-        public Delete() {
-        }
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -163,7 +149,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jbtAtras = new javax.swing.JButton();
-        jbtInventario = new javax.swing.JButton();
+        jbtInfo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jlbNombre = new javax.swing.JLabel();
         jlbCargo = new javax.swing.JLabel();
@@ -220,6 +206,8 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtCancelar_3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Productos");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,17 +228,17 @@ public class Vista_Productos extends javax.swing.JFrame {
         jPanel2.add(jbtAtras);
         jbtAtras.setBounds(0, 550, 300, 50);
 
-        jbtInventario.setBackground(new java.awt.Color(200, 0, 255));
-        jbtInventario.setForeground(new java.awt.Color(0, 0, 0));
-        jbtInventario.setText("Info");
-        jbtInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jbtInventario.addActionListener(new java.awt.event.ActionListener() {
+        jbtInfo.setBackground(new java.awt.Color(200, 0, 255));
+        jbtInfo.setForeground(new java.awt.Color(0, 0, 0));
+        jbtInfo.setText("Info");
+        jbtInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtInventarioActionPerformed(evt);
+                jbtInfoActionPerformed(evt);
             }
         });
-        jPanel2.add(jbtInventario);
-        jbtInventario.setBounds(0, 320, 300, 50);
+        jPanel2.add(jbtInfo);
+        jbtInfo.setBounds(0, 320, 300, 50);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 600);
@@ -304,6 +292,8 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Create.add(txt2);
         txt2.setBounds(30, 70, 200, 25);
 
+        jcbMarcas.setBackground(new java.awt.Color(255, 255, 255));
+        jcbMarcas.setForeground(new java.awt.Color(0, 0, 0));
         jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
         Panel_Create.add(jcbMarcas);
         jcbMarcas.setBounds(230, 70, 300, 25);
@@ -324,6 +314,8 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Create.add(txt4);
         txt4.setBounds(30, 190, 200, 25);
 
+        jcbUDM.setBackground(new java.awt.Color(255, 255, 255));
+        jcbUDM.setForeground(new java.awt.Color(0, 0, 0));
         jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
         Panel_Create.add(jcbUDM);
         jcbUDM.setBounds(230, 190, 300, 25);
@@ -339,7 +331,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Create.add(jtfPrecio);
         jtfPrecio.setBounds(230, 260, 300, 25);
 
-        jbtGC.setBackground(new java.awt.Color(182, 182, 182));
+        jbtGC.setBackground(new java.awt.Color(213, 216, 220));
         jbtGC.setForeground(new java.awt.Color(0, 0, 0));
         jbtGC.setText("Generar Clave");
         jbtGC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -353,14 +345,14 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Create.add(jtfClave);
         jtfClave.setBounds(230, 320, 300, 25);
 
-        jbtAgregar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtAgregar.setBackground(new java.awt.Color(213, 216, 220));
         jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jbtAgregar);
         jbtAgregar.setBounds(580, 30, 140, 50);
 
-        jbtCancelar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCancelar.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar.setForeground(new java.awt.Color(0, 0, 0));
         jbtCancelar.setText("Cancelar");
         jbtCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -378,7 +370,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
             },
             new String [] {
-
+                "ID", "Clave", "Nombre", "Marca", "Contenido", "udm", "precio"
             }
         ));
         jScrollPane1.setViewportView(jtConsultas);
@@ -581,11 +573,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtInventarioActionPerformed
+    private void jbtInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtInfoActionPerformed
         info.setTxt(0);
         info.setVisible(true);
 
-    }//GEN-LAST:event_jbtInventarioActionPerformed
+    }//GEN-LAST:event_jbtInfoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -611,7 +603,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JButton jbtCancelar_3;
     private javax.swing.JButton jbtConsultar;
     private javax.swing.JButton jbtGC;
-    private javax.swing.JButton jbtInventario;
+    private javax.swing.JButton jbtInfo;
     private javax.swing.JButton jbtRemover;
     private javax.swing.JComboBox<String> jcbMB;
     private javax.swing.JComboBox<String> jcbMB_2;

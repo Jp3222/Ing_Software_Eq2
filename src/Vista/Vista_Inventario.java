@@ -56,6 +56,7 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(171, 178, 185));
         jPanel1.setForeground(new java.awt.Color(171, 178, 185));
