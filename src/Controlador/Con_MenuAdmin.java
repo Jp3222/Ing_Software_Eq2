@@ -1,7 +1,9 @@
 package Controlador;
 
-import Modelo.Excepciones;
-import Vista.Vista_Inventario;
+import Modelo.BD;
+import Modelo.Operaciones;
+import Vista.Vista_Empleados;
+import Vista.Vista_Administracion;
 import Vista.Vista_Login;
 import Vista.Vista_MenuAdmin;
 import Vista.Vista_Productos;
@@ -14,45 +16,60 @@ public class Con_MenuAdmin implements ActionListener {
     private Vista_Login login;
     //
     private Vista_Productos productos;
-    private Vista_Inventario inventario;
+    private Vista_Administracion administracion;
+    private Vista_Empleados empleados;
+    //
+    private final BD conexion = BD.getNodo();
+    private final Operaciones opc = new Operaciones(conexion);
 
-    public Con_MenuAdmin(Vista_MenuAdmin admin, Vista_Login login) {
+    public Con_MenuAdmin(Vista_MenuAdmin admin) {
         this.admin = admin;
-        this.login = login;
-    }
-
-    public void setProductos(Vista_Productos productos) {
-        this.productos = productos;
-    }
-
-    public void setInventario(Vista_Inventario inventario) {
-        this.inventario = inventario;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Cerrar Sesion" ->
-                Cerrar_Sesion();
+            case "Agregar" ->
+                Agregar();
+            case "Quitar" ->
+                Quitar();
+            case "Buscar" ->
+                Buscar();
             case "Perfil" ->
                 Perfil();
             case "Empleados" ->
                 Empleados();
             case "Productos" ->
                 Productos();
-            case "Inventario" ->
-                Inventario();
-
+            case "Administracion" ->
+                Administracion();
+            case "Cerrar Sesion" ->
+                Cerrar_Sesion();
         }
     }
 
-    public void Cerrar_Sesion() {
-        admin.dispose();
-        login.setVisible(true);
+    public void Agregar() {
+        System.out.println("Agregar");
+
+    }
+
+    public void Quitar() {
+        System.out.println("Quitar");
+
+    }
+
+    public void Buscar() {
+        System.out.println("Buscar");
     }
 
     public void Perfil() {
-        System.out.println("Perfil");
+        System.out.println("perfil");
+    }
+
+    public void Empleados() {
+        admin.dispose();
+        empleados.setVisible(true);
+
     }
 
     public void Productos() {
@@ -60,13 +77,34 @@ public class Con_MenuAdmin implements ActionListener {
         productos.setVisible(true);
     }
 
-    public void Empleados() {
-        System.out.println("Empleado");
+    public void Administracion() {
+        admin.dispose();
+        administracion.setVisible(true);
     }
 
-    public void Inventario() {
+    public void Cerrar_Sesion() {
         admin.dispose();
-        inventario.setVisible(true);
+        login.setVisible(true);
+    }
+
+    public void setAdministracion(Vista_Administracion administracion) {
+        this.administracion = administracion;
+    }
+
+    public void setEmpleados(Vista_Empleados empleados) {
+        this.empleados = empleados;
+    }
+
+    public void setProductos(Vista_Productos productos) {
+        this.productos = productos;
+    }
+
+    public void setAdmin(Vista_MenuAdmin admin) {
+        this.admin = admin;
+    }
+
+    public void setLogin(Vista_Login login) {
+        this.login = login;
     }
 
 }

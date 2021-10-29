@@ -59,6 +59,14 @@ public class Const {
         "Diciembre"
     };
 
+    private static final String Movimiento[] = {
+        "Inicio de sesion",
+        "Cierre de sesion",
+        "Realizo una venta",
+        "Hizo una alta",
+        "Hizo una baja"
+    };
+
     private static final LineBorder OkBorder = new LineBorder(Color.black);
 
     private static final LineBorder BadBorder = new LineBorder(Color.red);
@@ -82,7 +90,7 @@ public class Const {
     public static Border getBadBorder() {
         return BadBorder;
     }
-    
+
     public static String getDay(int i) {
         return Dias[i - 1];
     }
@@ -90,6 +98,27 @@ public class Const {
     public static String getMes(int i) {
         return meses[i];
     }
+    /**
+     * @param i tipo de movimiento
+     * @return el movimiento segun el index
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * <br> 0.-
+     * 
+     */
+    public static String getMovimiento(int i) {
+        return Movimiento[i];
+    }
+    
+    
 
     public static void getMessage(String obj, String txt) {
         JOptionPane.showMessageDialog(null, obj + " " + txt);

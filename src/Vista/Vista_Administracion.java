@@ -6,13 +6,13 @@ import Controlador.Con_Inventario;
  *
  * @author jp
  */
-public class Vista_Inventario extends javax.swing.JFrame {
+public class Vista_Administracion extends javax.swing.JFrame {
 
     private Vista_MenuAdmin admin;
     private Con_Inventario controlador;
     private Vista_Info vista;
 
-    public Vista_Inventario(Vista_MenuAdmin admin) {
+    public Vista_Administracion(Vista_MenuAdmin admin) {
         this.admin = admin;
         vista = Vista_Info.getNodo();
         //
@@ -39,11 +39,6 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jbtSalir = new javax.swing.JButton();
         jbtInventario = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jlbNombre = new javax.swing.JLabel();
-        jlbCargo = new javax.swing.JLabel();
-        jlbRelog = new javax.swing.JLabel();
-        jlbFecha = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,6 +48,12 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        txt2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,40 +88,10 @@ public class Vista_Inventario extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jbtInventario);
-        jbtInventario.setBounds(0, 320, 300, 50);
+        jbtInventario.setBounds(0, 200, 300, 50);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 600);
-
-        jPanel3.setBackground(new java.awt.Color(0, 255, 239));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.setPreferredSize(new java.awt.Dimension(900, 100));
-        jPanel3.setLayout(null);
-
-        jlbNombre.setBackground(new java.awt.Color(1, 1, 1));
-        jlbNombre.setForeground(new java.awt.Color(0, 0, 0));
-        jlbNombre.setText("Nombre :");
-        jPanel3.add(jlbNombre);
-        jlbNombre.setBounds(0, 0, 250, 30);
-
-        jlbCargo.setBackground(new java.awt.Color(1, 1, 1));
-        jlbCargo.setForeground(new java.awt.Color(0, 0, 0));
-        jlbCargo.setText("Cargo");
-        jPanel3.add(jlbCargo);
-        jlbCargo.setBounds(0, 30, 250, 30);
-
-        jlbRelog.setForeground(new java.awt.Color(0, 0, 0));
-        jlbRelog.setText("DD/MM/YY");
-        jPanel3.add(jlbRelog);
-        jlbRelog.setBounds(700, 0, 200, 30);
-
-        jlbFecha.setForeground(new java.awt.Color(0, 0, 0));
-        jlbFecha.setText("DD/MM/YY");
-        jPanel3.add(jlbFecha);
-        jlbFecha.setBounds(700, 30, 200, 30);
-
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(300, 0, 900, 100);
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 255, 250));
         jTabbedPane1.setForeground(new java.awt.Color(1, 1, 1));
@@ -135,13 +106,13 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Producto", "Unidades"
             }
         ));
         jTable1.setEnabled(false);
@@ -171,7 +142,7 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(213, 216, 220));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Buscar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jButton1);
         jButton1.setBounds(480, 60, 390, 25);
 
@@ -181,18 +152,67 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jPanel5.setBorder(null);
         jPanel5.setForeground(new java.awt.Color(0, 0, 0));
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Marca", "Productos"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        txt2.setForeground(new java.awt.Color(0, 0, 0));
+        txt2.setText("Buscar:");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Marca" }));
+
+        jButton2.setBackground(new java.awt.Color(213, 216, 220));
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Buscar");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Actualizacion de inventario", null, jPanel5, "Consulta un listado de los productos\nen inventario ");
+        jTabbedPane1.addTab("Marcas", null, jPanel5, "Consulta un listado de los productos\nen inventario ");
 
         jPanel6.setBackground(new java.awt.Color(171, 178, 185));
         jPanel6.setBorder(null);
@@ -212,19 +232,19 @@ public class Vista_Inventario extends javax.swing.JFrame {
         jTabbedPane1.addTab("Estadisticas", null, jPanel6, "Consulta un listado de los productos\nen inventario ");
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 100, 900, 500);
+        jTabbedPane1.setBounds(300, 0, 900, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -242,27 +262,32 @@ public class Vista_Inventario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbtInventario;
     private javax.swing.JButton jbtSalir;
-    private javax.swing.JLabel jlbCargo;
-    private javax.swing.JLabel jlbFecha;
-    private javax.swing.JLabel jlbNombre;
-    private javax.swing.JLabel jlbRelog;
     private javax.swing.JLabel txt1;
+    private javax.swing.JLabel txt2;
     // End of variables declaration//GEN-END:variables
 }

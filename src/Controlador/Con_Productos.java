@@ -1,7 +1,9 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.Empleado;
 import Modelo.Operaciones;
+import Modelo.Producto;
 import Modelo.func;
 import Vista.Vista_MenuAdmin;
 import Vista.Vista_Productos;
@@ -79,7 +81,8 @@ public class Con_Productos implements ActionListener {
             return;
         }
         key();
-        operaciones.createProducto(BD.getValues(true, values));
+        Producto p = new Producto(values);
+        operaciones.newProducto(p);
         create.Empty();
     }
 
@@ -94,7 +97,6 @@ public class Con_Productos implements ActionListener {
 
     public void Buscar(Object obj) {
         if (read.getJbtConsultar() == obj) {
-            read.getJtConsultas().setModel(operaciones.Tabla("Productos"));
         } else {
         }
     }

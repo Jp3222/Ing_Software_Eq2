@@ -72,14 +72,18 @@ class log {
                 login.getjtfUsuario().setBorder(Const.getOkBorder());
                 if (empleado.getPassword().equals(pass)) {
                     login.getjpfPassword().setBorder(Const.getOkBorder());
-                    conexion.Insertar("Movimientos", BD.getColums("Dia", "tipo", "usuario"), BD.getValues(false, Sistema.getNodo().getDate(), "inicio de seson", empleado.getUsuario()));
+                    conexion.Insertar("Movimientos",
+                            BD.getColums("Dia", "tipo", "usuario"),
+                            BD.getValues(false, Sistema.getNodo().getDate(),
+                                    "inicio de seson",
+                                    empleado.getUsuario()));
                     switch (empleado.getCargo()) {
-                        case "Gerente":
+                        case "Gerente" -> {
                             login.dispose();
                             admin.setVisible(true);
                             admin.setUsuario(empleado);
-                            break;
-                        default:
+                        }
+                        default ->
                             System.out.println("No reconocido");
                     }
                     clear();

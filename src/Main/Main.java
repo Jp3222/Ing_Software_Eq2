@@ -16,6 +16,7 @@ public class Main {
         //
         SwingUtilities.invokeLater(() -> Star());
     }
+
     /**
      * Metodo de activacion del sistema
      */
@@ -24,8 +25,6 @@ public class Main {
         Sistema cr = Sistema.getNodo();
         cr.start();
         //Conexion a la base de datos
-        BD conexion = BD.getNodo("jp", "LANIXLX6", "jdbc:mysql://localhost/Tienda");
-        conexion.Conectar();
         Vista_Login v = new Vista_Login();
         v.setVisible(true);
     }

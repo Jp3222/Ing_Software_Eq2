@@ -1,6 +1,6 @@
 package Controlador;
 
-import Vista.Vista_Inventario;
+import Vista.Vista_Administracion;
 import Vista.Vista_MenuAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +12,9 @@ import java.awt.event.ActionListener;
 public class Con_Inventario implements ActionListener {
 
     private Vista_MenuAdmin admin;
-    private Vista_Inventario inventario;
+    private Vista_Administracion inventario;
 
-    public Con_Inventario(Vista_MenuAdmin admin, Vista_Inventario inventario) {
+    public Con_Inventario(Vista_MenuAdmin admin, Vista_Administracion inventario) {
         this.admin = admin;
         this.inventario = inventario;
     }

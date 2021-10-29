@@ -53,7 +53,7 @@ public class Vista_Login extends javax.swing.JFrame {
         setBackground(new java.awt.Color(4, 0, 255));
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(0, 189, 255));
+        jPanel3.setBackground(new java.awt.Color(177, 177, 255));
         jPanel3.setFocusCycleRoot(true);
         jPanel3.setFocusTraversalPolicyProvider(true);
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 600));

@@ -150,10 +150,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jbtAtras = new javax.swing.JButton();
         jbtInfo = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jlbNombre = new javax.swing.JLabel();
-        jlbCargo = new javax.swing.JLabel();
-        jlbRelog = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Panel_Create = new javax.swing.JPanel();
         txt1 = new javax.swing.JLabel();
@@ -209,7 +205,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         setTitle("Productos");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(175, 178, 185));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
@@ -243,36 +239,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 600);
 
-        jPanel3.setBackground(new java.awt.Color(0, 255, 239));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.setPreferredSize(new java.awt.Dimension(900, 100));
-        jPanel3.setLayout(null);
-
-        jlbNombre.setBackground(new java.awt.Color(1, 1, 1));
-        jlbNombre.setForeground(new java.awt.Color(0, 0, 0));
-        jlbNombre.setText("Nombre :");
-        jPanel3.add(jlbNombre);
-        jlbNombre.setBounds(0, 0, 250, 30);
-
-        jlbCargo.setBackground(new java.awt.Color(1, 1, 1));
-        jlbCargo.setForeground(new java.awt.Color(0, 0, 0));
-        jlbCargo.setText("Cargo");
-        jPanel3.add(jlbCargo);
-        jlbCargo.setBounds(0, 30, 250, 30);
-
-        jlbRelog.setForeground(new java.awt.Color(0, 0, 0));
-        jlbRelog.setText("DD/MM/YY");
-        jPanel3.add(jlbRelog);
-        jlbRelog.setBounds(700, 0, 200, 30);
-
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(300, 0, 900, 100);
-
-        jTabbedPane1.setBackground(new java.awt.Color(0, 255, 142));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 250, 255));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        Panel_Create.setBackground(new java.awt.Color(180, 180, 180));
+        Panel_Create.setBackground(new java.awt.Color(171, 178, 185));
         Panel_Create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.setLayout(null);
 
@@ -554,7 +525,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         jTabbedPane1.addTab("Borrar", Panel_Delete);
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 100, 900, 500);
+        jTabbedPane1.setBounds(300, 0, 900, 530);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -588,7 +559,6 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -612,9 +582,6 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbUDM;
     private javax.swing.JComboBox<String> jcbUDM_2;
     private javax.swing.JTextField jftMB;
-    private javax.swing.JLabel jlbCargo;
-    private javax.swing.JLabel jlbNombre;
-    private javax.swing.JLabel jlbRelog;
     private javax.swing.JTable jtConsultas;
     private javax.swing.JTextField jtfClave;
     private javax.swing.JTextField jtfClave_2;

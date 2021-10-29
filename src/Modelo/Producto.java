@@ -12,25 +12,26 @@ import java.util.Objects;
  *
  * @author jp
  */
-public class producto {
+public class Producto {
 
-    private final BD conexion;
     private int ID;
-    double Contenido, UDM, Precios;
-    private String Clave, Nombre, Marca;
+    double Contenido, Precios;
+    private String Clave, Nombre, Marca,UDM;
 
     private boolean Exists;
 
-    public producto(BD conexion) {
-        this.conexion = conexion;
-        this.ID = 0;
-        this.Clave = "";
-        this.Nombre = "";
-        this.Marca = "";
-        this.Contenido = 0;
-        this.UDM = 0;
-        this.Precios = 0;
+    public Producto() {
         this.Exists = false;
+    }
+
+    public Producto(String[] info) {
+        this.ID = 0;
+        this.Clave = info[0];
+        this.Nombre = info[1];
+        this.Marca = info[2];
+        this.Contenido = Double.parseDouble(info[3]);
+        this.UDM = info[4];
+        this.Precios = Double.parseDouble(info[5]);
     }
 
     public int getID() {
@@ -45,11 +46,11 @@ public class producto {
         this.Contenido = Contenido;
     }
 
-    public double getUDM() {
+    public String getUDM() {
         return UDM;
     }
 
-    public void setUDM(double UDM) {
+    public void setUDM(String UDM) {
         this.UDM = UDM;
     }
 
@@ -99,22 +100,25 @@ public class producto {
         this.Nombre = info[2];
         this.Marca = info[3];
         this.Contenido = Double.parseDouble(info[4]);
-        this.UDM = Double.parseDouble(info[5]);
+        this.UDM = info[5];
         this.Precios = Double.parseDouble(info[6]);
+    }
+
+    public String[] getInfo() {
+        return func.getArray(Clave, Nombre, Marca, Contenido + "", UDM + "", Precios + "");
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.conexion);
-        hash = 41 * hash + this.ID;
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.Contenido) ^ (Double.doubleToLongBits(this.Contenido) >>> 32));
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.UDM) ^ (Double.doubleToLongBits(this.UDM) >>> 32));
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.Precios) ^ (Double.doubleToLongBits(this.Precios) >>> 32));
-        hash = 41 * hash + Objects.hashCode(this.Clave);
-        hash = 41 * hash + Objects.hashCode(this.Nombre);
-        hash = 41 * hash + Objects.hashCode(this.Marca);
-        hash = 41 * hash + (this.Exists ? 1 : 0);
+        int hash = 7;
+        hash = 37 * hash + this.ID;
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.Contenido) ^ (Double.doubleToLongBits(this.Contenido) >>> 32));
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.Precios) ^ (Double.doubleToLongBits(this.Precios) >>> 32));
+        hash = 37 * hash + Objects.hashCode(this.Clave);
+        hash = 37 * hash + Objects.hashCode(this.Nombre);
+        hash = 37 * hash + Objects.hashCode(this.Marca);
+        hash = 37 * hash + Objects.hashCode(this.UDM);
+        hash = 37 * hash + (this.Exists ? 1 : 0);
         return hash;
     }
 
@@ -129,14 +133,11 @@ public class producto {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final producto other = (producto) obj;
+        final Producto other = (Producto) obj;
         if (this.ID != other.ID) {
             return false;
         }
         if (Double.doubleToLongBits(this.Contenido) != Double.doubleToLongBits(other.Contenido)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.UDM) != Double.doubleToLongBits(other.UDM)) {
             return false;
         }
         if (Double.doubleToLongBits(this.Precios) != Double.doubleToLongBits(other.Precios)) {
@@ -151,12 +152,20 @@ public class producto {
         if (!Objects.equals(this.Nombre, other.Nombre)) {
             return false;
         }
-        return Objects.equals(this.Marca, other.Marca);
+        if (!Objects.equals(this.Marca, other.Marca)) {
+            return false;
+        }
+        if (!Objects.equals(this.UDM, other.UDM)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "producto{" + "conexion=" + conexion + ", ID=" + ID + ", Contenido=" + Contenido + ", UDM=" + UDM + ", Precios=" + Precios + ", Clave=" + Clave + ", Nombre=" + Nombre + ", Marca=" + Marca + ", Exists=" + Exists + '}';
+        return "Producto{" + "ID=" + ID + ", Contenido=" + Contenido + ", Precios=" + Precios + ", Clave=" + Clave + ", Nombre=" + Nombre + ", Marca=" + Marca + ", UDM=" + UDM + ", Exists=" + Exists + '}';
     }
+
+    
 
 }

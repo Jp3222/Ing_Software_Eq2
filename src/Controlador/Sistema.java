@@ -2,12 +2,10 @@ package Controlador;
 
 import Modelo.BD;
 import Modelo.Const;
+import Modelo.Empleado;
 import Modelo.Excepciones;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import Modelo.Operaciones;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 import javax.swing.JLabel;
@@ -26,23 +24,31 @@ public class Sistema extends Thread {
         }
         return Nodo;
     }
+    //
     public JLabel jlbRelog, jlbFecha;
     private String relog, fecha;
     private Calendar cl;
-    private HashMap<Integer, JLabel> relogs;
+    //conexion a la base de datos
+    private BD conexion;
+    //Funciones especiales
+    Operaciones opc;
+    //Usuario en sistema
+    private Empleado usuario;
+    //
 
     private Sistema() {
+        conexion = BD.getNodo("jp", "LANIXLX6", "jdbc:mysql://localhost/Tienda");
+        conexion.Conectar();
+        opc = new Operaciones(conexion);
         //this.jlbRelog = null;
         this.jlbFecha = null;
         this.relog = "";
         this.fecha = "";
         this.cl = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
-        this.relogs = new HashMap<>();
     }
 
     @Override
     public void run() {
-
         try {
             while (true) {
                 cl = Calendar.getInstance();
@@ -59,7 +65,7 @@ public class Sistema extends Thread {
         } catch (Excepciones ex) {
             System.out.println(ex.getMessage());
             System.exit(1);
-            BD.getNodo().desConectar();
+            conexion.desConectar();
         } finally {
             System.out.println("Fin");
         }
@@ -76,13 +82,12 @@ public class Sistema extends Thread {
         } else {
             relog += " AM";
         }
-        System.out.println(relog);
         if (jlbRelog != null) {
             jlbRelog.setText(relog);
         }
     }
 
-public void fecha() {
+    public void fecha() {
         fecha = Const.getDay(cl.get(Calendar.DAY_OF_WEEK)) + cl.get(Calendar.DAY_OF_MONTH) + "/" + Const.getMes(cl.get(Calendar.MONTH)) + "/" + cl.get(Calendar.YEAR);
         if (jlbFecha != null) {
             jlbFecha.setText(fecha);

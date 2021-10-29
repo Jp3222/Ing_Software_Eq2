@@ -13,46 +13,48 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     private final Con_MenuAdmin controlador;
     private Empleado Usuario;
+    private final Vista_Productos productos;
+    private final Vista_Administracion administracion;
+    private final Vista_Empleados empleados;
     //
-    private Vista_Productos productos;
-    private Vista_Inventario inventario;
-    //
-    private Sistema relog;
+    private Sistema sistema;
 
     public Vista_MenuAdmin(Vista_Login login) {
+        controlador = new Con_MenuAdmin(this);
+        controlador.setLogin(login);
+        //
         productos = new Vista_Productos(this);
-        inventario = new Vista_Inventario(this);
-        //
-        initComponents();
-        //
-        controlador = new Con_MenuAdmin(this, login);
+        administracion = new Vista_Administracion(this);
+        empleados = new Vista_Empleados(this);
         cont();
+        initComponents();
         escuchas();
-        relog = Sistema.getNodo();
-        relog.addRelog(0, jlbRelog);
-        relog.setJlbFecha(jlbFecha);
+        sistema = Sistema.getNodo();
+        sistema.addRelog(0, jlbRelog);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
     }
 
     private void cont() {
+        controlador.setAdministracion(administracion);
+        controlador.setEmpleados(empleados);
         controlador.setProductos(productos);
-        controlador.setInventario(inventario);
-
     }
 
     private void escuchas() {
-
         //Botones
         jbtSalir.addActionListener(controlador);
         jbtProductos.addActionListener(controlador);
         jbtEmpleados.addActionListener(controlador);
         jbtPerfil.addActionListener(controlador);
-        jbtInventario.addActionListener(controlador);
+        jbtAdministracion.addActionListener(controlador);
     }
 
     private void UserInfo() {
         jlbNombre.setText("Nombre: " + Usuario.getNombre());
         jlbCargo.setText("Cargo: " + Usuario.getCargo());
+        if (Usuario.getCargo().equals("Empleado")) {
+            jbtAdministracion.setEnabled(false);
+        }
     }
 
     public void setUsuario(Empleado Usuario) {
@@ -71,7 +73,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jbtProductos = new javax.swing.JButton();
         jbtEmpleados = new javax.swing.JButton();
         jbtPerfil = new javax.swing.JButton();
-        jbtInventario = new javax.swing.JButton();
+        jbtAdministracion = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jlbNombre = new javax.swing.JLabel();
         jlbCargo = new javax.swing.JLabel();
@@ -105,11 +107,11 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 255, 103));
+        jPanel1.setBackground(new java.awt.Color(171, 178, 185));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 193));
+        jPanel2.setBackground(new java.awt.Color(177, 177, 255));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -146,17 +148,17 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel2.add(jbtPerfil);
         jbtPerfil.setBounds(0, 200, 300, 50);
 
-        jbtInventario.setBackground(new java.awt.Color(200, 0, 255));
-        jbtInventario.setForeground(new java.awt.Color(0, 0, 0));
-        jbtInventario.setText("Inventario");
-        jbtInventario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jbtInventario);
-        jbtInventario.setBounds(0, 380, 300, 50);
+        jbtAdministracion.setBackground(new java.awt.Color(200, 0, 255));
+        jbtAdministracion.setForeground(new java.awt.Color(0, 0, 0));
+        jbtAdministracion.setText("Administracion");
+        jbtAdministracion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jbtAdministracion);
+        jbtAdministracion.setBounds(0, 380, 300, 50);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 600);
 
-        jPanel3.setBackground(new java.awt.Color(0, 255, 239));
+        jPanel3.setBackground(new java.awt.Color(60, 209, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setPreferredSize(new java.awt.Dimension(900, 100));
         jPanel3.setLayout(null);
@@ -186,7 +188,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel1.add(jPanel3);
         jPanel3.setBounds(300, 0, 900, 100);
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 255, 142));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 250, 255));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -379,10 +381,10 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton jbtAdministracion;
     private javax.swing.JButton jbtAgregar;
     private javax.swing.JButton jbtBuscar;
     private javax.swing.JButton jbtEmpleados;
-    private javax.swing.JButton jbtInventario;
     private javax.swing.JButton jbtPerfil;
     private javax.swing.JButton jbtProductos;
     private javax.swing.JButton jbtQuitar;

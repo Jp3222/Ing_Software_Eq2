@@ -12,26 +12,25 @@ public class Empleado {
             Edad,
             Cargo,
             Password;
-
     private boolean Exists;
 
     public Empleado() {
-        this.ID = 0;
-        this.Nombre = "";
-        this.A_paterno = "";
-        this.A_materno = "";
-        this.Edad = "";
-        this.Cargo = "";
-        this.Password = "";
         this.Exists = false;
+    }
+
+    public Empleado(String[] info) {
+        this.ID = 0;
+        this.usuario = info[0];
+        this.Nombre = info[1];
+        this.A_paterno = info[2];
+        this.A_materno = info[3];
+        this.Edad = info[4];
+        this.Cargo = info[5];
+        this.Password = info[6];
     }
 
     public int getID() {
         return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getUsuario() {
@@ -40,6 +39,7 @@ public class Empleado {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+
     }
 
     public String getNombre() {
@@ -157,6 +157,10 @@ public class Empleado {
         this.Edad = info[5];
         this.Cargo = info[6];
         this.Password = info[7];
+    }
+
+    public String[] getInfo() {
+        return func.getArray(usuario, Nombre, A_paterno, A_materno, Edad, Cargo, Password);
     }
 
     @Override

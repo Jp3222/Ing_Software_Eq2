@@ -21,6 +21,7 @@ public class func {
         c += cont + precio + hash(Double.parseDouble(cont) + Double.parseDouble(precio));
         return c;
     }
+
     private static int hash(double x) {
         int i = (int) (x);
         int p = (int) (Math.random() * NoP.length);
@@ -60,6 +61,16 @@ public class func {
         int[] obj = new int[T.length];
         int x = 0;
         for (int i : T) {
+            obj[x] = i;
+            x++;
+        }
+        return obj;
+    }
+
+    public static String[] getArray(String... T) {
+        String[] obj = new String[T.length];
+        int x = 0;
+        for (String i : T) {
             obj[x] = i;
             x++;
         }
