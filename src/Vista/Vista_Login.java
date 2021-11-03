@@ -115,6 +115,17 @@ public class Vista_Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean isEmpty() {
+        int i = 0;
+        if (jtfUsuario.getText().isEmpty()) {
+            i++;
+        }
+        if (jpfPassword.getText().isEmpty()) {
+            i++;
+        }
+        return i > 0;
+    }
+
     public JTextField getjtfUsuario() {
         return jtfUsuario;
     }

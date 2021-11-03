@@ -4,6 +4,7 @@ import Modelo.BD;
 import Modelo.Const;
 import Modelo.Empleado;
 import Modelo.Excepciones;
+import Modelo.Movimiento;
 import Modelo.Operaciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,11 +13,6 @@ import java.awt.event.KeyEvent;
 //
 import Vista.Vista_Login;
 import Vista.Vista_MenuAdmin;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -52,6 +48,7 @@ class log {
     private final Vista_MenuAdmin admin;
     private final BD conexion = BD.getNodo();
     private final Operaciones operacion;
+    private final Sistema sistema = Sistema.getNodo();
 
     public log(Vista_Login login, Vista_MenuAdmin admin) {
         this.login = login;
@@ -72,11 +69,8 @@ class log {
                 login.getjtfUsuario().setBorder(Const.getOkBorder());
                 if (empleado.getPassword().equals(pass)) {
                     login.getjpfPassword().setBorder(Const.getOkBorder());
-                    conexion.Insertar("Movimientos",
-                            BD.getColums("Dia", "tipo", "usuario"),
-                            BD.getValues(false, Sistema.getNodo().getDate(),
-                                    "inicio de seson",
-                                    empleado.getUsuario()));
+                    Movimiento mov = new Movimiento(sistema.getCl(), Const.getMovimiento(0), empleado.getUsuario());
+                    operacion.setMovimiento(mov);
                     switch (empleado.getCargo()) {
                         case "Gerente" -> {
                             login.dispose();
@@ -88,17 +82,16 @@ class log {
                     }
                     clear();
                 } else {
-                    Const.getMessage("La contraseña", "Es incorrecta");
+                    Const.getMessage("La contraseña", "Es incorrecta"
+                    ,"Mensaje",0);
                     login.getjpfPassword().setBorder(Const.getBadBorder());
                 }
             } else {
-                Const.getMessage("EL usuario", "Es incorrecto");
+                Const.getMessage("EL usuario", "Es incorrecto" ,"Mensaje",0);
                 login.getjtfUsuario().setBorder(Const.getBadBorder());
             }
         } catch (Excepciones e) {
             System.out.println(e.getMessage());
-        } catch (SQLException ex) {
-            Logger.getLogger(log.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

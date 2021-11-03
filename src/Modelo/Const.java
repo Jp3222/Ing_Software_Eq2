@@ -7,6 +7,9 @@ import javax.swing.border.LineBorder;
 
 public class Const {
 
+    /**
+     * Constantes de la tabla 'productos'
+     */
     private static final String Productos[] = {
         "ID",
         "Clave",
@@ -16,7 +19,9 @@ public class Const {
         "UDM",
         "Precio"
     };
-
+    /**
+     * Constantes de la tabla 'empleados'
+     */
     private static final String Usuarios[] = {
         "ID",
         "Usuario",
@@ -27,14 +32,24 @@ public class Const {
         "Cargo",
         "Contra"
     };
-
+    /**
+     * Constantes de la tabla 'movimientos'
+     */
     public static final String Movimientos[] = {
         "ID",
         "Dia",
+        "Mes",
+        "AÑo",
+        "Hora",
+        "MIn",
+        "Seg",
         "Tipo",
         "Usuario"
     };
 
+    /**
+     * Constantes de los dias de la semana
+     */
     private static final String Dias[] = {
         "Domingo",
         "Lunes",
@@ -44,6 +59,10 @@ public class Const {
         "Viernes",
         "Sabado"
     };
+
+    /**
+     * Constantes de los meses del año
+     */
     private static final String meses[] = {
         "Enero",
         "Febrero",
@@ -59,13 +78,20 @@ public class Const {
         "Diciembre"
     };
 
+    //tipos de movimientos
     private static final String Movimiento[] = {
         "Inicio de sesion",
         "Cierre de sesion",
         "Realizo una venta",
         "Hizo una alta",
-        "Hizo una baja"
-    };
+        "Hizo una baja",
+        "Hizo una modificacion",
+        "Hizo una baja",
+        "Hizo una baja",
+        "Hizo una baja",
+        "Hizo una baja",
+        "Hizo una baja",
+        "Hizo una baja",};
 
     private static final LineBorder OkBorder = new LineBorder(Color.black);
 
@@ -98,6 +124,7 @@ public class Const {
     public static String getMes(int i) {
         return meses[i];
     }
+
     /**
      * @param i tipo de movimiento
      * @return el movimiento segun el index
@@ -112,16 +139,14 @@ public class Const {
      * <br> 0.-
      * <br> 0.-
      * <br> 0.-
-     * 
+     *
      */
     public static String getMovimiento(int i) {
         return Movimiento[i];
     }
-    
-    
 
-    public static void getMessage(String obj, String txt) {
-        JOptionPane.showMessageDialog(null, obj + " " + txt);
+    public static void getMessage(String obj, String txt, String title, int i) {
+        JOptionPane.showMessageDialog(null, obj + " " + txt, title, i);
     }
 
 }

@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.Const;
 import Modelo.Empleado;
 import Modelo.Operaciones;
 import Modelo.Producto;
@@ -53,8 +54,6 @@ public class Con_Productos implements ActionListener {
                 Cancelar(e.getSource());
             case "Buscar" ->
                 Buscar(e.getSource());
-            case "Generar Clave" ->
-                key();
             case "Agregar" ->
                 Agregar();
             case "Mostrar" ->
@@ -80,23 +79,18 @@ public class Con_Productos implements ActionListener {
         if (create.isEmpty()) {
             return;
         }
-        key();
+        values[0] = func.getID(values[1], values[3], values[5]);
         Producto p = new Producto(values);
         operaciones.newProducto(p);
+        Const.getMessage("El producto " + values[1] ,
+                "\nha sido registrado con la clave: " + values[0],
+                "Mensaje",0);
         create.Empty();
     }
-
-    private void key() {
-        if (!create.isEmpty() && values[0].equals("NA")) {
-            values[0] = func.getID(values[1], values[3], values[5]);
-            create.getJtfClave().setText(values[0]);
-        } else {
-            System.out.println("Clave generada");
-        }
-    }
-
+    
     public void Buscar(Object obj) {
         if (read.getJbtConsultar() == obj) {
+            read.getJtConsultas().setModel(operaciones.getTable("productos"));
         } else {
         }
     }

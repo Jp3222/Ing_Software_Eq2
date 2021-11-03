@@ -160,7 +160,7 @@ public class Empleado {
     }
 
     public String[] getInfo() {
-        return func.getArray(usuario, Nombre, A_paterno, A_materno, Edad, Cargo, Password);
+        return func.getArray( usuario, Nombre, A_paterno, A_materno, Edad, Cargo, Password);
     }
 
     @Override

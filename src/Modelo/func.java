@@ -76,7 +76,8 @@ public class func {
         }
         return obj;
     }
-
+    
+    //[2,3,5,7]{1,3} = [2,5]
     public static String[] exp(String array[], int... ex) {
         ArrayList<String> obj = new ArrayList<>();
         int[] e = getArray(ex);

@@ -27,7 +27,7 @@ public class Producto {
     public Producto(String[] info) {
         this.ID = 0;
         this.Clave = info[0];
-        this.Nombre = info[1];
+        this.Nombre = info[1] + " " + info[3];
         this.Marca = info[2];
         this.Contenido = Double.parseDouble(info[3]);
         this.UDM = info[4];

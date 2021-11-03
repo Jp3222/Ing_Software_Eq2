@@ -38,7 +38,8 @@ public class Operaciones {
                 String[] info = new String[Const.getProductos().length];
                 int i = 0;
                 for (String producto1 : Const.getProductos()) {
-                    info[0] = rs.getString(producto1);
+                    info[i] = rs.getString(producto1);
+                    i++;
                 }
                 producto.setInfo(info);
             }
@@ -54,7 +55,7 @@ public class Operaciones {
 
     public void newProducto(Producto producto) {
         try {
-            conexion.Insertar("Productos",
+            conexion.Insertar("productos",
                     BD.getColums(func.exp(Const.getProductos(), 0)),
                     BD.getValues(true, producto.getInfo()));
         } catch (SQLException e) {
@@ -99,14 +100,42 @@ public class Operaciones {
         }
     }
 
-    //BD
-//    public DefaultTableModel Tabla(String[] campos) {
-//        DefaultTableModel obj = new DefaultTableModel();
-//        
-//        for (String producto : campos) {
-//            obj.addColumn(producto);
-//        }
-//        
-//        String[] filas=new String[campos.length];
-//    }
+    public void setMovimiento(Movimiento mov) {
+        try {
+            conexion.Insertar("movimientos",
+                    BD.getColums(func.exp(Const.getMovimientos(), 0)),
+                    BD.getValues(true, mov.getInfo()));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //
+    public DefaultTableModel getTable(String nom) {
+        DefaultTableModel tm = new DefaultTableModel();
+        try {
+            
+            for (String colm : Const.getProductos()) {
+                tm.addColumn(colm);
+            }
+
+            rs = conexion.Buscar(nom);
+            String[] aux = new String[Const.getProductos().length];
+            int i;
+            while (rs.next()) {
+                i = 0;
+                for (String value : Const.getProductos()) {
+                    aux[i] = rs.getString(value);
+                    i++;
+                }
+                tm.addRow(aux);
+            }
+            return tm;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

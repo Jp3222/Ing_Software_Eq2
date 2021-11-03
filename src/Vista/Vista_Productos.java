@@ -10,63 +10,59 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Vista_Productos extends javax.swing.JFrame {
-    
+
     private Con_Productos controlador;
     private Create create;
     private Read read;
     private Update update;
     private Delete delete;
-    private Sistema relog;
     //
     private Vista_Info info;
-    
+
     public Vista_Productos(Vista_MenuAdmin admin) {
         //tareas
         this.create = new Create();
         this.read = new Read();
         this.update = new Update();
         this.delete = new Delete();
-        this.relog = Sistema.getNodo();
         //sistema
-        relog.addRelog(1, jlbRelog);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
         //
         info = Vista_Info.getNodo();
         initComponents();
         addControladores(admin);
     }
-    
+
     private void addControladores(Vista_MenuAdmin admin) {
         controlador = new Con_Productos(this, admin);
         jbtAtras.addActionListener(controlador);
         //Create
         jbtAgregar.addActionListener(controlador);
         jbtCancelar.addActionListener(controlador);
-        jbtGC.addActionListener(controlador);
         //Read
         jbtConsultar.addActionListener(controlador);
         jbtConsultar.addActionListener(controlador);
-        
+
     }
-    
+
     public Create getCreate() {
         return create;
     }
-    
+
     public Read getRead() {
         return read;
     }
-    
+
     public Update getUpdate() {
         return update;
     }
-    
+
     public Delete getDelete() {
         return delete;
     }
-    
+
     public class Create {
-        
+
         public String[] values() {
             String values[] = new String[6];
             values[0] = "NA";
@@ -77,7 +73,7 @@ public class Vista_Productos extends javax.swing.JFrame {
             values[5] = jtfPrecio.getText();
             return values;
         }
-        
+
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
@@ -99,48 +95,44 @@ public class Vista_Productos extends javax.swing.JFrame {
                 jtfPrecio.setBorder(Const.getOkBorder());
             }
             return i != 0;
-            
+
         }
-        
+
         public void Empty() {
             jtfNombre.setText("");
             jcbMarcas.setSelectedIndex(0);
             jtfContenido.setText("");
             jcbUDM.setSelectedIndex(0);
             jtfPrecio.setText("");
-            jtfClave.setText("");
+
         }
-        
-        public JTextField getJtfClave() {
-            return jtfClave;
-        }
-        
+
         public JButton getJbtCancelar() {
             return jbtCancelar;
         }
-        
+
     }
-    
+
     public class Read {
-        
+
         public JTable getJtConsultas() {
             return jtConsultas;
         }
-        
+
         public JButton getJbtConsultar() {
             return jbtConsultar;
         }
-        
+
     }
-    
+
     public class Update {
-        
+
     }
-    
+
     public class Delete {
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,8 +154,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         jcbUDM = new javax.swing.JComboBox<>();
         txt5 = new javax.swing.JLabel();
         jtfPrecio = new javax.swing.JTextField();
-        jbtGC = new javax.swing.JButton();
-        jtfClave = new javax.swing.JTextField();
         jbtAgregar = new javax.swing.JButton();
         jbtCancelar = new javax.swing.JButton();
         Panel_Read = new javax.swing.JPanel();
@@ -302,20 +292,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Create.add(jtfPrecio);
         jtfPrecio.setBounds(230, 260, 300, 25);
 
-        jbtGC.setBackground(new java.awt.Color(213, 216, 220));
-        jbtGC.setForeground(new java.awt.Color(0, 0, 0));
-        jbtGC.setText("Generar Clave");
-        jbtGC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Panel_Create.add(jbtGC);
-        jbtGC.setBounds(30, 320, 140, 25);
-
-        jtfClave.setBackground(new java.awt.Color(255, 255, 255));
-        jtfClave.setForeground(new java.awt.Color(0, 0, 0));
-        jtfClave.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jtfClave.setEnabled(false);
-        Panel_Create.add(jtfClave);
-        jtfClave.setBounds(230, 320, 300, 25);
-
         jbtAgregar.setBackground(new java.awt.Color(213, 216, 220));
         jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
         jbtAgregar.setText("Agregar");
@@ -351,7 +327,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(0, 0, 150, 28);
+        jbtConsultar.setBounds(0, 0, 150, 29);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
@@ -506,6 +482,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
@@ -572,7 +549,6 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JButton jbtCancelar_2;
     private javax.swing.JButton jbtCancelar_3;
     private javax.swing.JButton jbtConsultar;
-    private javax.swing.JButton jbtGC;
     private javax.swing.JButton jbtInfo;
     private javax.swing.JButton jbtRemover;
     private javax.swing.JComboBox<String> jcbMB;
@@ -583,7 +559,6 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbUDM_2;
     private javax.swing.JTextField jftMB;
     private javax.swing.JTable jtConsultas;
-    private javax.swing.JTextField jtfClave;
     private javax.swing.JTextField jtfClave_2;
     private javax.swing.JTextField jtfContenido;
     private javax.swing.JTextField jtfContenido_2;

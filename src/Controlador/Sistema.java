@@ -37,7 +37,7 @@ public class Sistema extends Thread {
     //
 
     private Sistema() {
-        conexion = BD.getNodo("jp", "LANIXLX6", "jdbc:mysql://localhost/Tienda");
+        conexion = BD.getNodo("jp", "12345", "jdbc:mysql://localhost/Tienda");
         conexion.Conectar();
         opc = new Operaciones(conexion);
         //this.jlbRelog = null;
@@ -55,7 +55,7 @@ public class Sistema extends Thread {
                 relog();
                 fecha();
                 if (false) {
-                    Const.getMessage("El sistema", "ha cerrado");
+                    Const.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
                     throw new Excepciones(Excepciones.getMensaje(1));
                 }
                 Thread.sleep(1000);
@@ -102,8 +102,8 @@ public class Sistema extends Thread {
         this.jlbFecha = jlbFecha;
     }
 
-    public String getDate() {
-        return cl.get(Calendar.YEAR) + "-" + cl.get(Calendar.MONTH) + "-" + cl.get(Calendar.DAY_OF_MONTH) + " "
-                + cl.get(Calendar.HOUR_OF_DAY) + ":" + cl.get(Calendar.MINUTE) + ":" + cl.get(Calendar.SECOND) + "";
+    public Calendar getCl() {
+        return cl;
     }
+
 }

@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,7 +117,7 @@ public class BD {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, values));
     }
-    
+    //
     public void Insertar(String Tabla, String colums, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, colums, values));
