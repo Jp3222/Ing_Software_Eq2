@@ -3,7 +3,6 @@ package Main;
 import Controlador.Sistema;
 import javax.swing.SwingUtilities;
 import Vista.Vista_Login;
-import Modelo.BD;
 import Modelo.Excepciones;
 
 /**

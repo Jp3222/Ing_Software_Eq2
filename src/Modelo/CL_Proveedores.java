@@ -6,12 +6,12 @@ import java.util.Objects;
  *
  * @author jp
  */
-public class proveedores {
+public class CL_Proveedores {
 
     private int index;
     private String nombre;
 
-    public proveedores(int index, String nombre) {
+    public CL_Proveedores(int index, String nombre) {
         this.index = index;
         this.nombre = nombre;
     }
@@ -51,7 +51,7 @@ public class proveedores {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final proveedores other = (proveedores) obj;
+        final CL_Proveedores other = (CL_Proveedores) obj;
         if (this.index != other.index) {
             return false;
         }

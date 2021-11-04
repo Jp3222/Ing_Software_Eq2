@@ -48,11 +48,12 @@ public class Evt_Ventana implements WindowListener {
     public void windowClosing(WindowEvent e) {
         CL_Movimiento mov = new CL_Movimiento(sis.getCl(), "Cierre del sistema", em.getUsuario());
         op.setMovimiento(mov);
-
+        System.exit(0);
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
+        
     }
 
     @Override
