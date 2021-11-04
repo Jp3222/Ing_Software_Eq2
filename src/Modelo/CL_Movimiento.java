@@ -3,7 +3,7 @@ package Modelo;
 import java.util.Calendar;
 import java.util.Objects;
 
-public class Movimiento {
+public class CL_Movimiento {
 
     private int id;
     private int dia;
@@ -15,7 +15,7 @@ public class Movimiento {
     private String tipo;
     private String usuario;
 
-    public Movimiento(Calendar cl, String tipo, String usuario) {
+    public CL_Movimiento(Calendar cl, String tipo, String usuario) {
         this.dia = cl.get(Calendar.DAY_OF_MONTH);
         this.mes = cl.get(Calendar.MONTH);
         this.anio = cl.get(Calendar.YEAR);
@@ -124,7 +124,7 @@ public class Movimiento {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Movimiento other = (Movimiento) obj;
+        final CL_Movimiento other = (CL_Movimiento) obj;
         if (this.id != other.id) {
             return false;
         }

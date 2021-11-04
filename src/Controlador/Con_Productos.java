@@ -1,10 +1,10 @@
 package Controlador;
 
 import Modelo.BD;
-import Modelo.Const;
-import Modelo.Empleado;
+import Modelo.cons;
+import Modelo.CL_Empleado;
 import Modelo.Operaciones;
-import Modelo.Producto;
+import Modelo.CL_Producto;
 import Modelo.func;
 import Vista.Vista_MenuAdmin;
 import Vista.Vista_Productos;
@@ -14,6 +14,7 @@ import Vista.Vista_Productos.Update;
 import Vista.Vista_Productos.Delete;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,7 +46,6 @@ public class Con_Productos implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
         values = create.values();
         switch (e.getActionCommand()) {
             case "Atras" ->
@@ -58,6 +58,8 @@ public class Con_Productos implements ActionListener {
                 Agregar();
             case "Mostrar" ->
                 Buscar(e.getSource());
+            case "Actualizar" ->
+                Actualizar();
         }
 
     }
@@ -80,23 +82,38 @@ public class Con_Productos implements ActionListener {
             return;
         }
         values[0] = func.getID(values[1], values[3], values[5]);
-        Producto p = new Producto(values);
+        CL_Producto p = new CL_Producto(values);
         operaciones.newProducto(p);
-        Const.getMessage("El producto " + values[1] ,
+        cons.getMessage("El producto " + values[1] + " " + values[3],
                 "\nha sido registrado con la clave: " + values[0],
-                "Mensaje",0);
+                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         create.Empty();
     }
-    
+
     public void Buscar(Object obj) {
         if (read.getJbtConsultar() == obj) {
             read.getJtConsultas().setModel(operaciones.getTable("productos"));
         } else {
+            update.clear();
+            int opc = update.getJcbMB().getSelectedIndex();
+            String campo = update.getJcbMB().getItemAt(opc);
+            String mb = update.getJtfMD().getText();
+            CL_Producto producto = operaciones.getProducto("*", campo + " = '"+BD.IN(mb) + "'");
+            if (producto != null && producto.isExists()) {
+                update.setProducto(producto);
+            } else {
+                cons.getMessage("Este producto" , "no existe", "Error",JOptionPane.WARNING_MESSAGE);
+            }
+            update.clearS();
         }
     }
 
     public void Actualizar() {
-
+        int opc = JOptionPane.showConfirmDialog(null, "¿Seguro que desea hacer cambios en los campos?");
+        if (opc == JOptionPane.YES_NO_OPTION) {
+            cons.getMessage("Los campos", "se han actualizado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            update.clear();
+        }
     }
 
     public void Borrar() {

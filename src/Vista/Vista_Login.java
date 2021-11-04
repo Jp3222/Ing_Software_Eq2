@@ -1,7 +1,8 @@
 package Vista;
 
 import Controlador.Con_Login;
-import Modelo.Empleado;
+import Controlador.Evt_Ventana;
+import Modelo.CL_Empleado;
 import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -14,7 +15,7 @@ public class Vista_Login extends javax.swing.JFrame {
 
     private final Con_Login controlador;
     private final Vista_MenuAdmin admin;
-    private Empleado empleado;
+    private CL_Empleado empleado;
 
     /**
      * Creates new form Vista_Login
@@ -31,7 +32,7 @@ public class Vista_Login extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
     }
 
-    public void setEmpleado(Empleado empleado) {
+    public void setEmpleado(CL_Empleado empleado) {
         this.empleado = empleado;
     }
 

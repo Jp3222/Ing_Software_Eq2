@@ -8,22 +8,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class BD {
-    
+
     private static BD Nodo;
-    
+
     public static BD getNodo(String user, String pass, String url) {
         if (Nodo == null) {
             Nodo = new BD(user, pass, url);
         }
         return Nodo;
     }
-    
+
     public static BD getNodo() {
         return Nodo;
     }
-    
+
     public static String getValues(boolean clear, String... values) {
         String v = "";
         for (String value : values) {
@@ -36,7 +38,7 @@ public class BD {
         v = v.substring(0, v.length() - 1);
         return v;
     }
-    
+
     public static String getColums(String... colums) {
         String v = "";
         for (String value : colums) {
@@ -45,7 +47,7 @@ public class BD {
         v = v.substring(0, v.length() - 1);
         return v;
     }
-    
+
     public String getData(String[] campos, String[] datos) {
         String sent = "";
         for (int i = 0; i < campos.length; i++) {
@@ -53,15 +55,15 @@ public class BD {
         }
         return sent.substring(0, sent.length() - 1);
     }
-    
+
     public static String IN(String v) {
         return v.trim().replace(" ", "_").toLowerCase();
     }
-    
+
     public static String OUT(String v) {
         return v.trim().replace("_", " ");
     }
-    
+
     private final String user;
     private final String pass;
     private final String url;
@@ -69,7 +71,7 @@ public class BD {
     private Connection cn;
     private PreparedStatement ps, ps1, ps2;
     private Statement st;
-    
+
     private BD(String user, String pass, String url) {
         System.out.println("xdddd");
         //Constantes
@@ -79,7 +81,7 @@ public class BD {
         this.user = user;
         this.pass = pass;
         this.url = url;
-        
+
     }
 
     /**
@@ -89,12 +91,18 @@ public class BD {
         try {
             cn = DriverManager.getConnection(url, user, pass);
             ConstltasPreparadas();
+            SwingUtilities.invokeLater(() -> cons.getMessage("La base de datos", "\nHa sido conectada exitosamente",
+                    "Mensaje del sistema", JOptionPane.INFORMATION_MESSAGE)
+            );
             System.out.println("Conexion establecida");
         } catch (SQLException ex) {
+            SwingUtilities.invokeLater(() -> cons.getMessage("La base de datos", "\nNO na sido conectada",
+                    "Mensaje del sistema", JOptionPane.WARNING_MESSAGE)
+            );
             System.out.println("Error de conexion\n");
         }
     }
-    
+
     public void desConectar() {
         try {
             cn.close();
@@ -103,7 +111,7 @@ public class BD {
             Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void ConstltasPreparadas() {
         try {
             ps1 = cn.prepareCall(psECall1);
@@ -112,22 +120,23 @@ public class BD {
             System.out.println("Error en las cosultas preparadas");
         }
     }
-    
+
     public void Insertar(String Tabla, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, values));
     }
+
     //
     public void Insertar(String Tabla, String colums, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, colums, values));
     }
-    
+
     public void Update(String Tabla, String data, String where) throws SQLException {
         st = cn.createStatement();
         st.executeQuery(UPDATE(Tabla, data, where));
     }
-    
+
     public void Update(String Tabla, String campo, String dato, String where) throws SQLException {
         st = cn.createStatement();
         st.executeQuery(UPDATE(Tabla, campo, dato, where));
@@ -161,44 +170,44 @@ public class BD {
             }
         }
     }
-    
+
     public ResultSet Buscar(String Tabla) throws SQLException {
         st = cn.createStatement();
         return st.executeQuery(SELECT(Tabla, "*"));
     }
-    
+
     public ResultSet Buscar(String Tabla, String Campos, String Where) throws SQLException {
         st = cn.createStatement();
         return st.executeQuery(SELECT(Tabla, Campos, Where));
     }
-    
+
     private String SELECT(String Tabla, String Campo, String Where) {
         return "select " + Campo + " from " + Tabla + " Where " + Where;
     }
-    
+
     private String SELECT(String Tabla, String Campo) {
         return "select " + Campo + " from " + Tabla;
     }
-    
+
     private String UPDATE(String Tabla, String data, String where) {
         return "update " + Tabla + " set " + data + "where" + where;
     }
-    
+
     private String UPDATE(String Tabla, String campo, String dato, String where) {
         return "update " + Tabla + " set " + campo + " = " + "'" + dato + "'" + "where" + where;
     }
-    
+
     private String INSERT(String Tabla, String Campos, String Values) {
         return "insert into " + Tabla + " (" + Campos + ")" + " Values (" + Values + ")";
     }
-    
+
     private String INSERT(String Tabla, String Values) {
         return "insert into " + Tabla + " Values (" + Values + ")";
     }
-    
+
     @Override
     public String toString() {
         return "BD{" + "user=" + user + ", pass=" + pass + ", url=" + url + '}';
     }
-    
+
 }

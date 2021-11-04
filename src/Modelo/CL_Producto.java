@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author jp
  */
-public class Producto {
+public class CL_Producto {
 
     private int ID;
     double Contenido, Precios;
@@ -20,11 +20,11 @@ public class Producto {
 
     private boolean Exists;
 
-    public Producto() {
+    public CL_Producto() {
         this.Exists = false;
     }
 
-    public Producto(String[] info) {
+    public CL_Producto(String[] info) {
         this.ID = 0;
         this.Clave = info[0];
         this.Nombre = info[1] + " " + info[3];
@@ -133,7 +133,7 @@ public class Producto {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Producto other = (Producto) obj;
+        final CL_Producto other = (CL_Producto) obj;
         if (this.ID != other.ID) {
             return false;
         }

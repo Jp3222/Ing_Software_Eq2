@@ -2,9 +2,12 @@ package Vista;
 
 import Controlador.Con_Productos;
 import Controlador.Sistema;
-import Modelo.Const;
+import Modelo.cons;
+import Modelo.CL_Producto;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -41,8 +44,10 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtCancelar.addActionListener(controlador);
         //Read
         jbtConsultar.addActionListener(controlador);
-        jbtConsultar.addActionListener(controlador);
-
+        //
+        jbtBuscar.addActionListener(controlador);
+        jbtActualizar.addActionListener(controlador);
+        jbtCancelar_2.addActionListener(controlador);
     }
 
     public Create getCreate() {
@@ -77,22 +82,25 @@ public class Vista_Productos extends javax.swing.JFrame {
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
-                jtfNombre.setBorder(Const.getBadBorder());
+                jtfNombre.setBorder(cons.getBadBorder());
                 i++;
             } else {
-                jtfNombre.setBorder(Const.getOkBorder());
+                jtfNombre.setBorder(cons.getOkBorder());
             }
             if (jtfContenido.getText().isEmpty()) {
-                jtfContenido.setBorder(Const.getBadBorder());
+                jtfContenido.setBorder(cons.getBadBorder());
                 i++;
             } else {
-                jtfContenido.setBorder(Const.getOkBorder());
+                jtfContenido.setBorder(cons.getOkBorder());
             }
             if (jtfPrecio.getText().isEmpty()) {
-                jtfPrecio.setBorder(Const.getBadBorder());
+                jtfPrecio.setBorder(cons.getBadBorder());
                 i++;
             } else {
-                jtfPrecio.setBorder(Const.getOkBorder());
+                jtfPrecio.setBorder(cons.getOkBorder());
+            }
+            if (i > 0) {
+                cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
             }
             return i != 0;
 
@@ -126,6 +134,39 @@ public class Vista_Productos extends javax.swing.JFrame {
     }
 
     public class Update {
+
+        public JTextField getJtfMD() {
+            return jtfMD;
+        }
+
+        public JComboBox<String> getJcbMB() {
+            return jcbMB;
+        }
+
+        public void setProducto(CL_Producto producto) {
+            jtfID.setText("" + producto.getID());
+            jtfClave_2.setText(producto.getClave());
+            jtfNombre_2.setText(producto.getNombre());
+            jcbMarcas_2.setSelectedItem(producto.getMarca());
+            jtfContenido_2.setText("" + producto.getContenido());
+            jcbUDM_2.setSelectedItem(producto.getUDM());
+            jtfPrecio_2.setText("" + producto.getPrecios());
+        }
+
+        public void clearS() {
+            jcbMB.setSelectedIndex(0);
+            jtfMD.setText("");
+        }
+
+        public void clear() {
+            jtfID.setText("");
+            jtfClave_2.setText("");
+            jtfNombre_2.setText("");
+            jcbMarcas_2.setSelectedItem("");
+            jtfContenido_2.setText("");
+            jcbUDM_2.setSelectedItem("");
+            jtfPrecio_2.setText("");
+        }
 
     }
 
@@ -255,7 +296,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jcbMarcas.setBackground(new java.awt.Color(255, 255, 255));
         jcbMarcas.setForeground(new java.awt.Color(0, 0, 0));
-        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
+        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola", "N/D" }));
         Panel_Create.add(jcbMarcas);
         jcbMarcas.setBounds(230, 70, 300, 25);
 
@@ -338,17 +379,17 @@ public class Vista_Productos extends javax.swing.JFrame {
         txt6.setForeground(new java.awt.Color(1, 1, 1));
         txt6.setText("Buscar");
         Panel_Update.add(txt6);
-        txt6.setBounds(70, 10, 120, 25);
+        txt6.setBounds(70, 10, 100, 25);
 
         jcbMB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
         Panel_Update.add(jcbMB);
-        jcbMB.setBounds(210, 10, 100, 25);
+        jcbMB.setBounds(170, 10, 100, 25);
 
         jtfMD.setBackground(new java.awt.Color(255, 255, 255));
         jtfMD.setForeground(new java.awt.Color(0, 0, 0));
         jtfMD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfMD);
-        jtfMD.setBounds(330, 10, 300, 25);
+        jtfMD.setBounds(270, 10, 300, 25);
 
         jbtBuscar.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));

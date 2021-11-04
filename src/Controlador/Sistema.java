@@ -1,8 +1,8 @@
 package Controlador;
 
 import Modelo.BD;
-import Modelo.Const;
-import Modelo.Empleado;
+import Modelo.cons;
+import Modelo.CL_Empleado;
 import Modelo.Excepciones;
 import Modelo.Operaciones;
 import java.util.Calendar;
@@ -33,7 +33,7 @@ public class Sistema extends Thread {
     //Funciones especiales
     Operaciones opc;
     //Usuario en sistema
-    private Empleado usuario;
+    private CL_Empleado usuario;
     //
 
     private Sistema() {
@@ -55,7 +55,7 @@ public class Sistema extends Thread {
                 relog();
                 fecha();
                 if (false) {
-                    Const.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
+                    cons.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
                     throw new Excepciones(Excepciones.getMensaje(1));
                 }
                 Thread.sleep(1000);
@@ -88,7 +88,7 @@ public class Sistema extends Thread {
     }
 
     public void fecha() {
-        fecha = Const.getDay(cl.get(Calendar.DAY_OF_WEEK)) + cl.get(Calendar.DAY_OF_MONTH) + "/" + Const.getMes(cl.get(Calendar.MONTH)) + "/" + cl.get(Calendar.YEAR);
+        fecha = cons.getDay(cl.get(Calendar.DAY_OF_WEEK)) + cl.get(Calendar.DAY_OF_MONTH) + "/" + cons.getMes(cl.get(Calendar.MONTH)) + "/" + cl.get(Calendar.YEAR);
         if (jlbFecha != null) {
             jlbFecha.setText(fecha);
         }

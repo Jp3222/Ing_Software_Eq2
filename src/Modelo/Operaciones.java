@@ -16,28 +16,16 @@ public class Operaciones {
     }
 
     //Productos
-    public Producto getProducto(String obj, int opc) {
-        Producto producto = null;
+    public CL_Producto getProducto(String campos, String where) {
+        CL_Producto producto = null;
         try {
-            switch (opc) {
-                case 0:
-                    rs = conexion.Buscar("Producto", "*", "id = " + obj);
-                    break;
-                case 1:
-                    rs = conexion.Buscar(obj, 2);
-                    break;
-                case 2:
-                    rs = conexion.Buscar("Producto", "*", "nombre = " + obj);
-                    break;
-                default:
-                    System.out.println("NO valido");
-            }
-            producto = new Producto();
+            rs = conexion.Buscar("productos", campos, where);
             if (rs.next()) {
+                producto = new CL_Producto();
                 producto.setExists(true);
-                String[] info = new String[Const.getProductos().length];
+                String[] info = new String[cons.getProductos().length];
                 int i = 0;
-                for (String producto1 : Const.getProductos()) {
+                for (String producto1 : cons.getProductos()) {
                     info[i] = rs.getString(producto1);
                     i++;
                 }
@@ -46,17 +34,15 @@ public class Operaciones {
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        } catch (Excepciones ex) {
-            System.out.println(ex.getMessage());
         } finally {
-            return producto;
         }
+        return producto;
     }
 
-    public void newProducto(Producto producto) {
+    public void newProducto(CL_Producto producto) {
         try {
             conexion.Insertar("productos",
-                    BD.getColums(func.exp(Const.getProductos(), 0)),
+                    BD.getColums(func.exp(cons.getProductos(), 0)),
                     BD.getValues(true, producto.getInfo()));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -64,16 +50,16 @@ public class Operaciones {
     }
 
     //Empleados
-    public Empleado getEmpleado(String user) {
-        Empleado empleado = null;
+    public CL_Empleado getEmpleado(String user) {
+        CL_Empleado empleado = null;
         try {
             rs = conexion.Buscar(user, 1);
             if (rs.next()) {
-                empleado = new Empleado();
+                empleado = new CL_Empleado();
                 empleado.setExists(true);
-                String info[] = new String[Const.getUsuarios().length];
+                String info[] = new String[cons.getUsuarios().length];
                 int i = 0;
-                for (String usuario : Const.getUsuarios()) {
+                for (String usuario : cons.getUsuarios()) {
                     info[i] = rs.getString(usuario);
                     i++;
                 }
@@ -89,10 +75,10 @@ public class Operaciones {
         }
     }
 
-    public void newEmpleado(Empleado obj) {
+    public void newEmpleado(CL_Empleado obj) {
         try {
             conexion.Insertar("Empleado",
-                    BD.getColums(func.exp(Const.getUsuarios(), 0)),
+                    BD.getColums(func.exp(cons.getUsuarios(), 0)),
                     BD.getValues(true, obj.getInfo())
             );
         } catch (SQLException ex) {
@@ -100,10 +86,10 @@ public class Operaciones {
         }
     }
 
-    public void setMovimiento(Movimiento mov) {
+    public void setMovimiento(CL_Movimiento mov) {
         try {
             conexion.Insertar("movimientos",
-                    BD.getColums(func.exp(Const.getMovimientos(), 0)),
+                    BD.getColums(func.exp(cons.getMovimientos(), 0)),
                     BD.getValues(true, mov.getInfo()));
 
         } catch (SQLException e) {
@@ -115,17 +101,17 @@ public class Operaciones {
     public DefaultTableModel getTable(String nom) {
         DefaultTableModel tm = new DefaultTableModel();
         try {
-            
-            for (String colm : Const.getProductos()) {
+
+            for (String colm : cons.getProductos()) {
                 tm.addColumn(colm);
             }
 
             rs = conexion.Buscar(nom);
-            String[] aux = new String[Const.getProductos().length];
+            String[] aux = new String[cons.getProductos().length];
             int i;
             while (rs.next()) {
                 i = 0;
-                for (String value : Const.getProductos()) {
+                for (String value : cons.getProductos()) {
                     aux[i] = rs.getString(value);
                     i++;
                 }

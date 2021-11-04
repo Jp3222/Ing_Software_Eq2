@@ -2,7 +2,7 @@ package Vista;
 
 import Controlador.Con_MenuAdmin;
 import Controlador.Sistema;
-import Modelo.Empleado;
+import Modelo.CL_Empleado;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     private final Con_MenuAdmin controlador;
-    private Empleado Usuario;
+    private CL_Empleado Usuario;
     private final Vista_Productos productos;
     private final Vista_Administracion administracion;
     private final Vista_Empleados empleados;
@@ -57,7 +57,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         }
     }
 
-    public void setUsuario(Empleado Usuario) {
+    public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
         UserInfo();
     }

@@ -226,9 +226,10 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="3">
                         <StringItem index="0" value="Sabritas"/>
                         <StringItem index="1" value="Coca Cola"/>
+                        <StringItem index="2" value="N/D"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -482,7 +483,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="70" y="10" width="120" height="25"/>
+                      <AbsoluteConstraints x="70" y="10" width="100" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -501,7 +502,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="210" y="10" width="100" height="25"/>
+                      <AbsoluteConstraints x="170" y="10" width="100" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -519,7 +520,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="330" y="10" width="300" height="25"/>
+                      <AbsoluteConstraints x="270" y="10" width="300" height="25"/>
                     </Constraint>
                   </Constraints>
                 </Component>

@@ -1,11 +1,13 @@
 package Modelo;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-public class Const {
+public class cons {
 
     /**
      * Constantes de la tabla 'productos'
@@ -146,7 +148,7 @@ public class Const {
     }
 
     public static void getMessage(String obj, String txt, String title, int i) {
-        JOptionPane.showMessageDialog(null, obj + " " + txt, title, i);
+            JOptionPane.showMessageDialog(null, obj + " " + txt, title, i);
     }
 
 }

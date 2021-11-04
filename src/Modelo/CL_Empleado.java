@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Objects;
 
-public class Empleado {
+public class CL_Empleado {
 
     private int ID;
     private String usuario,
@@ -14,11 +14,11 @@ public class Empleado {
             Password;
     private boolean Exists;
 
-    public Empleado() {
+    public CL_Empleado() {
         this.Exists = false;
     }
 
-    public Empleado(String[] info) {
+    public CL_Empleado(String[] info) {
         this.ID = 0;
         this.usuario = info[0];
         this.Nombre = info[1];
@@ -123,7 +123,7 @@ public class Empleado {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Empleado other = (Empleado) obj;
+        final CL_Empleado other = (CL_Empleado) obj;
         if (this.Exists != other.Exists) {
             return false;
         }

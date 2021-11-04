@@ -1,10 +1,10 @@
 package Controlador;
 
 import Modelo.BD;
-import Modelo.Const;
-import Modelo.Empleado;
+import Modelo.cons;
+import Modelo.CL_Empleado;
 import Modelo.Excepciones;
-import Modelo.Movimiento;
+import Modelo.CL_Movimiento;
 import Modelo.Operaciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,10 +49,12 @@ class log {
     private final BD conexion = BD.getNodo();
     private final Operaciones operacion;
     private final Sistema sistema = Sistema.getNodo();
+    private final Evt_Ventana evt = Evt_Ventana.getNodo();
 
     public log(Vista_Login login, Vista_MenuAdmin admin) {
         this.login = login;
         this.admin = admin;
+        login.addWindowListener(evt);
         operacion = new Operaciones(conexion);
     }
 
@@ -61,34 +63,35 @@ class log {
             String usr = login.getjtfUsuario().getText();
             String pass = String.copyValueOf(login.getjpfPassword().getPassword());
             //
-            Empleado empleado = operacion.getEmpleado(usr);
+            CL_Empleado empleado = operacion.getEmpleado(usr);
+            evt.setEm(empleado);
             if (empleado == null) {
                 throw new Excepciones(Excepciones.getMensaje(3000));
             }
             if (empleado.isExists()) {
-                login.getjtfUsuario().setBorder(Const.getOkBorder());
+                login.getjtfUsuario().setBorder(cons.getOkBorder());
                 if (empleado.getPassword().equals(pass)) {
-                    login.getjpfPassword().setBorder(Const.getOkBorder());
-                    Movimiento mov = new Movimiento(sistema.getCl(), Const.getMovimiento(0), empleado.getUsuario());
-                    operacion.setMovimiento(mov);
+                    login.getjpfPassword().setBorder(cons.getOkBorder());
                     switch (empleado.getCargo()) {
                         case "Gerente" -> {
                             login.dispose();
                             admin.setVisible(true);
                             admin.setUsuario(empleado);
+                            
                         }
                         default ->
                             System.out.println("No reconocido");
                     }
+                    CL_Movimiento mov = new CL_Movimiento(sistema.getCl(), cons.getMovimiento(0), empleado.getUsuario());
+                    operacion.setMovimiento(mov);
                     clear();
                 } else {
-                    Const.getMessage("La contraseña", "Es incorrecta"
-                    ,"Mensaje",0);
-                    login.getjpfPassword().setBorder(Const.getBadBorder());
+                    cons.getMessage("La contraseña", "Es incorrecta", "Mensaje", 0);
+                    login.getjpfPassword().setBorder(cons.getBadBorder());
                 }
             } else {
-                Const.getMessage("EL usuario", "Es incorrecto" ,"Mensaje",0);
-                login.getjtfUsuario().setBorder(Const.getBadBorder());
+                cons.getMessage("EL usuario", "Es incorrecto", "Mensaje", 0);
+                login.getjtfUsuario().setBorder(cons.getBadBorder());
             }
         } catch (Excepciones e) {
             System.out.println(e.getMessage());
