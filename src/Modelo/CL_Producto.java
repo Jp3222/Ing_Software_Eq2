@@ -16,7 +16,7 @@ public class CL_Producto {
 
     private int ID;
     double Contenido, Precios;
-    private String Clave, Nombre, Marca,UDM;
+    private String Clave, Nombre, Marca, UDM;
 
     private boolean Exists;
 
@@ -105,7 +105,7 @@ public class CL_Producto {
     }
 
     public String[] getInfo() {
-        return func.getArray(Clave, Nombre, Marca, Contenido + "", UDM + "", Precios + "");
+        return func.getArray(ID + "", Clave, Nombre, Marca, Contenido + "", UDM + "", Precios + "");
     }
 
     @Override
@@ -165,7 +165,5 @@ public class CL_Producto {
     public String toString() {
         return "Producto{" + "ID=" + ID + ", Contenido=" + Contenido + ", Precios=" + Precios + ", Clave=" + Clave + ", Nombre=" + Nombre + ", Marca=" + Marca + ", UDM=" + UDM + ", Exists=" + Exists + '}';
     }
-
-    
 
 }

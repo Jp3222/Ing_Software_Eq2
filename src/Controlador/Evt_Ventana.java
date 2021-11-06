@@ -40,36 +40,39 @@ public class Evt_Ventana implements WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
-        //Movimiento mov = new CL_Movimiento(sis.getCl(), "Apertura del sistema", em.getUsuario());
-        //op.setMovimiento(mov);
+
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        CL_Movimiento mov = new CL_Movimiento(sis.getCl(), "Cierre del sistema", em.getUsuario());
-        op.setMovimiento(mov);
+        //CL_Movimiento mov = new CL_Movimiento(sis.getCl(), "Cierre del sistema", em.getUsuario());
+        //op.setMovimiento(mov);
         System.exit(0);
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        
+
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
+   
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
+        
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
+        //bd.Conectar();
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
+        //bd.desConectar();
     }
 
 }

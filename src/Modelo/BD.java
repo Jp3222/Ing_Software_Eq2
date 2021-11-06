@@ -6,15 +6,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
+/**
+ * Clase enfocada a la conexion de base de datos
+ */
 public class BD {
 
+    /**
+     * Variable unica de instancia
+     */
     private static BD Nodo;
 
+    /**
+     * @param user usuario de la base de datos
+     * @param pass contraseña asignada al usuario
+     * @param url direccion del base de datos
+     * @return retorna una instancia de clase
+     */
     public static BD getNodo(String user, String pass, String url) {
         if (Nodo == null) {
             Nodo = new BD(user, pass, url);
@@ -22,10 +34,21 @@ public class BD {
         return Nodo;
     }
 
+    /**
+     * @return retorna una instancia de clase
+     */
     public static BD getNodo() {
         return Nodo;
     }
 
+    /**
+     * @param clear define si los datos ocuparan cierto proceso de limpieza
+     * antes de ser insertada a la base de datos.
+     * @param values coleccion de elementos a los cuales se pondran en cierto
+     * formato para la inserccion en la base de datos.
+     * @return retorna los elementos dados con la forma indicada para ser
+     * insertada a la base de datos.
+     */
     public static String getValues(boolean clear, String... values) {
         String v = "";
         for (String value : values) {
@@ -39,6 +62,13 @@ public class BD {
         return v;
     }
 
+    /**
+     *
+     * @param colums Coleccion de elementos tomados como columnas a los cuales
+     * se les dara un formato para el manejo de funciones relacionadas con la
+     * base de datos
+     * @return
+     */
     public static String getColums(String... colums) {
         String v = "";
         for (String value : colums) {
@@ -48,7 +78,13 @@ public class BD {
         return v;
     }
 
-    public String getData(String[] campos, String[] datos) {
+    public static String getData(String[] campos, String[] datos) {
+        if (campos.length != datos.length) {
+            cons.getMessage("Los arreglos no son iguales", "", "mensaje", JOptionPane.WARNING_MESSAGE);
+            System.out.println(Arrays.toString(campos));
+            System.out.println(Arrays.toString(datos));
+            return null;
+        }
         String sent = "";
         for (int i = 0; i < campos.length; i++) {
             sent += campos[i] + " = " + "'" + datos[i] + "',";
@@ -91,14 +127,9 @@ public class BD {
         try {
             cn = DriverManager.getConnection(url, user, pass);
             ConstltasPreparadas();
-            SwingUtilities.invokeLater(() -> cons.getMessage("La base de datos", "\nHa sido conectada exitosamente",
-                    "Mensaje del sistema", JOptionPane.INFORMATION_MESSAGE)
-            );
+
             System.out.println("Conexion establecida");
         } catch (SQLException ex) {
-            SwingUtilities.invokeLater(() -> cons.getMessage("La base de datos", "\nNO na sido conectada",
-                    "Mensaje del sistema", JOptionPane.WARNING_MESSAGE)
-            );
             System.out.println("Error de conexion\n");
         }
     }
@@ -124,22 +155,32 @@ public class BD {
     public void Insertar(String Tabla, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, values));
+        st.close();
     }
 
     //
     public void Insertar(String Tabla, String colums, String values) throws SQLException {
         st = cn.createStatement();
         st.executeUpdate(INSERT(Tabla, colums, values));
+        st.close();
     }
 
     public void Update(String Tabla, String data, String where) throws SQLException {
         st = cn.createStatement();
-        st.executeQuery(UPDATE(Tabla, data, where));
+        st.executeUpdate(UPDATE(Tabla, data, where));
+        st.close();
     }
 
     public void Update(String Tabla, String campo, String dato, String where) throws SQLException {
         st = cn.createStatement();
         st.executeQuery(UPDATE(Tabla, campo, dato, where));
+        st.close();
+    }
+
+    public void Delete(String Tabla, String campos, String where) throws SQLException {
+        st = cn.createStatement();
+        st.executeQuery(DELETE(Tabla, campos, where));
+        st.close();
     }
 
     /**
@@ -176,9 +217,14 @@ public class BD {
         return st.executeQuery(SELECT(Tabla, "*"));
     }
 
+    //
     public ResultSet Buscar(String Tabla, String Campos, String Where) throws SQLException {
         st = cn.createStatement();
         return st.executeQuery(SELECT(Tabla, Campos, Where));
+    }
+
+    public void BuscarClose() throws SQLException {
+        st.close();
     }
 
     private String SELECT(String Tabla, String Campo, String Where) {
@@ -190,11 +236,15 @@ public class BD {
     }
 
     private String UPDATE(String Tabla, String data, String where) {
-        return "update " + Tabla + " set " + data + "where" + where;
+        return "update " + Tabla + " set " + data + " where " + where;
     }
 
     private String UPDATE(String Tabla, String campo, String dato, String where) {
-        return "update " + Tabla + " set " + campo + " = " + "'" + dato + "'" + "where" + where;
+        return "update " + Tabla + " set " + campo + " = " + "'" + dato + "'" + " where " + where;
+    }
+
+    public String DELETE(String Tabla, String campos, String where) {
+        return "delete " + campos + " from " + Tabla + " where " + where;
     }
 
     private String INSERT(String Tabla, String Campos, String Values) {

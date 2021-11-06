@@ -32,6 +32,7 @@ public class Operaciones {
                 producto.setInfo(info);
             }
             rs.close();
+            conexion.BuscarClose();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -46,6 +47,24 @@ public class Operaciones {
                     BD.getValues(true, producto.getInfo()));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void ActProducto(CL_Producto producto) {
+        try {
+            conexion.Update("productos", BD.getData(
+                    func.exp(cons.getProductos(), 0, 1), func.exp(producto.getInfo(), 0, 1)),
+                    "id = '" + producto.getID() + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void BorrarProducto(CL_Producto producto) {
+        try {
+            conexion.Delete("Producto", "*", "id = '" + producto.getID() + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -66,6 +85,7 @@ public class Operaciones {
                 empleado.setInfo(info);
             }
             rs.close();
+            conexion.BuscarClose();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } catch (Excepciones e) {
@@ -117,6 +137,8 @@ public class Operaciones {
                 }
                 tm.addRow(aux);
             }
+            rs.close();
+            conexion.BuscarClose();
             return tm;
         } catch (SQLException e) {
             System.out.println(e.getMessage());

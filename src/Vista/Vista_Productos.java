@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class Vista_Productos extends javax.swing.JFrame {
-
+    
     private Con_Productos controlador;
     private Create create;
     private Read read;
@@ -21,7 +21,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     private Delete delete;
     //
     private Vista_Info info;
-
+    
     public Vista_Productos(Vista_MenuAdmin admin) {
         //tareas
         this.create = new Create();
@@ -35,7 +35,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         initComponents();
         addControladores(admin);
     }
-
+    
     private void addControladores(Vista_MenuAdmin admin) {
         controlador = new Con_Productos(this, admin);
         jbtAtras.addActionListener(controlador);
@@ -49,25 +49,25 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtActualizar.addActionListener(controlador);
         jbtCancelar_2.addActionListener(controlador);
     }
-
+    
     public Create getCreate() {
         return create;
     }
-
+    
     public Read getRead() {
         return read;
     }
-
+    
     public Update getUpdate() {
         return update;
     }
-
+    
     public Delete getDelete() {
         return delete;
     }
-
+    
     public class Create {
-
+        
         public String[] values() {
             String values[] = new String[6];
             values[0] = "NA";
@@ -78,7 +78,7 @@ public class Vista_Productos extends javax.swing.JFrame {
             values[5] = jtfPrecio.getText();
             return values;
         }
-
+        
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
@@ -103,47 +103,67 @@ public class Vista_Productos extends javax.swing.JFrame {
                 cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
             }
             return i != 0;
-
+            
         }
-
+        
         public void Empty() {
             jtfNombre.setText("");
             jcbMarcas.setSelectedIndex(0);
             jtfContenido.setText("");
             jcbUDM.setSelectedIndex(0);
             jtfPrecio.setText("");
-
+            
         }
-
+        
         public JButton getJbtCancelar() {
             return jbtCancelar;
         }
-
+        
     }
-
+    
     public class Read {
-
+        
         public JTable getJtConsultas() {
             return jtConsultas;
         }
-
+        
         public JButton getJbtConsultar() {
             return jbtConsultar;
         }
-
+        
     }
-
+    
     public class Update {
-
+        
+        private CL_Producto producto;
+        
         public JTextField getJtfMD() {
             return jtfMD;
         }
-
+        
         public JComboBox<String> getJcbMB() {
             return jcbMB;
         }
-
+        
+        public JButton getJbtBuscar() {
+            return jbtBuscar;
+        }
+        
+        public CL_Producto getProducto() {
+            producto.setNombre(jtfNombre_2.getText());
+            producto.setMarca(jcbMarcas_2.getItemAt(jcbMB_2.getSelectedIndex()));
+            producto.setContenido(Double.parseDouble(jtfContenido_2.getText()));
+            producto.setUDM(jcbUDM_2.getItemAt(jcbUDM_2.getSelectedIndex()));
+            producto.setPrecios(Double.parseDouble(jtfPrecio_2.getText()));
+            return producto;
+        }
+        
         public void setProducto(CL_Producto producto) {
+            this.producto = producto;
+            set(producto);
+        }
+        
+        public void set(CL_Producto producto) {
             jtfID.setText("" + producto.getID());
             jtfClave_2.setText(producto.getClave());
             jtfNombre_2.setText(producto.getNombre());
@@ -152,12 +172,12 @@ public class Vista_Productos extends javax.swing.JFrame {
             jcbUDM_2.setSelectedItem(producto.getUDM());
             jtfPrecio_2.setText("" + producto.getPrecios());
         }
-
+        
         public void clearS() {
             jcbMB.setSelectedIndex(0);
             jtfMD.setText("");
         }
-
+        
         public void clear() {
             jtfID.setText("");
             jtfClave_2.setText("");
@@ -167,13 +187,43 @@ public class Vista_Productos extends javax.swing.JFrame {
             jcbUDM_2.setSelectedItem("");
             jtfPrecio_2.setText("");
         }
-
+        
+        public boolean isEmpty_MD() {
+            return jtfMD.getText().isEmpty();
+        }
+        
+        public boolean isEmpty_Values() {
+            int i = 0;
+            if (jtfNombre_2.getText().isEmpty()) {
+                jtfNombre_2.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfNombre_2.setBorder(cons.getOkBorder());
+            }
+            if (jtfContenido_2.getText().isEmpty()) {
+                jtfContenido_2.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfContenido_2.setBorder(cons.getOkBorder());
+            }
+            if (jtfPrecio_2.getText().isEmpty()) {
+                jtfPrecio.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfPrecio_2.setBorder(cons.getOkBorder());
+            }
+            if (i > 0) {
+                cons.getMessage("Hay campos", "Vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+            return i != 0;
+        }
+        
     }
-
+    
     public class Delete {
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -403,6 +453,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Update.add(txt7);
         txt7.setBounds(70, 60, 200, 25);
 
+        jtfID.setEditable(false);
         jtfID.setBackground(new java.awt.Color(255, 255, 255));
         jtfID.setForeground(new java.awt.Color(0, 0, 0));
         jtfID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -414,6 +465,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Update.add(txt8);
         txt8.setBounds(70, 110, 200, 25);
 
+        jtfClave_2.setEditable(false);
         jtfClave_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfClave_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfClave_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));

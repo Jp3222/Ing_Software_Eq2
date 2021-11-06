@@ -2,7 +2,6 @@ package Controlador;
 
 import Modelo.BD;
 import Modelo.cons;
-import Modelo.CL_Empleado;
 import Modelo.Operaciones;
 import Modelo.CL_Producto;
 import Modelo.func;
@@ -15,7 +14,6 @@ import Vista.Vista_Productos.Delete;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -93,16 +91,16 @@ public class Con_Productos implements ActionListener {
     public void Buscar(Object obj) {
         if (read.getJbtConsultar() == obj) {
             read.getJtConsultas().setModel(operaciones.getTable("productos"));
-        } else {
+        } else if (update.getJbtBuscar() == obj) {
             update.clear();
             int opc = update.getJcbMB().getSelectedIndex();
             String campo = update.getJcbMB().getItemAt(opc);
             String mb = update.getJtfMD().getText();
-            CL_Producto producto = operaciones.getProducto("*", campo + " = '"+BD.IN(mb) + "'");
+            CL_Producto producto = operaciones.getProducto("*", campo + " = '" + BD.IN(mb) + "'");
             if (producto != null && producto.isExists()) {
                 update.setProducto(producto);
             } else {
-                cons.getMessage("Este producto" , "no existe", "Error",JOptionPane.WARNING_MESSAGE);
+                cons.getMessage("Este producto", "no existe", "Error", JOptionPane.WARNING_MESSAGE);
             }
             update.clearS();
         }
@@ -111,6 +109,7 @@ public class Con_Productos implements ActionListener {
     public void Actualizar() {
         int opc = JOptionPane.showConfirmDialog(null, "¿Seguro que desea hacer cambios en los campos?");
         if (opc == JOptionPane.YES_NO_OPTION) {
+            operaciones.ActProducto(update.getProducto());
             cons.getMessage("Los campos", "se han actualizado", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             update.clear();
         }

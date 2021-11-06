@@ -1,0 +1,34 @@
+- Implementaciones
+
+Funcion delete sobre la base de datos en la clase BD. 
+Funcion BorrarProducto en la clase operaciones.
+
+Nueva regla sobre objetos
+" CL_ " <-- cuando se traten de objetos
+
+
+- Cambios
+
+clases:
+-Productos
+-Empleados
+-Movimientos
+-Proveedores
+
+Cambio de nombre por:
+-CL_Productos
+-CL_Empleados
+-CL_Movimientos
+-CL_Proveedores
+
+clases auxiliares:
+- Func
+- Const
+
+Cambio de nombre por:
+- func
+- cons
+
+
+
+- Otros

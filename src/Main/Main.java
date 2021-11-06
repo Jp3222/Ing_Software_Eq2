@@ -12,8 +12,9 @@ import Modelo.Excepciones;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException, Excepciones {
-        //
+        //Arranque de un hilo independiente
         SwingUtilities.invokeLater(() -> Star());
+
     }
 
     /**
