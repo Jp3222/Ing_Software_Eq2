@@ -1,6 +1,7 @@
 - Implementaciones
 
 - Funcionalidad de caja
+- Base de datos añadida
 
 - Cambios
 
