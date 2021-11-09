@@ -1,27 +1,24 @@
 package Vista;
 
 import Controlador.Con_Productos;
-import Controlador.Sistema;
 import Modelo.cons;
 import Modelo.CL_Producto;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 public class Vista_Productos extends javax.swing.JFrame {
-    
+
     private Con_Productos controlador;
+    //
     private Create create;
     private Read read;
     private Update update;
     private Delete delete;
     //
     private Vista_Info info;
-    
+
     public Vista_Productos(Vista_MenuAdmin admin) {
         //tareas
         this.create = new Create();
@@ -35,7 +32,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         initComponents();
         addControladores(admin);
     }
-    
+
     private void addControladores(Vista_MenuAdmin admin) {
         controlador = new Con_Productos(this, admin);
         jbtAtras.addActionListener(controlador);
@@ -49,25 +46,25 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtActualizar.addActionListener(controlador);
         jbtCancelar_2.addActionListener(controlador);
     }
-    
+
     public Create getCreate() {
         return create;
     }
-    
+
     public Read getRead() {
         return read;
     }
-    
+
     public Update getUpdate() {
         return update;
     }
-    
+
     public Delete getDelete() {
         return delete;
     }
-    
+
     public class Create {
-        
+
         public String[] values() {
             String values[] = new String[6];
             values[0] = "NA";
@@ -78,7 +75,7 @@ public class Vista_Productos extends javax.swing.JFrame {
             values[5] = jtfPrecio.getText();
             return values;
         }
-        
+
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
@@ -103,52 +100,53 @@ public class Vista_Productos extends javax.swing.JFrame {
                 cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
             }
             return i != 0;
-            
+
         }
-        
+
         public void Empty() {
             jtfNombre.setText("");
             jcbMarcas.setSelectedIndex(0);
             jtfContenido.setText("");
             jcbUDM.setSelectedIndex(0);
             jtfPrecio.setText("");
-            
+
         }
-        
+
         public JButton getJbtCancelar() {
             return jbtCancelar;
         }
-        
+
     }
-    
+
     public class Read {
-        
+
         public JTable getJtConsultas() {
             return jtConsultas;
         }
-        
+
         public JButton getJbtConsultar() {
             return jbtConsultar;
         }
-        
+
     }
-    
+
     public class Update {
-        
+
         private CL_Producto producto;
-        
-        public JTextField getJtfMD() {
-            return jtfMD;
+
+        public String getValue() {
+            return jtfMD.getText();
         }
-        
-        public JComboBox<String> getJcbMB() {
-            return jcbMB;
+
+        public String getCampo() {
+            int index = jcbMB.getSelectedIndex();
+            return jcbMB.getItemAt(index);
         }
-        
+
         public JButton getJbtBuscar() {
             return jbtBuscar;
         }
-        
+
         public CL_Producto getProducto() {
             producto.setNombre(jtfNombre_2.getText());
             producto.setMarca(jcbMarcas_2.getItemAt(jcbMB_2.getSelectedIndex()));
@@ -157,12 +155,12 @@ public class Vista_Productos extends javax.swing.JFrame {
             producto.setPrecios(Double.parseDouble(jtfPrecio_2.getText()));
             return producto;
         }
-        
+
         public void setProducto(CL_Producto producto) {
             this.producto = producto;
             set(producto);
         }
-        
+
         public void set(CL_Producto producto) {
             jtfID.setText("" + producto.getID());
             jtfClave_2.setText(producto.getClave());
@@ -172,12 +170,12 @@ public class Vista_Productos extends javax.swing.JFrame {
             jcbUDM_2.setSelectedItem(producto.getUDM());
             jtfPrecio_2.setText("" + producto.getPrecios());
         }
-        
+
         public void clearS() {
             jcbMB.setSelectedIndex(0);
             jtfMD.setText("");
         }
-        
+
         public void clear() {
             jtfID.setText("");
             jtfClave_2.setText("");
@@ -187,11 +185,11 @@ public class Vista_Productos extends javax.swing.JFrame {
             jcbUDM_2.setSelectedItem("");
             jtfPrecio_2.setText("");
         }
-        
+
         public boolean isEmpty_MD() {
             return jtfMD.getText().isEmpty();
         }
-        
+
         public boolean isEmpty_Values() {
             int i = 0;
             if (jtfNombre_2.getText().isEmpty()) {
@@ -217,13 +215,58 @@ public class Vista_Productos extends javax.swing.JFrame {
             }
             return i != 0;
         }
-        
+
     }
-    
+
     public class Delete {
-        
+
+        private CL_Producto producto;
+
+        public CL_Producto getProducto() {
+            return producto;
+        }
+
+        public void setProducto(CL_Producto producto) {
+            this.producto = producto;
+            showProducto();
+        }
+
+        public boolean isEmpty() {
+            int i = 0;
+            if (jtfMB.getText().isEmpty()) {
+                i++;
+                return true;
+            }
+            return i > 0;
+        }
+
+        public void showProducto() {
+            if (producto != null) {
+                jtaInfo.setText(producto.toString());
+
+            }
+        }
+
+        public String getCampo() {
+            int index = jcbMB_2.getSelectedIndex();
+            return jcbMB_2.getItemAt(index);
+        }
+
+        public String getValue() {
+            return jtfMB.getText();
+        }
+
+        public JButton getJbtBuscar_2() {
+            return jbtBuscar_2;
+        }
+
+        public void clear() {
+            jtaInfo.setText(producto.toString());
+            producto = null;
+        }
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -275,11 +318,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Delete = new javax.swing.JPanel();
         txt14 = new javax.swing.JLabel();
         jcbMB_2 = new javax.swing.JComboBox<>();
-        jftMB = new javax.swing.JTextField();
+        jtfMB = new javax.swing.JTextField();
         jbtBuscar_2 = new javax.swing.JButton();
         jbtRemover = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaInfo = new javax.swing.JTextArea();
         jbtCancelar_3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -552,11 +595,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Delete.add(jcbMB_2);
         jcbMB_2.setBounds(210, 10, 100, 25);
 
-        jftMB.setBackground(new java.awt.Color(255, 255, 255));
-        jftMB.setForeground(new java.awt.Color(0, 0, 0));
-        jftMB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Panel_Delete.add(jftMB);
-        jftMB.setBounds(330, 10, 300, 25);
+        jtfMB.setBackground(new java.awt.Color(255, 255, 255));
+        jtfMB.setForeground(new java.awt.Color(0, 0, 0));
+        jtfMB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Delete.add(jtfMB);
+        jtfMB.setBounds(330, 10, 300, 25);
 
         jbtBuscar_2.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar_2.setForeground(new java.awt.Color(0, 0, 0));
@@ -575,12 +618,12 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jtaInfo.setEditable(false);
+        jtaInfo.setBackground(new java.awt.Color(255, 255, 255));
+        jtaInfo.setColumns(20);
+        jtaInfo.setForeground(new java.awt.Color(0, 0, 0));
+        jtaInfo.setRows(5);
+        jScrollPane2.setViewportView(jtaInfo);
 
         Panel_Delete.add(jScrollPane2);
         jScrollPane2.setBounds(70, 80, 700, 150);
@@ -632,7 +675,6 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbtActualizar;
     private javax.swing.JButton jbtAgregar;
     private javax.swing.JButton jbtAtras;
@@ -650,12 +692,13 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbMarcas_2;
     private javax.swing.JComboBox<String> jcbUDM;
     private javax.swing.JComboBox<String> jcbUDM_2;
-    private javax.swing.JTextField jftMB;
     private javax.swing.JTable jtConsultas;
+    private javax.swing.JTextArea jtaInfo;
     private javax.swing.JTextField jtfClave_2;
     private javax.swing.JTextField jtfContenido;
     private javax.swing.JTextField jtfContenido_2;
     private javax.swing.JTextField jtfID;
+    private javax.swing.JTextField jtfMB;
     private javax.swing.JTextField jtfMD;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfNombre_2;

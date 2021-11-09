@@ -3,7 +3,14 @@ package Vista;
 import Controlador.Con_MenuAdmin;
 import Controlador.Sistema;
 import Modelo.CL_Empleado;
+import Modelo.CL_Producto;
+import Modelo.func;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +24,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private final Vista_Administracion administracion;
     private final Vista_Empleados empleados;
     //
+    private DefaultTableModel tb;
     private Sistema sistema;
 
     public Vista_MenuAdmin(Vista_Login login) {
@@ -31,6 +39,8 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         escuchas();
         sistema = Sistema.getNodo();
         sistema.addRelog(0, jlbRelog);
+        tb = new DefaultTableModel(func.getArray("Clave", "Nombre", "Cont", "Pzs", "Precio"), 0);
+        jtbCarrito.setModel(tb);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
     }
 
@@ -47,6 +57,11 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jbtEmpleados.addActionListener(controlador);
         jbtPerfil.addActionListener(controlador);
         jbtAdministracion.addActionListener(controlador);
+        //
+        jbtAgregar.addActionListener(controlador);
+        jbtBuscar.addActionListener(controlador);
+        jbtCobrar.addActionListener(controlador);
+        jbtQuitar.addActionListener(controlador);
     }
 
     private void UserInfo() {
@@ -60,6 +75,59 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
         UserInfo();
+    }
+
+    public JTable getJtbCarrito() {
+        return jtbCarrito;
+    }
+    private CL_Producto producto;
+
+    public void setProducto(CL_Producto producto) {
+        this.producto = producto;
+        showProducto();
+    }
+
+    public CL_Producto getProducto() {
+        return producto;
+    }
+
+    public void showProducto() {
+        this.jtfNombre.setText(producto.getNombre());
+        this.jtfMarca.setText(producto.getMarca());
+        this.jtfCont.setText(producto.getContenido() + "");
+        this.jtfPrecio.setText(producto.getPrecios() + "");
+    }
+
+    public String getNombre() {
+        return producto.getNombre();
+    }
+
+    public String getClave() {
+        return producto.getClave();
+    }
+
+    public double getPrecio() {
+        return producto.getPrecios();
+    }
+
+    public String getContenido() {
+        return producto.getContenido() + "" + producto.getUDM();
+    }
+
+    public int getPiezas() {
+        return (int) jspPiezas.getValue();
+    }
+
+    public void clear() {
+    }
+
+    public String getCampo() {
+        int i = jcbType.getSelectedIndex();
+        return jcbType.getItemAt(i);
+    }
+
+    public String getValue() {
+        return jtfID.getText();
     }
 
     @SuppressWarnings("unchecked")
@@ -82,7 +150,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtbCarrito = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jbtBuscar = new javax.swing.JButton();
         jtfID = new javax.swing.JTextField();
@@ -93,12 +161,13 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jtfPrecio = new javax.swing.JTextField();
         jbtQuitar = new javax.swing.JButton();
-        jbtAgregar = new javax.swing.JButton();
+        jbtCobrar = new javax.swing.JButton();
         jcbType = new javax.swing.JComboBox<>();
         jtfCont = new javax.swing.JTextField();
         jspPiezas = new javax.swing.JSpinner();
         jtfNombre = new javax.swing.JTextField();
         jtfMarca = new javax.swing.JTextField();
+        jbtAgregar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -195,118 +264,131 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(171, 178, 185));
         jPanel4.setLayout(null);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtbCarrito.setBackground(new java.awt.Color(255, 255, 255));
+        jtbCarrito.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtbCarrito.setForeground(new java.awt.Color(0, 0, 0));
+        jtbCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null}
             },
             new String [] {
-
+                "Clave", "Producto", "Contenido", "Piezas", "Precio"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jtbCarrito.setEnabled(false);
+        jScrollPane1.setViewportView(jtbCarrito);
 
         jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 350, 458);
+        jScrollPane1.setBounds(0, 0, 440, 458);
 
         jLabel3.setForeground(new java.awt.Color(1, 1, 1));
         jLabel3.setText("Piezas");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(350, 240, 100, 25);
+        jLabel3.setBounds(440, 240, 100, 25);
 
         jbtBuscar.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbtBuscar.setText("Buscar");
         jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtBuscar);
-        jbtBuscar.setBounds(750, 0, 140, 25);
+        jbtBuscar.setBounds(790, 0, 100, 25);
 
         jtfID.setBackground(new java.awt.Color(255, 255, 255));
         jtfID.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jtfID);
-        jtfID.setBounds(550, 0, 200, 25);
+        jtfID.setBounds(590, 0, 200, 25);
 
         jLabel4.setForeground(new java.awt.Color(1, 1, 1));
         jLabel4.setText("Buscar");
         jPanel4.add(jLabel4);
-        jLabel4.setBounds(350, 0, 100, 25);
+        jLabel4.setBounds(440, 0, 50, 25);
 
         jLabel5.setForeground(new java.awt.Color(1, 1, 1));
         jLabel5.setText("Nombre");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(350, 80, 100, 25);
+        jLabel5.setBounds(440, 80, 100, 25);
 
         jLabel6.setForeground(new java.awt.Color(1, 1, 1));
         jLabel6.setText("Marca");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(350, 120, 100, 25);
+        jLabel6.setBounds(440, 120, 100, 25);
 
         jLabel7.setForeground(new java.awt.Color(1, 1, 1));
         jLabel7.setText("Contenido");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(350, 160, 100, 25);
+        jLabel7.setBounds(440, 160, 100, 25);
 
         jLabel8.setForeground(new java.awt.Color(1, 1, 1));
         jLabel8.setText("Precio");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(350, 200, 100, 25);
+        jLabel8.setBounds(440, 200, 100, 25);
 
         jtfPrecio.setBackground(new java.awt.Color(255, 255, 255));
         jtfPrecio.setForeground(new java.awt.Color(0, 0, 0));
         jtfPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfPrecio.setEnabled(false);
         jPanel4.add(jtfPrecio);
-        jtfPrecio.setBounds(450, 200, 300, 25);
+        jtfPrecio.setBounds(540, 200, 300, 25);
 
         jbtQuitar.setBackground(new java.awt.Color(182, 182, 182));
         jbtQuitar.setForeground(new java.awt.Color(0, 0, 0));
         jbtQuitar.setText("Quitar");
         jbtQuitar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtQuitar);
-        jbtQuitar.setBounds(610, 310, 140, 25);
+        jbtQuitar.setBounds(700, 310, 140, 25);
 
-        jbtAgregar.setBackground(new java.awt.Color(182, 182, 182));
-        jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        jbtAgregar.setText("Agregar");
-        jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jbtAgregar);
-        jbtAgregar.setBounds(450, 310, 140, 25);
+        jbtCobrar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCobrar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtCobrar.setText("Cobrar");
+        jbtCobrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(jbtCobrar);
+        jbtCobrar.setBounds(540, 360, 300, 25);
 
         jcbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
         jPanel4.add(jcbType);
-        jcbType.setBounds(450, 0, 100, 25);
+        jcbType.setBounds(490, 0, 100, 25);
 
         jtfCont.setBackground(new java.awt.Color(255, 255, 255));
         jtfCont.setForeground(new java.awt.Color(0, 0, 0));
         jtfCont.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfCont.setEnabled(false);
         jPanel4.add(jtfCont);
-        jtfCont.setBounds(450, 160, 300, 25);
+        jtfCont.setBounds(540, 160, 300, 25);
 
         jspPiezas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jspPiezas.setAutoscrolls(true);
         jspPiezas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jspPiezas);
-        jspPiezas.setBounds(450, 240, 300, 30);
+        jspPiezas.setBounds(540, 240, 300, 30);
 
         jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
         jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
         jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfNombre.setEnabled(false);
         jPanel4.add(jtfNombre);
-        jtfNombre.setBounds(450, 80, 300, 25);
+        jtfNombre.setBounds(540, 80, 300, 25);
 
         jtfMarca.setBackground(new java.awt.Color(255, 255, 255));
         jtfMarca.setForeground(new java.awt.Color(0, 0, 0));
         jtfMarca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfMarca.setEnabled(false);
         jPanel4.add(jtfMarca);
-        jtfMarca.setBounds(450, 120, 300, 25);
+        jtfMarca.setBounds(540, 120, 300, 25);
+
+        jbtAgregar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtAgregar.setText("Agregar");
+        jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(jbtAgregar);
+        jbtAgregar.setBounds(540, 310, 140, 25);
 
         jTabbedPane1.addTab("Caja", new javax.swing.ImageIcon(getClass().getResource("/Img/caja-registradora .png")), jPanel4); // NOI18N
 
@@ -379,11 +461,11 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton jbtAdministracion;
     private javax.swing.JButton jbtAgregar;
     private javax.swing.JButton jbtBuscar;
+    private javax.swing.JButton jbtCobrar;
     private javax.swing.JButton jbtEmpleados;
     private javax.swing.JButton jbtPerfil;
     private javax.swing.JButton jbtProductos;
@@ -395,6 +477,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jlbNombre;
     private javax.swing.JLabel jlbRelog;
     private javax.swing.JSpinner jspPiezas;
+    private javax.swing.JTable jtbCarrito;
     private javax.swing.JTextField jtfCont;
     private javax.swing.JTextField jtfID;
     private javax.swing.JTextField jtfMarca;

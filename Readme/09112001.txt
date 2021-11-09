@@ -1,0 +1,8 @@
+- Implementaciones
+
+- Funcionalidad de caja
+
+- Cambios
+
+- Otros
+Correcion de la funcion insertar, Mostrar en la base de datos productos.

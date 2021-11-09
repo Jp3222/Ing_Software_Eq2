@@ -1,7 +1,11 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.CL_Empleado;
+import Modelo.CL_Producto;
 import Modelo.Operaciones;
+import Modelo.cons;
+import Modelo.func;
 import Vista.Vista_Empleados;
 import Vista.Vista_Administracion;
 import Vista.Vista_Login;
@@ -9,6 +13,9 @@ import Vista.Vista_MenuAdmin;
 import Vista.Vista_Productos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class Con_MenuAdmin implements ActionListener {
 
@@ -49,17 +56,39 @@ public class Con_MenuAdmin implements ActionListener {
     }
 
     public void Agregar() {
-        System.out.println("Agregar");
+        addCarrito((DefaultTableModel) admin.getJtbCarrito().getModel());
+    }
 
+    public void addCarrito(DefaultTableModel tb) {
+        tb.addRow(
+                func.getArray(
+                        admin.getClave(),
+                        admin.getNombre(),
+                        admin.getContenido(),
+                        admin.getPiezas() + "",
+                        (admin.getPrecio() * admin.getPiezas()) + ""
+                ));
     }
 
     public void Quitar() {
-        System.out.println("Quitar");
+        removeCarrito((DefaultTableModel) admin.getJtbCarrito().getModel());
+    }
 
+    public void removeCarrito(DefaultTableModel tb) {
+        if (tb.getRowCount() > 0) {
+            tb.removeRow(tb.getRowCount() - 1);
+        } else {
+            cons.getMessage("NO hay productos", "en el carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     public void Buscar() {
-        System.out.println("Buscar");
+        CL_Producto producto = opc.getProducto("*", admin.getCampo() + " = '" + admin.getValue() + "'");
+        if (producto != null) {
+            admin.setProducto(producto);
+        } else {
+            cons.getMessage("El producto: " + admin.getValue(), "NO existe", "mensaje", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     public void Perfil() {

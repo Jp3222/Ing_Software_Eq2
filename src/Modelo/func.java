@@ -1,13 +1,12 @@
 package Modelo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
  * @author jp
  */
-public class func {
+public class func {//sc6014 - sc6014
 
     private static final int NoP[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 
@@ -56,7 +55,7 @@ public class func {
         }
         return -1;
     }
-
+    
     public static int[] getArray(int... T) {
         int[] obj = new int[T.length];
         int x = 0;
@@ -77,7 +76,7 @@ public class func {
         return obj;
     }
     
-    //[2,3,5,7]{1,3} = [2,5]
+    //["id","nom","ap","am","edad"]{0,1}[] = ["ap","am","edad"]
     public static String[] exp(String array[], int... ex) {
         ArrayList<String> obj = new ArrayList<>();
         int[] e = getArray(ex);

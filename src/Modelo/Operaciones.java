@@ -44,7 +44,7 @@ public class Operaciones {
         try {
             conexion.Insertar("productos",
                     BD.getColums(func.exp(cons.getProductos(), 0)),
-                    BD.getValues(true, producto.getInfo()));
+                    BD.getValues(true, func.exp(producto.getInfo(), 0)));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

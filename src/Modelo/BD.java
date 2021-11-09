@@ -81,9 +81,7 @@ public class BD {
     public static String getData(String[] campos, String[] datos) {
         if (campos.length != datos.length) {
             cons.getMessage("Los arreglos no son iguales", "", "mensaje", JOptionPane.WARNING_MESSAGE);
-            System.out.println(Arrays.toString(campos));
-            System.out.println(Arrays.toString(datos));
-            return null;
+           return null;
         }
         String sent = "";
         for (int i = 0; i < campos.length; i++) {
@@ -97,7 +95,7 @@ public class BD {
     }
 
     public static String OUT(String v) {
-        return v.trim().replace("_", " ");
+        return v.replace("_", " ");
     }
 
     private final String user;
@@ -109,7 +107,6 @@ public class BD {
     private Statement st;
 
     private BD(String user, String pass, String url) {
-        System.out.println("xdddd");
         //Constantes
         this.psECall1 = SELECT("Empleados", "*", "usuario = ?");
         this.psPCall1 = SELECT("Productos", "*", "calve = ?");
@@ -221,6 +218,7 @@ public class BD {
     public ResultSet Buscar(String Tabla, String Campos, String Where) throws SQLException {
         st = cn.createStatement();
         return st.executeQuery(SELECT(Tabla, Campos, Where));
+        
     }
 
     public void BuscarClose() throws SQLException {

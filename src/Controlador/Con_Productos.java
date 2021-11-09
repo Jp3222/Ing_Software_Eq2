@@ -92,17 +92,20 @@ public class Con_Productos implements ActionListener {
         if (read.getJbtConsultar() == obj) {
             read.getJtConsultas().setModel(operaciones.getTable("productos"));
         } else if (update.getJbtBuscar() == obj) {
-            update.clear();
-            int opc = update.getJcbMB().getSelectedIndex();
-            String campo = update.getJcbMB().getItemAt(opc);
-            String mb = update.getJtfMD().getText();
-            CL_Producto producto = operaciones.getProducto("*", campo + " = '" + BD.IN(mb) + "'");
+            CL_Producto producto = operaciones.getProducto("*", update.getCampo() + " = '" + BD.IN(update.getValue()) + "'");
             if (producto != null && producto.isExists()) {
                 update.setProducto(producto);
             } else {
                 cons.getMessage("Este producto", "no existe", "Error", JOptionPane.WARNING_MESSAGE);
             }
             update.clearS();
+        } else if (delete.getJbtBuscar_2() == obj) {
+            CL_Producto producto = operaciones.getProducto("*", delete.getCampo() + " = " + BD.IN(delete.getValue()));
+            if (producto != null && producto.isExists()) {
+                delete.setProducto(producto);
+            } else {
+                cons.getMessage("Este producto", "no existe", "Error", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }
 
@@ -116,6 +119,11 @@ public class Con_Productos implements ActionListener {
     }
 
     public void Borrar() {
+        int opc = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas eliminar este producto?");
+        if (opc == JOptionPane.YES_NO_OPTION) {
+            operaciones.BorrarProducto(delete.getProducto());
+            delete.clear();
+        }
     }
 
 }
