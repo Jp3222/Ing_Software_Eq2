@@ -37,7 +37,7 @@ public class Sistema extends Thread {
     //
 
     private Sistema() {
-        conexion = BD.getNodo("jp", "12345", "jdbc:mysql://localhost/Tienda");
+        conexion = BD.getNodo("root", "", "jdbc:mysql://localhost/Tienda");
         conexion.Conectar();
         opc = new Operaciones(conexion);
         //this.jlbRelog = null;

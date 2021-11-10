@@ -1,8 +1,6 @@
 package Modelo;
 
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -118,7 +116,11 @@ public class cons {
     public static Border getBadBorder() {
         return BadBorder;
     }
-
+    
+    /**getDay funcion que devuelve los dias de la semana 
+     * @param i 
+     * @return 
+     */
     public static String getDay(int i) {
         return Dias[i - 1];
     }

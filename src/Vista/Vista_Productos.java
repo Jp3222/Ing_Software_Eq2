@@ -7,6 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
+import javax.swing.text.Element;
 
 public class Vista_Productos extends javax.swing.JFrame {
 
@@ -31,6 +36,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         info = Vista_Info.getNodo();
         initComponents();
         addControladores(admin);
+        jtfNombre.getDocument().addDocumentListener(new Evt(jtfNombre));
     }
 
     private void addControladores(Vista_MenuAdmin admin) {
@@ -45,6 +51,36 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtBuscar.addActionListener(controlador);
         jbtActualizar.addActionListener(controlador);
         jbtCancelar_2.addActionListener(controlador);
+    }
+
+    class Evt implements DocumentListener {
+
+        JTextField s;
+
+        public Evt(JTextField s) {
+            this.s = s;
+        }
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            if (!s.getText().isEmpty()) {
+                s.setBorder(cons.getOkBorder());
+            } else {
+                s.setBorder(cons.getBadBorder());
+            }
+
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent de) {
+            System.out.println("3");
+        }
+
     }
 
     public Create getCreate() {
