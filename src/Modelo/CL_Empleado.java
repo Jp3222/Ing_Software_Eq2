@@ -160,12 +160,18 @@ public class CL_Empleado {
     }
 
     public String[] getInfo() {
-        return func.getArray( usuario, Nombre, A_paterno, A_materno, Edad, Cargo, Password);
+        return func.getArray(ID + "", usuario, Nombre, A_paterno, A_materno, Edad, Cargo, Password);
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "ID=" + ID + ", Nombre=" + Nombre + ", A_paterno=" + A_paterno + ", A_materno=" + A_materno + ", Edad=" + Edad + ", Cargo=" + Cargo + ", Password=" + Password + '}';
+        return "Empleado{\nID=" + ID
+                + "\nNombre=" + Nombre
+                + "\nA_paterno=" + A_paterno
+                + "\nA_materno=" + A_materno
+                + "\nEdad=" + Edad
+                + "\nCargo=" + Cargo
+                + "\nPassword=" + Password + '}';
     }
 
 }

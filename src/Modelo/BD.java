@@ -81,7 +81,7 @@ public class BD {
     public static String getData(String[] campos, String[] datos) {
         if (campos.length != datos.length) {
             cons.getMessage("Los arreglos no son iguales", "", "mensaje", JOptionPane.WARNING_MESSAGE);
-           return null;
+            return null;
         }
         String sent = "";
         for (int i = 0; i < campos.length; i++) {
@@ -174,9 +174,9 @@ public class BD {
         st.close();
     }
 
-    public void Delete(String Tabla, String campos, String where) throws SQLException {
+    public void Delete(String Tabla, String where) throws SQLException {
         st = cn.createStatement();
-        st.executeQuery(DELETE(Tabla, campos, where));
+        st.executeUpdate(DELETE(Tabla, where));
         st.close();
     }
 
@@ -218,11 +218,11 @@ public class BD {
     public ResultSet Buscar(String Tabla, String Campos, String Where) throws SQLException {
         st = cn.createStatement();
         return st.executeQuery(SELECT(Tabla, Campos, Where));
-        
+
     }
 
     public void BuscarClose() throws SQLException {
-        st.close();
+       
     }
 
     private String SELECT(String Tabla, String Campo, String Where) {
@@ -241,8 +241,8 @@ public class BD {
         return "update " + Tabla + " set " + campo + " = " + "'" + dato + "'" + " where " + where;
     }
 
-    public String DELETE(String Tabla, String campos, String where) {
-        return "delete " + campos + " from " + Tabla + " where " + where;
+    public String DELETE(String Tabla, String where) {
+        return "delete from " + Tabla + " where " + where;
     }
 
     private String INSERT(String Tabla, String Campos, String Values) {

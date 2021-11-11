@@ -58,6 +58,8 @@ public class Con_Productos implements ActionListener {
                 Buscar(e.getSource());
             case "Actualizar" ->
                 Actualizar();
+            case "Eliminar" ->
+                Borrar();
         }
 
     }

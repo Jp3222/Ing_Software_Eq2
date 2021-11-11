@@ -93,9 +93,23 @@ public class cons {
         "Hizo una baja",
         "Hizo una baja",};
 
+    private final String[] TABLAS = {
+        "empleados",
+        "productos",
+        "movimientos"
+    };
+
     private static final LineBorder OkBorder = new LineBorder(Color.black);
 
     private static final LineBorder BadBorder = new LineBorder(Color.red);
+
+    public String[] getTABLAS() {
+        return TABLAS;
+    }
+
+    public String getTabla(int i) {
+        return TABLAS[i];
+    }
 
     public static String[] getProductos() {
         return Productos;
@@ -116,10 +130,12 @@ public class cons {
     public static Border getBadBorder() {
         return BadBorder;
     }
-    
-    /**getDay funcion que devuelve los dias de la semana 
-     * @param i 
-     * @return 
+
+    /**
+     * getDay funcion que devuelve los dias de la semana
+     *
+     * @param i
+     * @return
      */
     public static String getDay(int i) {
         return Dias[i - 1];
@@ -150,7 +166,7 @@ public class cons {
     }
 
     public static void getMessage(String obj, String txt, String title, int i) {
-            JOptionPane.showMessageDialog(null, obj + " " + txt, title, i);
+        JOptionPane.showMessageDialog(null, obj + "\n" + txt, title, i);
     }
 
 }

@@ -32,9 +32,6 @@ public class Sistema extends Thread {
     private BD conexion;
     //Funciones especiales
     Operaciones opc;
-    //Usuario en sistema
-    private CL_Empleado usuario;
-    //
 
     private Sistema() {
         conexion = BD.getNodo("root", "", "jdbc:mysql://localhost/Tienda");

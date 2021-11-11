@@ -51,10 +51,10 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jbtCancelar = new javax.swing.JButton();
         txt5 = new javax.swing.JLabel();
         txt6 = new javax.swing.JLabel();
-        Usuario = new javax.swing.JTextField();
+        jtfUsuario = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfApaterno = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbCargo = new javax.swing.JComboBox<>();
         Panel_Read = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsultas = new javax.swing.JTable();
@@ -116,6 +116,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         jftEdad.setBackground(new java.awt.Color(255, 255, 255));
         jftEdad.setForeground(new java.awt.Color(0, 0, 0));
+        jftEdad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jftEdad.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jftEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +138,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         jtfAmaterno.setBackground(new java.awt.Color(255, 255, 255));
         jtfAmaterno.setForeground(new java.awt.Color(0, 0, 0));
+        jtfAmaterno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfAmaterno.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfAmaterno);
         jtfAmaterno.setBounds(230, 120, 300, 25);
@@ -153,6 +155,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         jtfPassword.setBackground(new java.awt.Color(255, 255, 255));
         jtfPassword.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfPassword.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfPassword.setEnabled(false);
         Panel_Create.add(jtfPassword);
@@ -182,30 +185,34 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Create.add(txt6);
         txt6.setBounds(30, 270, 200, 25);
 
-        Usuario.setBackground(new java.awt.Color(255, 255, 255));
-        Usuario.setForeground(new java.awt.Color(0, 0, 0));
-        Usuario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Usuario.setEnabled(false);
-        Panel_Create.add(Usuario);
-        Usuario.setBounds(230, 270, 300, 25);
+        jtfUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        jtfUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        jtfUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtfUsuario.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jtfUsuario.setEnabled(false);
+        Panel_Create.add(jtfUsuario);
+        jtfUsuario.setBounds(230, 270, 300, 25);
 
         jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
         jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfNombre);
         jtfNombre.setBounds(230, 20, 300, 25);
 
         jtfApaterno.setBackground(new java.awt.Color(255, 255, 255));
         jtfApaterno.setForeground(new java.awt.Color(0, 0, 0));
+        jtfApaterno.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfApaterno.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfApaterno);
         jtfApaterno.setBounds(230, 70, 300, 25);
 
-        jComboBox1.setBackground(new java.awt.Color(213, 216, 220));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Empleado" }));
-        Panel_Create.add(jComboBox1);
-        jComboBox1.setBounds(230, 220, 300, 25);
+        jcbCargo.setBackground(new java.awt.Color(213, 216, 220));
+        jcbCargo.setForeground(new java.awt.Color(0, 0, 0));
+        jcbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Empleado" }));
+        jcbCargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Panel_Create.add(jcbCargo);
+        jcbCargo.setBounds(230, 220, 300, 25);
 
         jTabbedPane1.addTab("Insertar", Panel_Create);
 
@@ -228,7 +235,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(0, 0, 150, 28);
+        jbtConsultar.setBounds(0, 0, 150, 29);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
@@ -358,8 +365,6 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_Delete;
     private javax.swing.JPanel Panel_Read;
     private javax.swing.JPanel Panel_Update;
-    private javax.swing.JTextField Usuario;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -377,6 +382,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private javax.swing.JButton jbtCancelar_3;
     private javax.swing.JButton jbtConsultar;
     private javax.swing.JButton jbtRemover;
+    private javax.swing.JComboBox<String> jcbCargo;
     private javax.swing.JComboBox<String> jcbMB;
     private javax.swing.JComboBox<String> jcbMB_2;
     private javax.swing.JTextField jftEdad;
@@ -387,6 +393,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private javax.swing.JTextField jtfMD;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfPassword;
+    private javax.swing.JTextField jtfUsuario;
     private javax.swing.JLabel txt1;
     private javax.swing.JLabel txt14;
     private javax.swing.JLabel txt2;

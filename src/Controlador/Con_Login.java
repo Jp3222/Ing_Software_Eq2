@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 //
 import Vista.Vista_Login;
 import Vista.Vista_MenuAdmin;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,7 +78,7 @@ class log {
                             login.dispose();
                             admin.setVisible(true);
                             admin.setUsuario(empleado);
-                            
+
                         }
                         default ->
                             System.out.println("No reconocido");
@@ -86,16 +87,20 @@ class log {
                     operacion.setMovimiento(mov);
                     clear();
                 } else {
-                    cons.getMessage("La contraseña", "Es incorrecta", "Mensaje", 0);
-                    login.getjpfPassword().setBorder(cons.getBadBorder());
+                    mensaje();
                 }
             } else {
-                cons.getMessage("EL usuario", "Es incorrecto", "Mensaje", 0);
-                login.getjtfUsuario().setBorder(cons.getBadBorder());
+                mensaje();
             }
         } catch (Excepciones e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void mensaje() {
+        login.getjtfUsuario().setBorder(cons.getBadBorder());
+        login.getjpfPassword().setBorder(cons.getBadBorder());
+        cons.getMessage("Usuario y/0 contraseña ", "icorrecto", "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 
     public void clear() {

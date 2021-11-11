@@ -163,7 +163,14 @@ public class CL_Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "ID=" + ID + ", Contenido=" + Contenido + ", Precios=" + Precios + ", Clave=" + Clave + ", Nombre=" + Nombre + ", Marca=" + Marca + ", UDM=" + UDM + ", Exists=" + Exists + '}';
+        return "Producto {\nID=" + ID
+                + "\nContenido=" + Contenido
+                + "\nPrecios=" + Precios
+                + "\nClave=" + Clave
+                + "\nNombre=" + Nombre
+                + "\nMarca=" + Marca
+                + "\nUDM=" + UDM
+                + "\nExists=" + Exists + '}';
     }
 
 }

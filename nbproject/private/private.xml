@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Controlador/Sistema.java</file>
+            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Vista/Vista_Empleados.java</file>
+            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Vista/Vista_Productos.java</file>
+            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Modelo/BD.java</file>
+            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Controlador/Con_Login.java</file>
+            <file>file:/home/jp/Documentos/NetbeansProyects/Ing_Software_Proyecto/src/Modelo/Operaciones.java</file>
         </group>
     </open-files>
 </project-private>

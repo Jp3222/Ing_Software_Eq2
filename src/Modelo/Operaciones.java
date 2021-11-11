@@ -16,10 +16,10 @@ public class Operaciones {
     }
 
     //Productos
-    public CL_Producto getProducto(String campos, String where) {
+    public CL_Producto getProducto(String campo, String where) {
         CL_Producto producto = null;
         try {
-            rs = conexion.Buscar("productos", campos, where);
+            rs = conexion.Buscar("productos", campo, where);
             if (rs.next()) {
                 producto = new CL_Producto();
                 producto.setExists(true);
@@ -62,50 +62,74 @@ public class Operaciones {
 
     public void BorrarProducto(CL_Producto producto) {
         try {
-            conexion.Delete("Producto", "*", "id = '" + producto.getID() + "'");
+            conexion.Delete("productos", "id = '" + producto.getID() + "'");
         } catch (SQLException ex) {
             Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    //Empleados
+    //Operaciones para el manejo de empleados
+    /**
+     * @param user
+     * @return
+     */
     public CL_Empleado getEmpleado(String user) {
         CL_Empleado empleado = null;
+        String values[];
         try {
             rs = conexion.Buscar(user, 1);
             if (rs.next()) {
                 empleado = new CL_Empleado();
                 empleado.setExists(true);
-                String info[] = new String[cons.getUsuarios().length];
                 int i = 0;
-                for (String usuario : cons.getUsuarios()) {
-                    info[i] = rs.getString(usuario);
+                values = new String[cons.getUsuarios().length];
+                for (String colums : cons.getUsuarios()) {
+                    values[i] = rs.getString(colums);
                     i++;
                 }
-                empleado.setInfo(info);
+                empleado.setInfo(values);
+                conexion.BuscarClose();
             }
             rs.close();
-            conexion.BuscarClose();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } catch (Excepciones e) {
+        } catch (Excepciones | SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            return empleado;
+            values = null;
         }
+        return empleado;
     }
 
-    public void newEmpleado(CL_Empleado obj) {
+    public void newEmpleado(CL_Empleado empleado) {
         try {
-            conexion.Insertar("Empleado",
-                    BD.getColums(func.exp(cons.getUsuarios(), 0)),
-                    BD.getValues(true, obj.getInfo())
-            );
-        } catch (SQLException ex) {
-            Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
+            conexion.Insertar("empleados", BD.getValues(true, func.exp(empleado.getInfo(), 0)));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
+    public void actEmpleado(CL_Empleado empleado) {
+
+        try {
+            conexion.Update("empleados", BD.getData(
+                    func.exp(cons.getUsuarios(), 0, 1), func.exp(empleado.getInfo(), 0, 1)),
+                    "id = '" + empleado + "'");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void brEmpleado(CL_Empleado empleado) {
+        try {
+            conexion.Delete("empleados", "id = " + empleado.getID());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void delete() {
+    }
+
+    //Operaciones para el manejo de movimientos
     public void setMovimiento(CL_Movimiento mov) {
         try {
             conexion.Insertar("movimientos",
@@ -117,7 +141,7 @@ public class Operaciones {
         }
     }
 
-    //
+    //Operaciones para el manejo de la base de datos general
     public DefaultTableModel getTable(String nom) {
         DefaultTableModel tm = new DefaultTableModel();
         try {

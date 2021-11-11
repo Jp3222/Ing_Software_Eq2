@@ -47,10 +47,14 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtCancelar.addActionListener(controlador);
         //Read
         jbtConsultar.addActionListener(controlador);
-        //
+        //update
         jbtBuscar.addActionListener(controlador);
         jbtActualizar.addActionListener(controlador);
         jbtCancelar_2.addActionListener(controlador);
+        //delete
+        jbtBuscar_2.addActionListener(controlador);
+        jbtRemover.addActionListener(controlador);
+        jbtCancelar_3.addActionListener(controlador);
     }
 
     class Evt implements DocumentListener {
@@ -271,7 +275,6 @@ public class Vista_Productos extends javax.swing.JFrame {
             int i = 0;
             if (jtfMB.getText().isEmpty()) {
                 i++;
-                return true;
             }
             return i > 0;
         }
@@ -279,7 +282,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         public void showProducto() {
             if (producto != null) {
                 jtaInfo.setText(producto.toString());
-
             }
         }
 
@@ -369,7 +371,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 193));
+        jPanel2.setBackground(new java.awt.Color(177, 177, 255));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -646,7 +648,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jbtRemover.setBackground(new java.awt.Color(182, 182, 182));
         jbtRemover.setForeground(new java.awt.Color(0, 0, 0));
-        jbtRemover.setText("Remover");
+        jbtRemover.setText("Eliminar");
         jbtRemover.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Delete.add(jbtRemover);
         jbtRemover.setBounds(140, 260, 140, 50);
