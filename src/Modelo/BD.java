@@ -108,8 +108,8 @@ public class BD {
 
     private BD(String user, String pass, String url) {
         //Constantes
-        this.psECall1 = SELECT("Empleados", "*", "usuario = ?");
-        this.psPCall1 = SELECT("Productos", "*", "calve = ?");
+        this.psECall1 = SELECT("empleados", "*", "usuario = ?");
+        this.psPCall1 = SELECT("productos", "*", "calve = ?");
         //
         this.user = user;
         this.pass = pass;

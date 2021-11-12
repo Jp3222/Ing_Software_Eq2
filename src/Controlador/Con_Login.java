@@ -73,16 +73,10 @@ class log {
                 login.getjtfUsuario().setBorder(cons.getOkBorder());
                 if (empleado.getPassword().equals(pass)) {
                     login.getjpfPassword().setBorder(cons.getOkBorder());
-                    switch (empleado.getCargo()) {
-                        case "Gerente" -> {
-                            login.dispose();
-                            admin.setVisible(true);
-                            admin.setUsuario(empleado);
-
-                        }
-                        default ->
-                            System.out.println("No reconocido");
-                    }
+                    //
+                    login.dispose();
+                    admin.setVisible(true);
+                    admin.setUsuario(empleado);
                     CL_Movimiento mov = new CL_Movimiento(sistema.getCl(), cons.getMovimiento(0), empleado.getUsuario());
                     operacion.setMovimiento(mov);
                     clear();

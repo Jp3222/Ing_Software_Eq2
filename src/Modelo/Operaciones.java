@@ -101,7 +101,10 @@ public class Operaciones {
 
     public void newEmpleado(CL_Empleado empleado) {
         try {
-            conexion.Insertar("empleados", BD.getValues(true, func.exp(empleado.getInfo(), 0)));
+            conexion.Insertar("empleados",
+                    BD.getColums(func.exp(cons.getUsuarios(), 0)),
+                    BD.getValues(false, func.exp(empleado.getInfo(), 0))
+            );
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -145,17 +148,21 @@ public class Operaciones {
     public DefaultTableModel getTable(String nom) {
         DefaultTableModel tm = new DefaultTableModel();
         try {
-
-            for (String colm : cons.getProductos()) {
-                tm.addColumn(colm);
+            String array[] = new String[1];
+            switch (nom) {
+                case "productos" -> array = cons.getProductos();
+                case "empleados" -> array = cons.getUsuarios();
             }
+            for (String colm : array) {
+                tm.addColumn(colm);
 
+            }
             rs = conexion.Buscar(nom);
-            String[] aux = new String[cons.getProductos().length];
+            String[] aux = new String[array.length];
             int i;
             while (rs.next()) {
                 i = 0;
-                for (String value : cons.getProductos()) {
+                for (String value : array) {
                     aux[i] = rs.getString(value);
                     i++;
                 }

@@ -38,7 +38,8 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         initComponents();
         escuchas();
         sistema = Sistema.getNodo();
-        sistema.addRelog(0, jlbRelog);
+        sistema.setFecha(jlbFecha);
+        sistema.setRelog(jlbRelog);
         tb = new DefaultTableModel(func.getArray("Clave", "Nombre", "Cont", "Pzs", "Precio"), 0);
         jtbCarrito.setModel(tb);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());

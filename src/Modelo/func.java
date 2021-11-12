@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -104,6 +105,10 @@ public class func {//sc6014 - sc6014
             }
         }
         return false;
+    }
+
+    public static void clear(String[] info) {
+        Arrays.fill(info, null);
     }
 
 }

@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,11 +35,12 @@ public class Sistema extends Thread {
     Operaciones opc;
 
     private Sistema() {
-        conexion = BD.getNodo("root", "", "jdbc:mysql://localhost/Tienda");
+        conexion = BD.getNodo("jp", "12345", "jdbc:mysql://localhost/Tienda");
         conexion.Conectar();
         opc = new Operaciones(conexion);
         //this.jlbRelog = null;
         this.jlbFecha = null;
+        this.jlbRelog = null;
         this.relog = "";
         this.fecha = "";
         this.cl = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
@@ -68,8 +70,12 @@ public class Sistema extends Thread {
         }
     }
 
-    public void addRelog(int i, JLabel relog) {
-        jlbRelog = relog;
+    public void setRelog(JLabel relog) {
+        this.jlbRelog = relog;
+    }
+
+    public void setFecha(JLabel fecha) {
+        this.jlbFecha = fecha;
     }
 
     public void relog() {
@@ -93,10 +99,6 @@ public class Sistema extends Thread {
 
     public boolean abrir() {
         return cl.get(Calendar.HOUR_OF_DAY) > 6 && cl.get(Calendar.HOUR_OF_DAY) < 23;
-    }
-
-    public void setJlbFecha(JLabel jlbFecha) {
-        this.jlbFecha = jlbFecha;
     }
 
     public Calendar getCl() {
