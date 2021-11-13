@@ -39,7 +39,7 @@ public class Con_Productos implements ActionListener {
         this.update = productos.getUpdate();
         this.delete = productos.getDelete();
         this.conexion = BD.getNodo();
-        this.operaciones = new Operaciones(conexion);
+        this.operaciones = Operaciones.getNodo();
     }
 
     @Override

@@ -114,7 +114,6 @@ public class BD {
         this.user = user;
         this.pass = pass;
         this.url = url;
-
     }
 
     /**
@@ -124,7 +123,6 @@ public class BD {
         try {
             cn = DriverManager.getConnection(url, user, pass);
             ConstltasPreparadas();
-
             System.out.println("Conexion establecida");
         } catch (SQLException ex) {
             System.out.println("Error de conexion\n");

@@ -4,7 +4,9 @@ import Controlador.Con_Empleado;
 import Modelo.CL_Empleado;
 import Modelo.cons;
 import Modelo.func;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -163,6 +165,10 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         private CL_Empleado empleado;
 
+        private Update() {
+            this.empleado = null;
+        }
+
         public boolean isEmpty() {
             int i = 0;
             //
@@ -226,14 +232,31 @@ public class Vista_Empleados extends javax.swing.JFrame {
 
         public void setEmpleado(CL_Empleado empleado) {
             this.empleado = empleado;
+            showEmpleado();
+        }
+
+        public void showEmpleado() {
+            jtfID.setText("" + empleado.getID());
+            jtfUsuario_2.setText(empleado.getUsuario());
+            jtfNombre_2.setText(empleado.getNombre());
+            jtfApaterno_2.setText(empleado.getA_paterno());
+            jtfAmaterno_2.setText(empleado.getA_materno());
+            jtfEdad_2.setText(empleado.getEdad());
+            jcbCargo_2.setSelectedItem(empleado.getCargo());
+            jtfPassword_2.setText(empleado.getPassword());
         }
 
         public CL_Empleado getEmpleado() {
             return empleado;
         }
-        
-        
 
+        public JButton getJbtBuscar() {
+            return jbtBuscar;
+        }
+
+        public String getJtfValue() {
+            return jtfValue.getText();
+        }
     }
 
     public class Delete {
@@ -275,9 +298,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jtConsultas = new javax.swing.JTable();
         jbtConsultar = new javax.swing.JButton();
         Panel_Update = new javax.swing.JPanel();
-        txt8 = new javax.swing.JLabel();
         jcbColum = new javax.swing.JComboBox<>();
-        jtfValue = new javax.swing.JTextField();
         jbtBuscar = new javax.swing.JButton();
         jbtActualizar = new javax.swing.JButton();
         jbtCancelar_2 = new javax.swing.JButton();
@@ -295,6 +316,10 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jtfUsuario_2 = new javax.swing.JTextField();
         txt16 = new javax.swing.JLabel();
         jtfPassword_2 = new javax.swing.JTextField();
+        txt17 = new javax.swing.JLabel();
+        jtfValue = new javax.swing.JTextField();
+        txt18 = new javax.swing.JLabel();
+        jtfID = new javax.swing.JTextField();
         Panel_Delete = new javax.swing.JPanel();
         txt14 = new javax.swing.JLabel();
         jcbMB_2 = new javax.swing.JComboBox<>();
@@ -469,20 +494,9 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.setLayout(null);
 
-        txt8.setForeground(new java.awt.Color(1, 1, 1));
-        txt8.setText("Buscar");
-        Panel_Update.add(txt8);
-        txt8.setBounds(70, 10, 120, 25);
-
-        jcbColum.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        jcbColum.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
         Panel_Update.add(jcbColum);
         jcbColum.setBounds(210, 10, 100, 25);
-
-        jtfValue.setBackground(new java.awt.Color(255, 255, 255));
-        jtfValue.setForeground(new java.awt.Color(0, 0, 0));
-        jtfValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        Panel_Update.add(jtfValue);
-        jtfValue.setBounds(330, 10, 300, 25);
 
         jbtBuscar.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
@@ -508,86 +522,108 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt9.setForeground(new java.awt.Color(1, 1, 1));
         txt9.setText("Nombre :");
         Panel_Update.add(txt9);
-        txt9.setBounds(130, 60, 200, 25);
+        txt9.setBounds(130, 110, 200, 25);
 
         jtfNombre_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfNombre_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfNombre_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfNombre_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfNombre_2);
-        jtfNombre_2.setBounds(330, 60, 300, 25);
+        jtfNombre_2.setBounds(330, 110, 300, 25);
 
         txt10.setForeground(new java.awt.Color(1, 1, 1));
         txt10.setText("Apellido Paterno");
         Panel_Update.add(txt10);
-        txt10.setBounds(130, 110, 200, 25);
+        txt10.setBounds(130, 160, 200, 25);
 
         jtfApaterno_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfApaterno_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfApaterno_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfApaterno_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfApaterno_2);
-        jtfApaterno_2.setBounds(330, 110, 300, 25);
+        jtfApaterno_2.setBounds(330, 160, 300, 25);
 
         txt11.setForeground(new java.awt.Color(1, 1, 1));
         txt11.setText("Apellido Materno");
         Panel_Update.add(txt11);
-        txt11.setBounds(130, 160, 200, 25);
+        txt11.setBounds(130, 210, 200, 25);
 
         jtfAmaterno_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfAmaterno_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfAmaterno_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfAmaterno_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfAmaterno_2);
-        jtfAmaterno_2.setBounds(330, 160, 300, 25);
+        jtfAmaterno_2.setBounds(330, 210, 300, 25);
 
         txt12.setForeground(new java.awt.Color(1, 1, 1));
         txt12.setText("Edad");
         Panel_Update.add(txt12);
-        txt12.setBounds(130, 210, 200, 25);
+        txt12.setBounds(130, 260, 200, 25);
 
         jtfEdad_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfEdad_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfEdad_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfEdad_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfEdad_2);
-        jtfEdad_2.setBounds(330, 210, 300, 25);
+        jtfEdad_2.setBounds(330, 260, 300, 25);
 
         txt13.setForeground(new java.awt.Color(1, 1, 1));
         txt13.setText("Cargo");
         Panel_Update.add(txt13);
-        txt13.setBounds(130, 260, 200, 25);
+        txt13.setBounds(130, 310, 200, 25);
 
         jcbCargo_2.setBackground(new java.awt.Color(213, 216, 220));
         jcbCargo_2.setForeground(new java.awt.Color(0, 0, 0));
         jcbCargo_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Empleado" }));
         jcbCargo_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.add(jcbCargo_2);
-        jcbCargo_2.setBounds(330, 260, 300, 25);
+        jcbCargo_2.setBounds(330, 310, 300, 25);
 
         txt15.setForeground(new java.awt.Color(1, 1, 1));
         txt15.setText("Usuario");
         Panel_Update.add(txt15);
-        txt15.setBounds(130, 310, 200, 25);
+        txt15.setBounds(130, 360, 200, 25);
 
         jtfUsuario_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfUsuario_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfUsuario_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfUsuario_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfUsuario_2);
-        jtfUsuario_2.setBounds(330, 310, 300, 25);
+        jtfUsuario_2.setBounds(330, 360, 300, 25);
 
         txt16.setForeground(new java.awt.Color(1, 1, 1));
         txt16.setText("Contraseña");
         Panel_Update.add(txt16);
-        txt16.setBounds(130, 360, 200, 25);
+        txt16.setBounds(130, 410, 200, 25);
 
         jtfPassword_2.setBackground(new java.awt.Color(255, 255, 255));
         jtfPassword_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfPassword_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfPassword_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfPassword_2);
-        jtfPassword_2.setBounds(330, 360, 300, 25);
+        jtfPassword_2.setBounds(330, 410, 300, 25);
+
+        txt17.setForeground(new java.awt.Color(1, 1, 1));
+        txt17.setText("Buscar");
+        Panel_Update.add(txt17);
+        txt17.setBounds(70, 10, 120, 25);
+
+        jtfValue.setBackground(new java.awt.Color(255, 255, 255));
+        jtfValue.setForeground(new java.awt.Color(0, 0, 0));
+        jtfValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfValue);
+        jtfValue.setBounds(330, 10, 300, 25);
+
+        txt18.setForeground(new java.awt.Color(1, 1, 1));
+        txt18.setText("Buscar");
+        Panel_Update.add(txt18);
+        txt18.setBounds(130, 60, 200, 25);
+
+        jtfID.setBackground(new java.awt.Color(255, 255, 255));
+        jtfID.setForeground(new java.awt.Color(0, 0, 0));
+        jtfID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Panel_Update.add(jtfID);
+        jtfID.setBounds(330, 60, 300, 25);
 
         jTabbedPane1.addTab("Modificar", Panel_Update);
 
@@ -600,7 +636,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Delete.add(txt14);
         txt14.setBounds(70, 10, 120, 25);
 
-        jcbMB_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        jcbMB_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
         Panel_Delete.add(jcbMB_2);
         jcbMB_2.setBounds(210, 10, 100, 25);
 
@@ -700,6 +736,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private javax.swing.JTextField jtfApaterno_2;
     private javax.swing.JTextField jtfEdad;
     private javax.swing.JTextField jtfEdad_2;
+    private javax.swing.JTextField jtfID;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfNombre_2;
     private javax.swing.JTextField jtfPassword;
@@ -715,13 +752,14 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel txt14;
     private javax.swing.JLabel txt15;
     private javax.swing.JLabel txt16;
+    private javax.swing.JLabel txt17;
+    private javax.swing.JLabel txt18;
     private javax.swing.JLabel txt2;
     private javax.swing.JLabel txt3;
     private javax.swing.JLabel txt4;
     private javax.swing.JLabel txt5;
     private javax.swing.JLabel txt6;
     private javax.swing.JLabel txt7;
-    private javax.swing.JLabel txt8;
     private javax.swing.JLabel txt9;
     // End of variables declaration//GEN-END:variables
 }

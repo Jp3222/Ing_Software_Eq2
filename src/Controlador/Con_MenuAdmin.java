@@ -1,7 +1,6 @@
 package Controlador;
 
 import Modelo.BD;
-import Modelo.CL_Empleado;
 import Modelo.CL_Producto;
 import Modelo.Operaciones;
 import Modelo.cons;
@@ -15,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 public class Con_MenuAdmin implements ActionListener {
 
@@ -26,8 +24,7 @@ public class Con_MenuAdmin implements ActionListener {
     private Vista_Administracion administracion;
     private Vista_Empleados empleados;
     //
-    private final BD conexion = BD.getNodo();
-    private final Operaciones opc = new Operaciones(conexion);
+    private final Operaciones opc = Operaciones.getNodo();
 
     public Con_MenuAdmin(Vista_MenuAdmin admin) {
         this.admin = admin;

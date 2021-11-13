@@ -23,7 +23,7 @@ public class Vista_Info extends javax.swing.JFrame {
 
     public void setTxt(int txt) {
         this.txt = txt;
-        jTextArea1.setText(ficheros.leer(Ficheros.Files.INFO_INTENTARIO));
+        jTextArea1.setText(ficheros.leer(Ficheros.FilesRead.INFO_INTENTARIO));
     }
 
     @SuppressWarnings("unchecked")
@@ -108,7 +108,7 @@ public class Vista_Info extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jTextArea1.setText(ficheros.leer(Ficheros.Files.getUrl(jComboBox1.getSelectedIndex())));
+        jTextArea1.setText(ficheros.leer(Ficheros.FilesRead.getUrl(jComboBox1.getSelectedIndex())));
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -2,14 +2,12 @@ package Vista;
 
 import Controlador.Con_MenuAdmin;
 import Controlador.Sistema;
+import Controlador.Sistema.Relog;
 import Modelo.CL_Empleado;
 import Modelo.CL_Producto;
 import Modelo.func;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JSpinner;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +23,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private final Vista_Empleados empleados;
     //
     private DefaultTableModel tb;
-    private Sistema sistema;
+    private Relog rlg;
 
     public Vista_MenuAdmin(Vista_Login login) {
         controlador = new Con_MenuAdmin(this);
@@ -37,9 +35,9 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         cont();
         initComponents();
         escuchas();
-        sistema = Sistema.getNodo();
-        sistema.setFecha(jlbFecha);
-        sistema.setRelog(jlbRelog);
+        rlg = Sistema.getNodo().getNodoRlg();
+        rlg.setFecha(jlbFecha);
+        rlg.setRelog(jlbRelog);
         tb = new DefaultTableModel(func.getArray("Clave", "Nombre", "Cont", "Pzs", "Precio"), 0);
         jtbCarrito.setModel(tb);
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());

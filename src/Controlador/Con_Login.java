@@ -47,7 +47,6 @@ class log {
 
     private final Vista_Login login;
     private final Vista_MenuAdmin admin;
-    private final BD conexion = BD.getNodo();
     private final Operaciones operacion;
     private final Sistema sistema = Sistema.getNodo();
     private final Evt_Ventana evt = Evt_Ventana.getNodo();
@@ -56,7 +55,7 @@ class log {
         this.login = login;
         this.admin = admin;
         login.addWindowListener(evt);
-        operacion = new Operaciones(conexion);
+        operacion = Operaciones.getNodo();
     }
 
     public void Login() {
@@ -77,7 +76,7 @@ class log {
                     login.dispose();
                     admin.setVisible(true);
                     admin.setUsuario(empleado);
-                    CL_Movimiento mov = new CL_Movimiento(sistema.getCl(), cons.getMovimiento(0), empleado.getUsuario());
+                    CL_Movimiento mov = new CL_Movimiento(sistema.getNodoRlg().getCl(), cons.getMovimiento(0), empleado.getUsuario());
                     operacion.setMovimiento(mov);
                     clear();
                 } else {

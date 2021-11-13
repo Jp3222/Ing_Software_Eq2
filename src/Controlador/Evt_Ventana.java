@@ -2,9 +2,7 @@ package Controlador;
 
 import Modelo.BD;
 import Modelo.CL_Empleado;
-import Modelo.CL_Movimiento;
 import Modelo.Operaciones;
-import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -30,7 +28,7 @@ public class Evt_Ventana implements WindowListener {
 
     private Evt_Ventana() {
         bd = BD.getNodo();
-        op = new Operaciones(bd);
+        op = Operaciones.getNodo();
         sis = Sistema.getNodo();
     }
 

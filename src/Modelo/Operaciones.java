@@ -8,10 +8,23 @@ import javax.swing.table.DefaultTableModel;
 
 public class Operaciones {
 
+    private static Operaciones Nodo;
+
+    public static Operaciones getNodo(BD conexion) {
+        if (Nodo == null ) {
+            Nodo = new Operaciones(conexion);
+        }
+        return Nodo;
+    }
+
+    public static Operaciones getNodo() {
+        return Nodo;
+    }
+
     private final BD conexion;
     private ResultSet rs;
 
-    public Operaciones(BD conexion) {
+    private Operaciones(BD conexion) {
         this.conexion = conexion;
     }
 
@@ -150,8 +163,10 @@ public class Operaciones {
         try {
             String array[] = new String[1];
             switch (nom) {
-                case "productos" -> array = cons.getProductos();
-                case "empleados" -> array = cons.getUsuarios();
+                case "productos" ->
+                    array = cons.getProductos();
+                case "empleados" ->
+                    array = cons.getUsuarios();
             }
             for (String colm : array) {
                 tm.addColumn(colm);

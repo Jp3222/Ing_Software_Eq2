@@ -1,26 +1,58 @@
 package Modelo;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import javax.swing.JOptionPane;
 
 public class Ficheros {
 
     private File file;
     private String txt;
     private FileReader fr;
+    private PrintWriter pw;
 
-    public Ficheros() {
-        //this.file = new File("Info/" + nom + ".txt");
+    public boolean Exists(String url) {
+        file = new File(url);
+        return file.exists();
     }
 
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public String crearCarpeta(String url) {
+        file = new File(url);
+        if (!file.exists()) {
+            if (file.mkdirs()) {
+                System.out.println("Directorio Creado");
+            } else {
+                System.out.println("Error al crear direcotirio");
+            }
+        }
+        return url;
+    }
+
+    public String crearArchivo(String url, String nom) throws IOException {
+        file = new File(url + "/" + nom);
+        if (file.exists()) {
+            System.out.println("Archivo existente");
+        } else {
+            file.createNewFile();
+        }
+        return url + "/" + nom;
+    }
+
+    public void escribirArchivo(String url, String txt) throws FileNotFoundException, UnsupportedEncodingException, IOException {
+        file = new File(url);
+        if (file.exists()) {
+            pw = new PrintWriter(file, "utf-8");
+            pw.println(txt);
+            pw.close();
+        } else {
+            file.createNewFile();
+            escribirArchivo(url, txt);
+        }
     }
 
     public String leer(String url) {
@@ -37,15 +69,13 @@ public class Ficheros {
             return str.substring(0, str.length() - 1);
         } catch (FileNotFoundException ex) {
             System.out.println("Fichero no encontrado");
-            ex.printStackTrace();
         } catch (IOException ex) {
             System.out.println("Problemas con el buffer");
-            ex.printStackTrace();
         }
         return "Fichero no encontrado";
     }
 
-    public static class Files {
+    public static class FilesRead {
 
         public final static String INFO_DB_EMPLEADOS = "/Info/txt_1.txt";
         public final static String INFO_DB_PRODUCTOS = "/Info/txt_2.txt";
