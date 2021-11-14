@@ -47,7 +47,7 @@ public class Ficheros {
         file = new File(url);
         if (file.exists()) {
             pw = new PrintWriter(file, "utf-8");
-            pw.println(txt);
+            pw.print(txt);
             pw.close();
         } else {
             file.createNewFile();
@@ -58,7 +58,7 @@ public class Ficheros {
     public String leer(String url) {
         String str = "";
         try {
-            fr = new FileReader(getClass().getResource(url).getFile());
+            fr = new FileReader(url);
             int x;
             do {
                 x = fr.read();

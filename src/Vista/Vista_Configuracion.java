@@ -1,8 +1,15 @@
 package Vista;
 
+import Controlador.Sistema.Install;
+import Controlador.Sistema;
+import Modelo.Ficheros;
+import Modelo.cons;
+import java.io.IOException;
+
 public class Vista_Configuracion extends javax.swing.JFrame {
 
     private String user, pass, url;
+    private Install so;
 
     public Vista_Configuracion() {
         initComponents();
@@ -50,7 +57,7 @@ public class Vista_Configuracion extends javax.swing.JFrame {
 
         jtfUrl.setBackground(new java.awt.Color(255, 255, 255));
         jtfUrl.setForeground(new java.awt.Color(1, 1, 1));
-        jtfUrl.setText(" ");
+        jtfUrl.setText("jdbc:mysql://localhost/Tienda");
         jtfUrl.setToolTipText("");
         jPanel1.add(jtfUrl);
         jtfUrl.setBounds(100, 60, 200, 25);
@@ -64,7 +71,6 @@ public class Vista_Configuracion extends javax.swing.JFrame {
 
         jtfPass.setBackground(new java.awt.Color(255, 255, 255));
         jtfPass.setForeground(new java.awt.Color(1, 1, 1));
-        jtfPass.setText(" ");
         jtfPass.setToolTipText("");
         jPanel1.add(jtfPass);
         jtfPass.setBounds(100, 30, 200, 25);
@@ -112,7 +118,8 @@ public class Vista_Configuracion extends javax.swing.JFrame {
         user = jtfUser.getText();
         pass = jtfPass.getText();
         url = jtfUrl.getText();
-        this.setVisible(false);
+        Init();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public String getUrl() {
@@ -127,6 +134,24 @@ public class Vista_Configuracion extends javax.swing.JFrame {
         return pass;
     }
 
+    private void Init() {
+        try {
+            Ficheros ft = new Ficheros();
+            if (!ft.Exists(cons.URL_SQL + "/Install.jshop")) {
+                so = Sistema.getNodo().getNodoIll();
+                so.Install(user, pass, url);
+                Sistema s = Sistema.getNodo();
+                s.star();
+                Vista_Login log = new Vista_Login();
+                log.setVisible(true);
+            } else {
+                Vista_Login log = new Vista_Login();
+                log.setVisible(true);
+                ft.escribirArchivo(cons.URL_SQL + "/usuario.jshop", user + "-" + pass + "-" + url);
+            }
+        } catch (IOException e) {
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

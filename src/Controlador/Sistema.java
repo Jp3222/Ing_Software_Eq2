@@ -5,8 +5,8 @@ import Modelo.cons;
 import Modelo.Excepciones;
 import Modelo.Ficheros;
 import Modelo.Operaciones;
-import Vista.Vista_Configuracion;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -29,12 +29,18 @@ public class Sistema {
         return Nodo;
     }
 
+    public static void setNodo(Sistema Nodo) {
+        Sistema.Nodo = Nodo;
+    }
+
     private BD con;
     private Operaciones opc;
     //
     private Relog NodoRlg;
     //
     private Install NodoIll;
+    //
+    Ficheros fc;
 
     public Install getNodoIll() {
         if (NodoIll == null) {
@@ -52,9 +58,16 @@ public class Sistema {
     }
 
     public void star() {
-        con = BD.getNodo("jp", "12345", "jdbc:mysql://localhost/Tienda");
+        fc = new Ficheros();
+        String info = fc.leer(cons.URL_SQL + "/usuario.jshop");
+        String sql[] = info.split("-");
+        System.out.println(Arrays.toString(sql));
+        for (int i = 0; i < sql.length; i++) {
+            sql[i] = sql[i].trim();
+        }
+        con = BD.getNodo(sql[0], sql[1], sql[2]);
         con.Conectar();
-        Operaciones.getNodo(con);
+        opc = Operaciones.getNodo(con);
         NodoRlg = new Relog();
         NodoRlg.start();
     }

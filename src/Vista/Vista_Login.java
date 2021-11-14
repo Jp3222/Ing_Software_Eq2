@@ -48,6 +48,7 @@ public class Vista_Login extends javax.swing.JFrame {
         txtC = new javax.swing.JLabel();
         jpfPassword = new javax.swing.JPasswordField();
         jbtLogin = new javax.swing.JButton();
+        jbtAjustes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de sesión");
@@ -101,6 +102,17 @@ public class Vista_Login extends javax.swing.JFrame {
         jbtLogin.setFocusPainted(false);
         jPanel3.add(jbtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 300, 30));
 
+        jbtAjustes.setBackground(new java.awt.Color(187, 187, 187));
+        jbtAjustes.setForeground(new java.awt.Color(0, 0, 0));
+        jbtAjustes.setText("Config.");
+        jbtAjustes.setFocusPainted(false);
+        jbtAjustes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAjustesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jbtAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 60, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,6 +127,11 @@ public class Vista_Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtAjustesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAjustesActionPerformed
+        Vista_Configuracion con = new Vista_Configuracion();
+        con.setVisible(true);
+    }//GEN-LAST:event_jbtAjustesActionPerformed
 
     public boolean isEmpty() {
         int i = 0;
@@ -138,6 +155,7 @@ public class Vista_Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jbtAjustes;
     private javax.swing.JButton jbtLogin;
     private javax.swing.JPasswordField jpfPassword;
     private javax.swing.JTextField jtfUsuario;

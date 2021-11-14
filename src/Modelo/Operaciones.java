@@ -11,7 +11,7 @@ public class Operaciones {
     private static Operaciones Nodo;
 
     public static Operaciones getNodo(BD conexion) {
-        if (Nodo == null ) {
+        if (Nodo == null) {
             Nodo = new Operaciones(conexion);
         }
         return Nodo;

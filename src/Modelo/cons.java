@@ -10,9 +10,9 @@ public class cons {
     /**
      *
      */
-    public static final String URL_DICS = System.clearProperty("user.home") + "/Documentos";
+    public static final String URL_DICS = System.getProperty("user.home") + "/Escritorio";
     public static final String URL_FILES = URL_DICS + "/J-Shop";
-    public static final String URL_SQL = URL_FILES + "/BD";
+    public static final String URL_SQL = URL_FILES + "/.BD";
     public static final String URL_RP = URL_FILES + "/Reportes Generados";
     public static final String URL_HT = URL_FILES + "/Historial de Movimientos";
     /**

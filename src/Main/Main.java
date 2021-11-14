@@ -1,7 +1,6 @@
 package Main;
 
 import javax.swing.SwingUtilities;
-import Controlador.Sistema.Install;
 import Controlador.Sistema;
 import Modelo.Ficheros;
 import Modelo.cons;
@@ -15,7 +14,6 @@ import Vista.Vista_Login;
 public class Main {
 
     public static void main(String[] args) {
-
         //Arranque de un hilo independiente
         SwingUtilities.invokeLater(() -> Star());
     }
@@ -24,19 +22,17 @@ public class Main {
      * Metodo de activacion del sistema
      */
     public static void Star() {
-        Sistema st = Sistema.getNodo();
-        Ficheros ft;
-        ft = new Ficheros();
+        Ficheros ft = new Ficheros();
+        Sistema so = Sistema.getNodo();
         if (!ft.Exists(cons.URL_SQL + "/Install.jshop")) {
-            Install ill = st.getNodoIll();
-            Vista_Configuracion conf = new Vista_Configuracion();
-            conf.setVisible(true);
-            ill.Install(conf.getUser(), conf.getPass(), conf.getUrl());
-            Star();
+            Vista_Configuracion vc = new Vista_Configuracion();
+            vc.setVisible(true);
         } else {
-            st.star();
+            so.star();
             Vista_Login log = new Vista_Login();
+
             log.setVisible(true);
         }
+
     }
 }
