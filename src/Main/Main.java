@@ -24,7 +24,7 @@ public class Main {
     public static void Star() {
         Ficheros ft = new Ficheros();
         Sistema so = Sistema.getNodo();
-        if (!ft.Exists(cons.URL_SQL + "/Install.jshop")) {
+        if (!ft.Exists(cons.url(1)+"/Install.jshop")) {
             Vista_Configuracion vc = new Vista_Configuracion();
             vc.setVisible(true);
         } else {

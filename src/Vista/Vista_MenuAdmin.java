@@ -64,16 +64,24 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     }
 
     private void UserInfo() {
-        jlbNombre.setText("Nombre: " + Usuario.getNombre());
-        jlbCargo.setText("Cargo: " + Usuario.getCargo());
-        if (Usuario.getCargo().equals("Empleado")) {
-            jbtAdministracion.setEnabled(false);
+        if (Usuario != null) {
+            jlbNombre.setText("Nombre: " + Usuario.getNombre());
+            jlbCargo.setText("Cargo: " + Usuario.getCargo());
+            if (Usuario.getCargo().equals("Empleado")) {
+                jbtAdministracion.setEnabled(false);
+            } else {
+                jbtAdministracion.setEnabled(true);
+            }
         }
     }
 
     public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
         UserInfo();
+    }
+
+    public CL_Empleado getUsuario() {
+        return Usuario;
     }
 
     public JTable getJtbCarrito() {

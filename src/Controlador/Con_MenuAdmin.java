@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Con_MenuAdmin implements ActionListener {
-
+    
     private Vista_MenuAdmin admin;
     private Vista_Login login;
     //
@@ -25,11 +25,11 @@ public class Con_MenuAdmin implements ActionListener {
     private Vista_Empleados empleados;
     //
     private final Operaciones opc = Operaciones.getNodo();
-
+    
     public Con_MenuAdmin(Vista_MenuAdmin admin) {
         this.admin = admin;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -51,11 +51,11 @@ public class Con_MenuAdmin implements ActionListener {
                 Cerrar_Sesion();
         }
     }
-
+    
     public void Agregar() {
         addCarrito((DefaultTableModel) admin.getJtbCarrito().getModel());
     }
-
+    
     public void addCarrito(DefaultTableModel tb) {
         tb.addRow(
                 func.getArray(
@@ -66,11 +66,11 @@ public class Con_MenuAdmin implements ActionListener {
                         (admin.getPrecio() * admin.getPiezas()) + ""
                 ));
     }
-
+    
     public void Quitar() {
         removeCarrito((DefaultTableModel) admin.getJtbCarrito().getModel());
     }
-
+    
     public void removeCarrito(DefaultTableModel tb) {
         if (tb.getRowCount() > 0) {
             tb.removeRow(tb.getRowCount() - 1);
@@ -78,7 +78,7 @@ public class Con_MenuAdmin implements ActionListener {
             cons.getMessage("NO hay productos", "en el carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     public void Buscar() {
         CL_Producto producto = opc.getProducto("*", admin.getCampo() + " = '" + admin.getValue() + "'");
         if (producto != null) {
@@ -87,50 +87,52 @@ public class Con_MenuAdmin implements ActionListener {
             cons.getMessage("El producto: " + admin.getValue(), "NO existe", "mensaje", JOptionPane.WARNING_MESSAGE);
         }
     }
-
+    
     public void Perfil() {
         System.out.println("perfil");
     }
-
+    
     public void Empleados() {
         admin.dispose();
         empleados.setVisible(true);
-
+        
     }
-
+    
     public void Productos() {
         admin.dispose();
         productos.setVisible(true);
     }
-
+    
     public void Administracion() {
         admin.dispose();
         administracion.setVisible(true);
     }
-
+    
     public void Cerrar_Sesion() {
+        admin.setUsuario(null);
         admin.dispose();
+        admin = new Vista_MenuAdmin(login);
         login.setVisible(true);
     }
-
+    
     public void setAdministracion(Vista_Administracion administracion) {
         this.administracion = administracion;
     }
-
+    
     public void setEmpleados(Vista_Empleados empleados) {
         this.empleados = empleados;
     }
-
+    
     public void setProductos(Vista_Productos productos) {
         this.productos = productos;
     }
-
+    
     public void setAdmin(Vista_MenuAdmin admin) {
         this.admin = admin;
     }
-
+    
     public void setLogin(Vista_Login login) {
         this.login = login;
     }
-
+    
 }

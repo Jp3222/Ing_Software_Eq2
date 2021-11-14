@@ -10,11 +10,48 @@ public class cons {
     /**
      *
      */
-    public static final String URL_DICS = System.getProperty("user.home") + "/Escritorio";
-    public static final String URL_FILES = URL_DICS + "/J-Shop";
+    public static final String URL_DICS_1 = System.getProperty("user.home") + "/Escritorio";
+    public static final String URL_DICS_2 = System.getProperty("user.home") + "/Desktop";
+    public static final String URL_FILES = URL_DICS_2 + "/J-Shop";
     public static final String URL_SQL = URL_FILES + "/.BD";
     public static final String URL_RP = URL_FILES + "/Reportes Generados";
     public static final String URL_HT = URL_FILES + "/Historial de Movimientos";
+
+    /**
+     * @param i ruta escogida 
+     * <br>1 - .BD 
+     * <br>2 - Reportes Generados 
+     * <br>3 - Historial de Movimientos
+     * <br>4 - J-Shop
+     * @return ruta existente + ruta escogida
+     */
+    public static String url(int i) {
+        Ficheros ft = new Ficheros();
+        String url = "";
+        if (ft.Exists(URL_DICS_1)) {
+            url += URL_DICS_1;
+        } else if (ft.Exists(URL_DICS_2)) {
+            url += URL_DICS_2;
+        }
+        url += "/J-Shop";
+        switch (i) {
+            case 1 -> {
+                return url + "/.BD";
+            }
+            case 2 -> {
+                return url + "/Reportes Generados";
+            }
+            case 3 -> {
+                return url + "/Historial de Movimientos";
+            }
+            case 4 -> {
+                return url;
+            }
+            default ->
+                throw new NullPointerException("Indice no valido");
+        }
+    }
+
     /**
      * Constantes de la tabla 'productos'
      */

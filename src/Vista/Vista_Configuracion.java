@@ -137,7 +137,7 @@ public class Vista_Configuracion extends javax.swing.JFrame {
     private void Init() {
         try {
             Ficheros ft = new Ficheros();
-            if (!ft.Exists(cons.URL_SQL + "/Install.jshop")) {
+            if (!ft.Exists(cons.url(1) + "/Install.jshop")) {
                 so = Sistema.getNodo().getNodoIll();
                 so.Install(user, pass, url);
                 Sistema s = Sistema.getNodo();
@@ -147,7 +147,7 @@ public class Vista_Configuracion extends javax.swing.JFrame {
             } else {
                 Vista_Login log = new Vista_Login();
                 log.setVisible(true);
-                ft.escribirArchivo(cons.URL_SQL + "/usuario.jshop", user + "-" + pass + "-" + url);
+                ft.escribirArchivo(cons.url(1) + "/Usuario.jshop", user + "-" + pass + "-" + url);
             }
         } catch (IOException e) {
         }

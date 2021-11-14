@@ -59,7 +59,7 @@ public class Sistema {
 
     public void star() {
         fc = new Ficheros();
-        String info = fc.leer(cons.URL_SQL + "/usuario.jshop");
+        String info = fc.leer(cons.url(1) + "/usuario.jshop");
         String sql[] = info.split("-");
         System.out.println(Arrays.toString(sql));
         for (int i = 0; i < sql.length; i++) {
@@ -86,18 +86,18 @@ public class Sistema {
         }
 
         private void crearRutas() {
-            fch.crearCarpeta(cons.URL_DICS);
-            fch.crearCarpeta(cons.URL_FILES);
-            fch.crearCarpeta(cons.URL_SQL);
-            fch.crearCarpeta(cons.URL_HT);
-            fch.crearCarpeta(cons.URL_RP);
+            fch.crearCarpeta(cons.url(4));
+            fch.crearCarpeta(cons.url(1));
+            fch.crearCarpeta(cons.url(2));
+            fch.crearCarpeta(cons.url(3));
         }
 
         private void crearUsuario(String user, String pass, String url) {
             try {
-                String bd = fch.crearArchivo(cons.URL_SQL, "usuario.jshop");
-                String i = fch.crearArchivo(cons.URL_SQL, "Install.jshop");
+                String bd = fch.crearArchivo(cons.url(1), "usuario.jshop");
+                String i = fch.crearArchivo(cons.url(1), "Install.jshop");
                 fch.escribirArchivo(bd, user + "-" + pass + "-" + url);
+                fch.escribirArchivo(i, "Archivo de comprobante de instalacion");
             } catch (IOException ex) {
                 Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
             }
