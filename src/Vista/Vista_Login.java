@@ -29,7 +29,7 @@ public class Vista_Login extends javax.swing.JFrame {
         jbtLogin.addKeyListener(controlador);
         jtfUsuario.addKeyListener(controlador);
         jpfPassword.addKeyListener(controlador);
-        this.setIconImage(new ImageIcon(getClass().getResource("/Img/Icono.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
     }
 
     public void setEmpleado(CL_Empleado empleado) {
@@ -51,11 +51,12 @@ public class Vista_Login extends javax.swing.JFrame {
         jbtAjustes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Inicio de sesión");
+        setTitle("J - Shop");
         setBackground(new java.awt.Color(4, 0, 255));
         setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(177, 177, 255));
+        jPanel3.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
         jPanel3.setFocusCycleRoot(true);
         jPanel3.setFocusTraversalPolicyProvider(true);
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 600));
@@ -68,14 +69,14 @@ public class Vista_Login extends javax.swing.JFrame {
         txt1.setText("Inicio de sesion");
         txt1.setOpaque(true);
         txt1.setPreferredSize(new java.awt.Dimension(400, 50));
-        jPanel3.add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jPanel3.add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 398, -1));
 
         txtIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login.png"))); // NOI18N
+        txtIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/JSHOP_2.png"))); // NOI18N
         jPanel3.add(txtIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 400, 200));
 
         txtU.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        txtU.setForeground(new java.awt.Color(0, 0, 0));
+        txtU.setForeground(new java.awt.Color(255, 253, 255));
         txtU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtU.setText("Usuario");
         jPanel3.add(txtU, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 150, 30));
@@ -86,7 +87,7 @@ public class Vista_Login extends javax.swing.JFrame {
         jPanel3.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 200, 30));
 
         txtC.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        txtC.setForeground(new java.awt.Color(0, 0, 0));
+        txtC.setForeground(new java.awt.Color(255, 255, 255));
         txtC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtC.setText("Contraseña");
         jPanel3.add(txtC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 150, 30));
@@ -96,22 +97,24 @@ public class Vista_Login extends javax.swing.JFrame {
         jpfPassword.setToolTipText("Ingrese su contraseña");
         jPanel3.add(jpfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 200, 30));
 
-        jbtLogin.setBackground(new java.awt.Color(187, 187, 187));
-        jbtLogin.setForeground(new java.awt.Color(0, 0, 0));
+        jbtLogin.setBackground(new java.awt.Color(96, 17, 207));
+        jbtLogin.setForeground(new java.awt.Color(255, 255, 255));
         jbtLogin.setText("Iniciar Sesion");
+        jbtLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(254, 254, 254)));
         jbtLogin.setFocusPainted(false);
         jPanel3.add(jbtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 300, 30));
 
-        jbtAjustes.setBackground(new java.awt.Color(187, 187, 187));
-        jbtAjustes.setForeground(new java.awt.Color(0, 0, 0));
-        jbtAjustes.setText("Config.");
+        jbtAjustes.setBackground(new java.awt.Color(23, 23, 23));
+        jbtAjustes.setForeground(new java.awt.Color(254, 254, 254));
+        jbtAjustes.setText("Configurar Base de Datos");
+        jbtAjustes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jbtAjustes.setFocusPainted(false);
         jbtAjustes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtAjustesActionPerformed(evt);
             }
         });
-        jPanel3.add(jbtAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 60, 50));
+        jPanel3.add(jbtAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 300, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

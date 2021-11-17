@@ -141,10 +141,6 @@ public class Operaciones {
             System.out.println(e.getMessage());
         }
     }
-
-    public void delete() {
-    }
-
     //Operaciones para el manejo de movimientos
     public void setMovimiento(CL_Movimiento mov) {
         try {

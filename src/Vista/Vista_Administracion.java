@@ -43,10 +43,10 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        txt1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -54,16 +54,16 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel1.setBackground(new java.awt.Color(35, 35, 40));
         jPanel1.setForeground(new java.awt.Color(171, 178, 185));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(255, 0, 193));
+        jPanel2.setBackground(new java.awt.Color(35, 35, 40));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -93,65 +93,59 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 300, 600);
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 255, 250));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setForeground(new java.awt.Color(1, 1, 1));
         jTabbedPane1.setFocusable(false);
 
-        jPanel4.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel4.setBackground(new java.awt.Color(35, 35, 40));
         jPanel4.setBorder(null);
         jPanel4.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.setLayout(null);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "ID", "Producto", "Unidades"
+                "Producto", "Marca", "Pz. Existentes"
             }
         ));
-        jTable1.setEnabled(false);
-        jTable1.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jTable1);
 
         jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 479, 462);
+        jScrollPane1.setBounds(12, 0, 400, 450);
 
-        txt1.setForeground(new java.awt.Color(0, 0, 0));
-        txt1.setText("Buscar:");
-        jPanel4.add(txt1);
-        txt1.setBounds(480, 0, 70, 25);
+        jLabel2.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
+        jLabel2.setText("Buscar");
+        jPanel4.add(jLabel2);
+        jLabel2.setBounds(410, 0, 50, 25);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Marca" }));
-        jPanel4.add(jComboBox1);
-        jComboBox1.setBounds(750, 0, 110, 25);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField1);
-        jTextField1.setBounds(550, 0, 200, 25);
-
-        jButton1.setBackground(new java.awt.Color(213, 216, 220));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setBackground(new java.awt.Color(92, 92, 92));
+        jButton1.setForeground(new java.awt.Color(254, 254, 254));
         jButton1.setText("Buscar");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jButton1);
-        jButton1.setBounds(480, 60, 390, 25);
+        jButton1.setBounds(780, 0, 100, 25);
 
-        jTabbedPane1.addTab("Prouctos en inventario", null, jPanel4, "Consulta un listado de los productos\nen inventario ");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre", "Marca" }));
+        jPanel4.add(jComboBox1);
+        jComboBox1.setBounds(460, 0, 100, 25);
+
+        jTextField1.setBackground(new java.awt.Color(254, 254, 254));
+        jTextField1.setForeground(new java.awt.Color(1, 1, 1));
+        jTextField1.setText("jTextField1");
+        jPanel4.add(jTextField1);
+        jTextField1.setBounds(650, 50, 78, 27);
+
+        jTabbedPane1.addTab("Inventario", null, jPanel4, "Consulta un listado de los productos\nen inventario ");
 
         jPanel5.setBackground(new java.awt.Color(171, 178, 185));
         jPanel5.setBorder(null);
         jPanel5.setForeground(new java.awt.Color(0, 0, 0));
 
+        jTable2.setBackground(new java.awt.Color(35, 35, 40));
+        jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
+        jTable2.setForeground(new java.awt.Color(254, 254, 254));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -163,6 +157,7 @@ public class Vista_Administracion extends javax.swing.JFrame {
                 "Marca", "Productos"
             }
         ));
+        jTable2.setFillsViewportHeight(true);
         jScrollPane2.setViewportView(jTable2);
 
         txt2.setForeground(new java.awt.Color(0, 0, 0));
@@ -186,8 +181,7 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(464, 464, 464)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,10 +191,10 @@ public class Vista_Administracion extends javax.swing.JFrame {
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 26, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,27 +203,24 @@ public class Vista_Administracion extends javax.swing.JFrame {
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Marcas", null, jPanel5, "Consulta un listado de los productos\nen inventario ");
 
-        jPanel6.setBackground(new java.awt.Color(171, 178, 185));
-        jPanel6.setBorder(null);
-        jPanel6.setForeground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 880, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 463, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Estadisticas", null, jPanel6, "Consulta un listado de los productos\nen inventario ");
+        jTabbedPane1.addTab("Agenda", jPanel3);
 
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(300, 0, 900, 500);
@@ -258,10 +249,6 @@ public class Vista_Administracion extends javax.swing.JFrame {
         vista.setTxt(2);
     }//GEN-LAST:event_jbtInventarioActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
@@ -273,11 +260,12 @@ public class Vista_Administracion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -287,7 +275,6 @@ public class Vista_Administracion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbtInventario;
     private javax.swing.JButton jbtSalir;
-    private javax.swing.JLabel txt1;
     private javax.swing.JLabel txt2;
     // End of variables declaration//GEN-END:variables
 }

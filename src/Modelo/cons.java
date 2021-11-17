@@ -11,16 +11,19 @@ public class cons {
      *
      */
     public static final String URL_DICS_1 = System.getProperty("user.home") + "/Escritorio";
+    /**
+     *
+     */
     public static final String URL_DICS_2 = System.getProperty("user.home") + "/Desktop";
+    /**
+     *
+     */
     public static final String URL_FILES = URL_DICS_2 + "/J-Shop";
-    public static final String URL_SQL = URL_FILES + "/.BD";
-    public static final String URL_RP = URL_FILES + "/Reportes Generados";
-    public static final String URL_HT = URL_FILES + "/Historial de Movimientos";
 
     /**
-     * @param i ruta escogida 
-     * <br>1 - .BD 
-     * <br>2 - Reportes Generados 
+     * @param i ruta escogida
+     * <br>1 - .BD
+     * <br>2 - Reportes Generados
      * <br>3 - Historial de Movimientos
      * <br>4 - J-Shop
      * @return ruta existente + ruta escogida
@@ -55,7 +58,7 @@ public class cons {
     /**
      * Constantes de la tabla 'productos'
      */
-    private static final String Productos[] = {
+    public static final String Productos[] = {
         "ID",
         "Clave",
         "Nombre",
@@ -67,7 +70,7 @@ public class cons {
     /**
      * Constantes de la tabla 'empleados'
      */
-    private static final String Usuarios[] = {
+    public static final String Usuarios[] = {
         "ID",
         "Usuario",
         "Nombre",
@@ -95,7 +98,7 @@ public class cons {
     /**
      * Constantes de los dias de la semana
      */
-    private static final String Dias[] = {
+    public static final String Dias[] = {
         "Domingo",
         "Lunes",
         "Martes",

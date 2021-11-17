@@ -23,16 +23,14 @@ public class Main {
      */
     public static void Star() {
         Ficheros ft = new Ficheros();
-        Sistema so = Sistema.getNodo();
-        if (!ft.Exists(cons.url(1)+"/Install.jshop")) {
-            Vista_Configuracion vc = new Vista_Configuracion();
-            vc.setVisible(true);
+        Sistema sistema = Sistema.getNodo();
+        if (!ft.Exists(cons.url(1))) {
+            Vista_Configuracion vista = new Vista_Configuracion();
+            vista.setVisible(true);
         } else {
-            so.star();
+            sistema.star();
             Vista_Login log = new Vista_Login();
-
             log.setVisible(true);
         }
-
     }
 }

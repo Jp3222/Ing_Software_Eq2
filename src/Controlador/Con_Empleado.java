@@ -1,12 +1,13 @@
 package Controlador;
 
-import Modelo.BD;
+import Modelo.CL_Empleado;
 import Modelo.Operaciones;
 import Modelo.cons;
 import Vista.Vista_Empleados;
 import Vista.Vista_Empleados.Create;
 import Vista.Vista_Empleados.Read;
 import Vista.Vista_Empleados.Update;
+import Vista.Vista_Empleados.Delete;
 import Vista.Vista_Info;
 import Vista.Vista_MenuAdmin;
 import java.awt.event.ActionEvent;
@@ -24,6 +25,7 @@ public class Con_Empleado implements ActionListener {
     private Create create;
     private Read read;
     private Update update;
+    private Delete delete;
     //
     private Vista_MenuAdmin admin;
     private Vista_Info info;
@@ -35,6 +37,7 @@ public class Con_Empleado implements ActionListener {
         this.create = empleado.getCreate();
         this.read = empleado.getRead();
         this.update = empleado.getUpdate();
+        this.delete = empleado.getDelete();
         opc = Operaciones.getNodo();
 
     }
@@ -50,7 +53,10 @@ public class Con_Empleado implements ActionListener {
                 Actualizar();
             case "Actualizar Tabla" ->
                 ActualizarTB();
-
+            case "Buscar","buscar" ->
+                buscar(e.getSource());
+            case "Remover" ->
+                Borrar();
         }
     }
 
@@ -78,7 +84,31 @@ public class Con_Empleado implements ActionListener {
 
     public void buscar(Object obj) {
         if (update.getJbtBuscar() == obj) {
-            update.setEmpleado(opc.getEmpleado(update.getJtfValue()));
+            if (update.getJtfValue().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            CL_Empleado cl = opc.getEmpleado(update.getJtfValue());
+            if (cl == null) {
+                JOptionPane.showMessageDialog(null, "Usuario No Encontrado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            } else {
+                update.setEmpleado(cl);
+                update.clear2();
+            }
+        } else if (delete.getJbtBuscar_2() == obj) {
+            if (delete.getValue().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Campos Vacios", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            CL_Empleado cl = opc.getEmpleado(delete.getValue());
+            delete.setEmpleado(cl);
+            if (cl == null) {
+                JOptionPane.showMessageDialog(null, "Usuario No Encontrado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            } else {
+                delete.setEmpleado(cl);
+                delete.clear();
+            }
+
         }
     }
 
@@ -87,7 +117,25 @@ public class Con_Empleado implements ActionListener {
     }
 
     private void Actualizar() {
+        if (update.getEmpleado() == null) {
+            JOptionPane.showMessageDialog(null, "Objeto invalido", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        opc.actEmpleado(update.getEmpleado());
+        update.clear();
+    }
 
+    private void Borrar() {
+        CL_Empleado cl = delete.getEmpleado();
+        if (cl == null) {
+            cons.getMessage("No es posible realizar estaccion", "", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        opc.brEmpleado(cl);
+        delete.clear();
+        cons.getMessage("El empleado: ",
+                cl.getNombre() + " " + cl.getA_paterno() + " " + cl.getA_materno() + "Ha sido eliminado",
+                "Mensaje", JOptionPane.INFORMATION_MESSAGE);
     }
 
 }

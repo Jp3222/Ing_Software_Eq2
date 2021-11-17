@@ -6,7 +6,6 @@ import Modelo.Excepciones;
 import Modelo.Ficheros;
 import Modelo.Operaciones;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -40,7 +39,7 @@ public class Sistema {
     //
     private Install NodoIll;
     //
-    Ficheros fc;
+    private Ficheros fc;
 
     public Install getNodoIll() {
         if (NodoIll == null) {
@@ -59,11 +58,9 @@ public class Sistema {
 
     public void star() {
         fc = new Ficheros();
-        String info = fc.leer(cons.url(1) + "/usuario.jshop");
-        String sql[] = info.split("-");
-        System.out.println(Arrays.toString(sql));
+        String sql[] = fc.leer(cons.url(1) + "/Usuario.jshop").split("-");
         for (int i = 0; i < sql.length; i++) {
-            sql[i] = sql[i].trim();
+            sql[i] = sql[i].trim().replace(" ", "");
         }
         con = BD.getNodo(sql[0], sql[1], sql[2]);
         con.Conectar();
@@ -94,7 +91,7 @@ public class Sistema {
 
         private void crearUsuario(String user, String pass, String url) {
             try {
-                String bd = fch.crearArchivo(cons.url(1), "usuario.jshop");
+                String bd = fch.crearArchivo(cons.url(1), "Usuario.jshop");
                 String i = fch.crearArchivo(cons.url(1), "Install.jshop");
                 fch.escribirArchivo(bd, user + "-" + pass + "-" + url);
                 fch.escribirArchivo(i, "Archivo de comprobante de instalacion");
@@ -152,7 +149,7 @@ public class Sistema {
         }
 
         public void relog() {
-            relog = cl.get(Calendar.HOUR) + ":" + cl.get(Calendar.MINUTE) + ":" + cl.get(Calendar.SECOND);
+            relog = cl.get(Calendar.HOUR_OF_DAY) + ":" + cl.get(Calendar.MINUTE) + ":" + cl.get(Calendar.SECOND);
             if (cl.get(Calendar.HOUR_OF_DAY) > 11) {
                 relog += " PM";
             } else {
