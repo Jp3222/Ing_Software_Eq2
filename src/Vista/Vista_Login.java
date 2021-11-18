@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.Con_Login;
 import Controlador.Evt_Ventana;
+import Modelo.BD;
 import Modelo.CL_Empleado;
 import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
@@ -29,6 +30,11 @@ public class Vista_Login extends javax.swing.JFrame {
         jbtLogin.addKeyListener(controlador);
         jtfUsuario.addKeyListener(controlador);
         jpfPassword.addKeyListener(controlador);
+        if (BD.getNodo().isConexion()) {
+            txtEstado.setText("Estado: Conectado");
+        } else {
+            txtEstado.setText("Estado: Desconectado");
+        }
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
     }
 
@@ -45,10 +51,11 @@ public class Vista_Login extends javax.swing.JFrame {
         txtIcon = new javax.swing.JLabel();
         txtU = new javax.swing.JLabel();
         jtfUsuario = new javax.swing.JTextField();
-        txtC = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JLabel();
         jpfPassword = new javax.swing.JPasswordField();
         jbtLogin = new javax.swing.JButton();
         jbtAjustes = new javax.swing.JButton();
+        txtC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("J - Shop");
@@ -86,11 +93,11 @@ public class Vista_Login extends javax.swing.JFrame {
         jtfUsuario.setToolTipText("Ingrese su usuario");
         jPanel3.add(jtfUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 200, 30));
 
-        txtC.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
-        txtC.setForeground(new java.awt.Color(255, 255, 255));
-        txtC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtC.setText("Contraseña");
-        jPanel3.add(txtC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 150, 30));
+        txtEstado.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        txtEstado.setForeground(new java.awt.Color(255, 255, 255));
+        txtEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtEstado.setText("----");
+        jPanel3.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 400, 30));
 
         jpfPassword.setBackground(new java.awt.Color(255, 255, 255));
         jpfPassword.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,6 +122,12 @@ public class Vista_Login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jbtAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 300, 30));
+
+        txtC.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
+        txtC.setForeground(new java.awt.Color(255, 255, 255));
+        txtC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtC.setText("Contraseña");
+        jPanel3.add(txtC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 150, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +177,7 @@ public class Vista_Login extends javax.swing.JFrame {
     private javax.swing.JTextField jtfUsuario;
     private javax.swing.JLabel txt1;
     private javax.swing.JLabel txtC;
+    private javax.swing.JLabel txtEstado;
     private javax.swing.JLabel txtIcon;
     private javax.swing.JLabel txtU;
     // End of variables declaration//GEN-END:variables

@@ -568,8 +568,11 @@ public class Vista_Empleados extends javax.swing.JFrame {
         Panel_Read.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Read.setLayout(null);
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setBackground(new java.awt.Color(35, 35, 40));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
+        jScrollPane1.setForeground(new java.awt.Color(254, 254, 254));
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setEnabled(false);
 
         jtConsultas.setBackground(new java.awt.Color(35, 35, 40));
         jtConsultas.setForeground(new java.awt.Color(254, 254, 254));
@@ -583,6 +586,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         ));
         jtConsultas.setColumnSelectionAllowed(true);
         jtConsultas.setEnabled(false);
+        jtConsultas.setFillsViewportHeight(true);
         jtConsultas.setGridColor(new java.awt.Color(35, 35, 35));
         jtConsultas.setInheritsPopupMenu(true);
         jtConsultas.setSelectionBackground(new java.awt.Color(35, 35, 40));
@@ -591,7 +595,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 102, 870, 360);
+        jScrollPane1.setBounds(20, 102, 850, 330);
 
         jbtConsultar.setText("Actualizar Tabla");
         jbtConsultar.setFocusPainted(false);
@@ -607,6 +611,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jcbColum.setBackground(new java.awt.Color(35, 35, 40));
         jcbColum.setForeground(new java.awt.Color(254, 254, 254));
         jcbColum.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario" }));
+        jcbColum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.add(jcbColum);
         jcbColum.setBounds(210, 10, 100, 25);
 
@@ -615,7 +620,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jbtBuscar.setText("Buscar");
         jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.add(jbtBuscar);
-        jbtBuscar.setBounds(650, 10, 120, 25);
+        jbtBuscar.setBounds(650, 10, 140, 25);
 
         jbtActualizar.setBackground(new java.awt.Color(182, 182, 182));
         jbtActualizar.setForeground(new java.awt.Color(0, 0, 0));
@@ -638,7 +643,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt9.setBounds(130, 110, 200, 25);
 
         jtfNombre_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfNombre_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfNombre_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfNombre_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfNombre_2);
@@ -651,7 +656,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt10.setBounds(130, 160, 200, 25);
 
         jtfApaterno_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfApaterno_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfApaterno_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfApaterno_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfApaterno_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfApaterno_2);
@@ -664,7 +669,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt11.setBounds(130, 210, 200, 25);
 
         jtfAmaterno_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfAmaterno_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfAmaterno_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfAmaterno_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfAmaterno_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfAmaterno_2);
@@ -677,7 +682,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt12.setBounds(130, 260, 200, 25);
 
         jtfEdad_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfEdad_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfEdad_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfEdad_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfEdad_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfEdad_2);
@@ -704,7 +709,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt15.setBounds(130, 360, 200, 25);
 
         jtfUsuario_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfUsuario_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfUsuario_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfUsuario_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfUsuario_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfUsuario_2);
@@ -717,7 +722,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt16.setBounds(130, 410, 200, 25);
 
         jtfPassword_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfPassword_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPassword_2.setForeground(new java.awt.Color(1, 1, 1));
         jtfPassword_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfPassword_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfPassword_2);
@@ -731,7 +736,8 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt17.setBounds(70, 10, 120, 25);
 
         jtfValue.setBackground(new java.awt.Color(255, 255, 255));
-        jtfValue.setForeground(new java.awt.Color(0, 0, 0));
+        jtfValue.setForeground(new java.awt.Color(1, 1, 1));
+        jtfValue.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfValue);
         jtfValue.setBounds(330, 10, 300, 25);
@@ -744,7 +750,8 @@ public class Vista_Empleados extends javax.swing.JFrame {
         txt18.setBounds(130, 60, 200, 25);
 
         jtfID.setBackground(new java.awt.Color(255, 255, 255));
-        jtfID.setForeground(new java.awt.Color(0, 0, 0));
+        jtfID.setForeground(new java.awt.Color(1, 1, 1));
+        jtfID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfID);
         jtfID.setBounds(330, 60, 300, 25);
@@ -773,7 +780,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jtfValue_2.setForeground(new java.awt.Color(0, 0, 0));
         jtfValue_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Delete.add(jtfValue_2);
-        jtfValue_2.setBounds(270, 10, 220, 25);
+        jtfValue_2.setBounds(270, 10, 250, 25);
 
         jbtBuscar_2.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar_2.setForeground(new java.awt.Color(0, 0, 0));
@@ -802,7 +809,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtaInfo);
 
         Panel_Delete.add(jScrollPane2);
-        jScrollPane2.setBounds(70, 50, 420, 380);
+        jScrollPane2.setBounds(70, 50, 450, 370);
 
         jbtCancelar_3.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar_3.setForeground(new java.awt.Color(0, 0, 0));

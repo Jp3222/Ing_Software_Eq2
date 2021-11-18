@@ -367,24 +367,26 @@ public class Vista_Productos extends javax.swing.JFrame {
         setTitle("Productos");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(175, 178, 185));
+        jPanel1.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jPanel2.setBackground(new java.awt.Color(177, 177, 255));
+        jPanel2.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login.png"))); // NOI18N
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 300, 200);
+        jLabel1.setBounds(0, 0, 280, 200);
 
         jbtAtras.setBackground(new java.awt.Color(255, 0, 0));
         jbtAtras.setForeground(new java.awt.Color(0, 0, 0));
         jbtAtras.setText("Atras");
         jbtAtras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtAtras);
-        jbtAtras.setBounds(0, 550, 300, 50);
+        jbtAtras.setBounds(10, 520, 260, 50);
 
         jbtInfo.setBackground(new java.awt.Color(200, 0, 255));
         jbtInfo.setForeground(new java.awt.Color(0, 0, 0));
@@ -396,70 +398,80 @@ public class Vista_Productos extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jbtInfo);
-        jbtInfo.setBounds(0, 320, 300, 50);
+        jbtInfo.setBounds(10, 320, 260, 50);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 300, 600);
+        jPanel2.setBounds(10, 10, 280, 580);
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 250, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(254, 254, 254));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
 
-        Panel_Create.setBackground(new java.awt.Color(171, 178, 185));
+        Panel_Create.setBackground(new java.awt.Color(35, 35, 40));
         Panel_Create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.setLayout(null);
 
-        txt1.setForeground(new java.awt.Color(1, 1, 1));
+        txt1.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt1.setForeground(new java.awt.Color(254, 254, 254));
         txt1.setText("Nombre");
         Panel_Create.add(txt1);
         txt1.setBounds(30, 20, 200, 25);
 
-        jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNombre.setBackground(new java.awt.Color(254, 254, 254));
         jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfNombre);
         jtfNombre.setBounds(230, 20, 300, 25);
 
-        txt2.setForeground(new java.awt.Color(1, 1, 1));
+        txt2.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt2.setForeground(new java.awt.Color(254, 254, 254));
         txt2.setText("Marca");
         Panel_Create.add(txt2);
         txt2.setBounds(30, 70, 200, 25);
 
-        jcbMarcas.setBackground(new java.awt.Color(255, 255, 255));
-        jcbMarcas.setForeground(new java.awt.Color(0, 0, 0));
-        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola", "N/D" }));
+        jcbMarcas.setBackground(new java.awt.Color(35, 35, 40));
+        jcbMarcas.setForeground(new java.awt.Color(254, 254, 254));
+        jcbMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grat Value", "Nestle", "Bombo", "Lala ", "Danone", "Sabritas ", "Marinela ", "Alpura", "Kellogs ", "Quaker ", "Coca cola", "La costeña", "Sigma", "Barcel", "Gamesa ", "Knorr ", "Bonafont ", "Jumex ", "Peñafiel ", "McCormick" }));
+        jcbMarcas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jcbMarcas);
         jcbMarcas.setBounds(230, 70, 300, 25);
 
-        txt3.setForeground(new java.awt.Color(1, 1, 1));
+        txt3.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt3.setForeground(new java.awt.Color(254, 254, 254));
         txt3.setText("Contenido");
         Panel_Create.add(txt3);
         txt3.setBounds(30, 130, 200, 25);
 
-        jtfContenido.setBackground(new java.awt.Color(255, 255, 255));
+        jtfContenido.setBackground(new java.awt.Color(254, 254, 254));
         jtfContenido.setForeground(new java.awt.Color(0, 0, 0));
+        jtfContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfContenido.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfContenido);
         jtfContenido.setBounds(230, 130, 300, 25);
 
-        txt4.setForeground(new java.awt.Color(1, 1, 1));
+        txt4.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt4.setForeground(new java.awt.Color(254, 254, 254));
         txt4.setText("Unidad de medida");
         Panel_Create.add(txt4);
         txt4.setBounds(30, 190, 200, 25);
 
-        jcbUDM.setBackground(new java.awt.Color(255, 255, 255));
-        jcbUDM.setForeground(new java.awt.Color(0, 0, 0));
+        jcbUDM.setBackground(new java.awt.Color(35, 35, 40));
+        jcbUDM.setForeground(new java.awt.Color(254, 254, 254));
         jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
+        jcbUDM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jcbUDM);
         jcbUDM.setBounds(230, 190, 300, 25);
 
-        txt5.setForeground(new java.awt.Color(1, 1, 1));
+        txt5.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt5.setForeground(new java.awt.Color(254, 254, 254));
         txt5.setText("Precio");
         Panel_Create.add(txt5);
         txt5.setBounds(30, 260, 200, 25);
 
-        jtfPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        jtfPrecio.setBackground(new java.awt.Color(254, 254, 254));
         jtfPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Create.add(jtfPrecio);
         jtfPrecio.setBounds(230, 260, 300, 25);
@@ -480,10 +492,14 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Insertar", Panel_Create);
 
-        Panel_Read.setBackground(new java.awt.Color(180, 180, 180));
+        Panel_Read.setBackground(new java.awt.Color(35, 35, 40));
         Panel_Read.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Read.setLayout(null);
 
+        jtConsultas.setAutoCreateRowSorter(true);
+        jtConsultas.setBackground(new java.awt.Color(35, 35, 40));
+        jtConsultas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
+        jtConsultas.setForeground(new java.awt.Color(254, 254, 254));
         jtConsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -492,10 +508,14 @@ public class Vista_Productos extends javax.swing.JFrame {
                 "ID", "Clave", "Nombre", "Marca", "Contenido", "udm", "precio"
             }
         ));
+        jtConsultas.setEnabled(false);
+        jtConsultas.setFillsViewportHeight(true);
+        jtConsultas.setSelectionBackground(new java.awt.Color(35, 35, 40));
+        jtConsultas.setSelectionForeground(new java.awt.Color(254, 254, 254));
         jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 102, 890, 360);
+        jScrollPane1.setBounds(20, 102, 840, 360);
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
@@ -503,21 +523,26 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
-        Panel_Update.setBackground(new java.awt.Color(180, 180, 180));
+        Panel_Update.setBackground(new java.awt.Color(35, 35, 40));
         Panel_Update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.setLayout(null);
 
-        txt6.setForeground(new java.awt.Color(1, 1, 1));
+        txt6.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt6.setForeground(new java.awt.Color(254, 254, 254));
         txt6.setText("Buscar");
         Panel_Update.add(txt6);
         txt6.setBounds(70, 10, 100, 25);
 
+        jcbMB.setBackground(new java.awt.Color(35, 35, 40));
+        jcbMB.setForeground(new java.awt.Color(254, 254, 254));
         jcbMB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        jcbMB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         Panel_Update.add(jcbMB);
         jcbMB.setBounds(170, 10, 100, 25);
 
-        jtfMD.setBackground(new java.awt.Color(255, 255, 255));
-        jtfMD.setForeground(new java.awt.Color(0, 0, 0));
+        jtfMD.setBackground(new java.awt.Color(254, 254, 254));
+        jtfMD.setForeground(new java.awt.Color(1, 1, 1));
+        jtfMD.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfMD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfMD);
         jtfMD.setBounds(270, 10, 300, 25);
@@ -529,77 +554,95 @@ public class Vista_Productos extends javax.swing.JFrame {
         Panel_Update.add(jbtBuscar);
         jbtBuscar.setBounds(650, 10, 120, 25);
 
-        txt7.setForeground(new java.awt.Color(1, 1, 1));
+        txt7.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt7.setForeground(new java.awt.Color(254, 254, 254));
         txt7.setText("ID");
         Panel_Update.add(txt7);
         txt7.setBounds(70, 60, 200, 25);
 
         jtfID.setEditable(false);
-        jtfID.setBackground(new java.awt.Color(255, 255, 255));
-        jtfID.setForeground(new java.awt.Color(0, 0, 0));
+        jtfID.setBackground(new java.awt.Color(254, 254, 254));
+        jtfID.setForeground(new java.awt.Color(1, 1, 1));
+        jtfID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfID);
         jtfID.setBounds(270, 60, 300, 25);
 
-        txt8.setForeground(new java.awt.Color(1, 1, 1));
+        txt8.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt8.setForeground(new java.awt.Color(254, 254, 254));
         txt8.setText("Clave");
         Panel_Update.add(txt8);
         txt8.setBounds(70, 110, 200, 25);
 
         jtfClave_2.setEditable(false);
-        jtfClave_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfClave_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfClave_2.setBackground(new java.awt.Color(254, 254, 254));
+        jtfClave_2.setForeground(new java.awt.Color(1, 1, 1));
+        jtfClave_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfClave_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfClave_2);
         jtfClave_2.setBounds(270, 110, 300, 25);
 
-        txt9.setForeground(new java.awt.Color(1, 1, 1));
+        txt9.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt9.setForeground(new java.awt.Color(254, 254, 254));
         txt9.setText("Nombre");
         Panel_Update.add(txt9);
         txt9.setBounds(70, 160, 200, 25);
 
-        jtfNombre_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfNombre_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre_2.setBackground(new java.awt.Color(254, 254, 254));
+        jtfNombre_2.setForeground(new java.awt.Color(1, 1, 1));
+        jtfNombre_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfNombre_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfNombre_2);
         jtfNombre_2.setBounds(270, 160, 300, 25);
 
-        txt10.setForeground(new java.awt.Color(1, 1, 1));
+        txt10.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt10.setForeground(new java.awt.Color(254, 254, 254));
         txt10.setText("Marca");
         Panel_Update.add(txt10);
         txt10.setBounds(70, 210, 200, 25);
 
+        jcbMarcas_2.setBackground(new java.awt.Color(35, 35, 40));
+        jcbMarcas_2.setForeground(new java.awt.Color(254, 254, 254));
         jcbMarcas_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sabritas", "Coca Cola" }));
+        jcbMarcas_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         Panel_Update.add(jcbMarcas_2);
         jcbMarcas_2.setBounds(270, 210, 300, 25);
 
-        txt11.setForeground(new java.awt.Color(1, 1, 1));
+        txt11.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt11.setForeground(new java.awt.Color(254, 254, 254));
         txt11.setText("Contenido");
         Panel_Update.add(txt11);
         txt11.setBounds(70, 260, 200, 25);
 
-        jtfContenido_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfContenido_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfContenido_2.setBackground(new java.awt.Color(254, 254, 254));
+        jtfContenido_2.setForeground(new java.awt.Color(1, 1, 1));
+        jtfContenido_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfContenido_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfContenido_2);
         jtfContenido_2.setBounds(270, 260, 300, 25);
 
-        txt12.setForeground(new java.awt.Color(1, 1, 1));
+        txt12.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt12.setForeground(new java.awt.Color(254, 254, 254));
         txt12.setText("Unidad de medida");
         Panel_Update.add(txt12);
         txt12.setBounds(70, 310, 200, 25);
 
+        jcbUDM_2.setBackground(new java.awt.Color(35, 35, 40));
+        jcbUDM_2.setForeground(new java.awt.Color(254, 254, 254));
         jcbUDM_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
+        jcbUDM_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         Panel_Update.add(jcbUDM_2);
         jcbUDM_2.setBounds(270, 310, 300, 25);
 
-        txt13.setForeground(new java.awt.Color(1, 1, 1));
+        txt13.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt13.setForeground(new java.awt.Color(254, 254, 254));
         txt13.setText("Precio");
         Panel_Update.add(txt13);
         txt13.setBounds(70, 360, 200, 25);
 
-        jtfPrecio_2.setBackground(new java.awt.Color(255, 255, 255));
-        jtfPrecio_2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPrecio_2.setBackground(new java.awt.Color(254, 254, 254));
+        jtfPrecio_2.setForeground(new java.awt.Color(1, 1, 1));
+        jtfPrecio_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jtfPrecio_2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Update.add(jtfPrecio_2);
         jtfPrecio_2.setBounds(270, 360, 300, 25);
@@ -620,38 +663,40 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Modificar", Panel_Update);
 
-        Panel_Delete.setBackground(new java.awt.Color(180, 180, 180));
+        Panel_Delete.setBackground(new java.awt.Color(35, 35, 40));
         Panel_Delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Delete.setLayout(null);
 
-        txt14.setForeground(new java.awt.Color(1, 1, 1));
+        txt14.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt14.setForeground(new java.awt.Color(254, 254, 254));
         txt14.setText("Buscar");
         Panel_Delete.add(txt14);
-        txt14.setBounds(70, 10, 120, 25);
+        txt14.setBounds(70, 10, 100, 25);
 
         jcbMB_2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
         Panel_Delete.add(jcbMB_2);
-        jcbMB_2.setBounds(210, 10, 100, 25);
+        jcbMB_2.setBounds(170, 10, 100, 25);
 
         jtfMB.setBackground(new java.awt.Color(255, 255, 255));
         jtfMB.setForeground(new java.awt.Color(0, 0, 0));
         jtfMB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         Panel_Delete.add(jtfMB);
-        jtfMB.setBounds(330, 10, 300, 25);
+        jtfMB.setBounds(270, 10, 250, 25);
 
         jbtBuscar_2.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar_2.setForeground(new java.awt.Color(0, 0, 0));
         jbtBuscar_2.setText("Buscar");
         jbtBuscar_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Delete.add(jbtBuscar_2);
-        jbtBuscar_2.setBounds(650, 10, 120, 25);
+        jbtBuscar_2.setBounds(570, 10, 120, 25);
 
         jbtRemover.setBackground(new java.awt.Color(182, 182, 182));
         jbtRemover.setForeground(new java.awt.Color(0, 0, 0));
         jbtRemover.setText("Eliminar");
         jbtRemover.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtRemover.setOpaque(true);
         Panel_Delete.add(jbtRemover);
-        jbtRemover.setBounds(140, 260, 140, 50);
+        jbtRemover.setBounds(640, 70, 140, 50);
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
@@ -664,19 +709,20 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtaInfo);
 
         Panel_Delete.add(jScrollPane2);
-        jScrollPane2.setBounds(70, 80, 700, 150);
+        jScrollPane2.setBounds(70, 40, 450, 410);
 
-        jbtCancelar_3.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCancelar_3.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar_3.setForeground(new java.awt.Color(0, 0, 0));
         jbtCancelar_3.setText("Cancelar");
         jbtCancelar_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtCancelar_3.setOpaque(true);
         Panel_Delete.add(jbtCancelar_3);
-        jbtCancelar_3.setBounds(450, 260, 140, 50);
+        jbtCancelar_3.setBounds(640, 160, 140, 50);
 
         jTabbedPane1.addTab("Borrar", Panel_Delete);
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 0, 900, 530);
+        jTabbedPane1.setBounds(300, 10, 890, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -686,9 +732,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

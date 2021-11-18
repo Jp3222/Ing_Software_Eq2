@@ -139,9 +139,10 @@ public class Vista_Administracion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Inventario", null, jPanel4, "Consulta un listado de los productos\nen inventario ");
 
-        jPanel5.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel5.setBackground(new java.awt.Color(35, 35, 40));
         jPanel5.setBorder(null);
         jPanel5.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel5.setLayout(null);
 
         jTable2.setBackground(new java.awt.Color(35, 35, 40));
         jTable2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
@@ -160,52 +161,32 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jTable2.setFillsViewportHeight(true);
         jScrollPane2.setViewportView(jTable2);
 
+        jPanel5.add(jScrollPane2);
+        jScrollPane2.setBounds(0, 190, 880, 273);
+
         txt2.setForeground(new java.awt.Color(0, 0, 0));
         txt2.setText("Buscar:");
+        jPanel5.add(txt2);
+        txt2.setBounds(464, 12, 70, 25);
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jPanel5.add(jTextField2);
+        jTextField2.setBounds(534, 12, 200, 25);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Marca" }));
+        jPanel5.add(jComboBox2);
+        jComboBox2.setBounds(734, 12, 110, 25);
 
         jButton2.setBackground(new java.awt.Color(213, 216, 220));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Buscar");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(464, 464, 464)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 26, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel5.add(jButton2);
+        jButton2.setBounds(464, 72, 390, 25);
 
         jTabbedPane1.addTab("Marcas", null, jPanel5, "Consulta un listado de los productos\nen inventario ");
 

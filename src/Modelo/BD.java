@@ -101,6 +101,7 @@ public class BD {
     private final String pass;
     private final String url;
     private final String psECall1, psPCall1;
+    private boolean conexion;
     private Connection cn;
     private PreparedStatement ps, ps1, ps2;
     private Statement st;
@@ -122,9 +123,10 @@ public class BD {
         try {
             cn = DriverManager.getConnection(url, user, pass);
             ConstltasPreparadas();
-            System.out.println("Conexion establecida");
+            conexion = true;
         } catch (SQLException ex) {
-            System.out.println("Error de conexion\n");
+            conexion = false;
+            System.out.println(ex.getMessage());
         }
     }
 
@@ -135,6 +137,10 @@ public class BD {
         } catch (SQLException ex) {
             Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public boolean isConexion() {
+        return conexion;
     }
 
     private void ConstltasPreparadas() {
@@ -219,7 +225,7 @@ public class BD {
     }
 
     public void BuscarClose() throws SQLException {
-       
+
     }
 
     private String SELECT(String Tabla, String Campo, String Where) {

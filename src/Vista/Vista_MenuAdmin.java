@@ -7,6 +7,7 @@ import Modelo.CL_Empleado;
 import Modelo.CL_Producto;
 import Modelo.cons;
 import Modelo.func;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +31,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private CL_Empleado Usuario;
     //Controlador de la clase
     private final Con_MenuAdmin controlador;
-    
+
     public Vista_MenuAdmin(Vista_Login login) {
         this.productos = new Vista_Productos(this);
         this.empleados = new Vista_Empleados(this);
@@ -46,13 +47,13 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         OtrasClases();
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
     }
-    
+
     private void cont() {
         controlador.setAdministracion(administracion);
         controlador.setEmpleados(empleados);
         controlador.setProductos(productos);
     }
-    
+
     private void escuchas() {
         //Botones
         jbtSalir.addActionListener(controlador);
@@ -62,18 +63,18 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jbtAdministracion.addActionListener(controlador);
         //
     }
-    
+
     private void OtrasClases() {
         carrito = new Carrito();
         agenda = new Agenda();
         RelogSis rlg = new RelogSis();
     }
-    
+
     public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
         UserInfo();
     }
-    
+
     private void UserInfo() {
         if (Usuario != null) {
             jlbNombre.setText("Nombre: " + Usuario.getNombre());
@@ -85,18 +86,18 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public CL_Empleado getUsuario() {
         return Usuario;
     }
-    
+
     public Carrito getCarrito() {
         if (carrito == null) {
             carrito = new Carrito();
         }
         return carrito;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -146,93 +147,102 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(171, 178, 185));
+        jPanel1.setBackground(new java.awt.Color(35, 35, 40));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(254, 254, 254));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login.png"))); // NOI18N
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 300, 200);
+        jLabel1.setBounds(0, 0, 290, 150);
 
         jbtSalir.setBackground(new java.awt.Color(255, 0, 0));
+        jbtSalir.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jbtSalir.setForeground(new java.awt.Color(0, 0, 0));
         jbtSalir.setText("Cerrar Sesion");
         jbtSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtSalir);
-        jbtSalir.setBounds(0, 550, 298, 48);
+        jbtSalir.setBounds(10, 510, 270, 48);
 
         jbtProductos.setBackground(new java.awt.Color(96, 17, 207));
-        jbtProductos.setForeground(new java.awt.Color(0, 0, 0));
+        jbtProductos.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jbtProductos.setForeground(new java.awt.Color(1, 1, 1));
         jbtProductos.setText("Productos");
         jbtProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtProductos);
-        jbtProductos.setBounds(0, 320, 298, 50);
+        jbtProductos.setBounds(10, 280, 270, 50);
 
         jbtEmpleados.setBackground(new java.awt.Color(96, 17, 207));
-        jbtEmpleados.setForeground(new java.awt.Color(0, 0, 0));
+        jbtEmpleados.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jbtEmpleados.setForeground(new java.awt.Color(1, 1, 1));
         jbtEmpleados.setText("Empleados");
         jbtEmpleados.setToolTipText("");
         jbtEmpleados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtEmpleados);
-        jbtEmpleados.setBounds(0, 260, 298, 50);
+        jbtEmpleados.setBounds(10, 220, 270, 50);
 
         jbtPerfil.setBackground(new java.awt.Color(96, 17, 207));
-        jbtPerfil.setForeground(new java.awt.Color(254, 254, 254));
+        jbtPerfil.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jbtPerfil.setForeground(new java.awt.Color(1, 1, 1));
         jbtPerfil.setText("Perfil");
         jbtPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtPerfil);
-        jbtPerfil.setBounds(0, 200, 298, 50);
+        jbtPerfil.setBounds(10, 160, 270, 50);
 
         jbtAdministracion.setBackground(new java.awt.Color(96, 17, 207));
-        jbtAdministracion.setForeground(new java.awt.Color(0, 0, 0));
+        jbtAdministracion.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jbtAdministracion.setForeground(new java.awt.Color(1, 1, 1));
         jbtAdministracion.setText("Administracion");
         jbtAdministracion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtAdministracion);
-        jbtAdministracion.setBounds(0, 380, 298, 50);
+        jbtAdministracion.setBounds(10, 340, 270, 50);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(1, 1, 299, 598);
+        jPanel2.setBounds(10, 10, 290, 580);
 
-        jPanel3.setBackground(new java.awt.Color(60, 209, 255));
+        jPanel3.setBackground(new java.awt.Color(30, 30, 40));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setPreferredSize(new java.awt.Dimension(900, 100));
         jPanel3.setLayout(null);
 
         jlbNombre.setBackground(new java.awt.Color(1, 1, 1));
-        jlbNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jlbNombre.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jlbNombre.setForeground(new java.awt.Color(254, 254, 254));
         jlbNombre.setText("Nombre :");
         jPanel3.add(jlbNombre);
         jlbNombre.setBounds(0, 0, 250, 30);
 
         jlbCargo.setBackground(new java.awt.Color(1, 1, 1));
-        jlbCargo.setForeground(new java.awt.Color(0, 0, 0));
+        jlbCargo.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jlbCargo.setForeground(new java.awt.Color(254, 254, 254));
         jlbCargo.setText("Cargo");
         jPanel3.add(jlbCargo);
         jlbCargo.setBounds(0, 30, 250, 30);
 
-        jlbRelog.setForeground(new java.awt.Color(0, 0, 0));
+        jlbRelog.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jlbRelog.setForeground(new java.awt.Color(254, 254, 254));
         jlbRelog.setText("DD/MM/YY");
         jPanel3.add(jlbRelog);
-        jlbRelog.setBounds(700, 0, 200, 30);
+        jlbRelog.setBounds(610, 0, 200, 30);
 
-        jlbFecha.setForeground(new java.awt.Color(0, 0, 0));
+        jlbFecha.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jlbFecha.setForeground(new java.awt.Color(254, 254, 254));
         jlbFecha.setText("DD/MM/YY");
         jPanel3.add(jlbFecha);
-        jlbFecha.setBounds(700, 30, 200, 30);
+        jlbFecha.setBounds(610, 40, 200, 30);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(300, 1, 900, 99);
+        jPanel3.setBounds(310, 10, 880, 99);
 
-        jTabbedPane1.setBackground(new java.awt.Color(35, 35, 40));
+        jTabbedPane1.setBackground(new java.awt.Color(254, 254, 254));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTabbedPane1.setForeground(new java.awt.Color(254, 254, 254));
-        jTabbedPane1.setOpaque(true);
+        jTabbedPane1.setForeground(new java.awt.Color(1, 1, 1));
 
         jPanel4.setBackground(new java.awt.Color(35, 35, 40));
         jPanel4.setLayout(null);
@@ -255,25 +265,25 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtbCarrito);
 
         jPanel4.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 440, 458);
+        jScrollPane1.setBounds(10, 2, 430, 410);
 
         jLabel3.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Piezas");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(440, 240, 100, 25);
+        jLabel3.setBounds(450, 200, 100, 25);
 
         jbtBuscar.setBackground(new java.awt.Color(182, 182, 182));
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbtBuscar.setText("Buscar");
         jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtBuscar);
-        jbtBuscar.setBounds(790, 0, 100, 25);
+        jbtBuscar.setBounds(760, 0, 100, 25);
 
         jtfID.setBackground(new java.awt.Color(255, 255, 255));
         jtfID.setForeground(new java.awt.Color(0, 0, 0));
         jPanel4.add(jtfID);
-        jtfID.setBounds(590, 0, 200, 25);
+        jtfID.setBounds(590, 0, 170, 25);
 
         jLabel4.setBackground(new java.awt.Color(254, 255, 255));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,93 +295,98 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Nombre");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(440, 80, 100, 25);
+        jLabel5.setBounds(450, 40, 100, 25);
 
         jLabel6.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 254));
         jLabel6.setText("Marca");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(440, 120, 100, 25);
+        jLabel6.setBounds(450, 80, 100, 25);
 
         jLabel7.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 254));
         jLabel7.setText("Contenido");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(440, 160, 100, 25);
+        jLabel7.setBounds(450, 120, 100, 25);
 
         jLabel8.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 254));
         jLabel8.setText("Precio");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(440, 200, 100, 25);
+        jLabel8.setBounds(450, 160, 100, 25);
 
-        jtfPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        jtfPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        jtfPrecio.setBackground(new java.awt.Color(254, 254, 254));
+        jtfPrecio.setForeground(new java.awt.Color(1, 1, 1));
+        jtfPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfPrecio.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfPrecio.setEnabled(false);
         jPanel4.add(jtfPrecio);
-        jtfPrecio.setBounds(540, 200, 300, 25);
+        jtfPrecio.setBounds(550, 160, 300, 25);
 
         jbtQuitar.setBackground(new java.awt.Color(182, 182, 182));
         jbtQuitar.setForeground(new java.awt.Color(0, 0, 0));
         jbtQuitar.setText("Quitar");
         jbtQuitar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtQuitar);
-        jbtQuitar.setBounds(700, 310, 140, 25);
+        jbtQuitar.setBounds(700, 240, 140, 25);
 
         jbtCobrar.setBackground(new java.awt.Color(182, 182, 182));
         jbtCobrar.setForeground(new java.awt.Color(0, 0, 0));
         jbtCobrar.setText("Cobrar");
         jbtCobrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtCobrar);
-        jbtCobrar.setBounds(540, 360, 300, 25);
+        jbtCobrar.setBounds(550, 280, 300, 25);
 
         jcbType.setBackground(new java.awt.Color(35, 35, 40));
         jcbType.setForeground(new java.awt.Color(255, 255, 255));
         jcbType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Clave", "Nombre" }));
+        jcbType.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jcbType);
         jcbType.setBounds(490, 0, 100, 25);
 
-        jtfCont.setBackground(new java.awt.Color(255, 255, 255));
-        jtfCont.setForeground(new java.awt.Color(0, 0, 0));
+        jtfCont.setBackground(new java.awt.Color(254, 254, 254));
+        jtfCont.setForeground(new java.awt.Color(1, 1, 1));
+        jtfCont.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfCont.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfCont.setEnabled(false);
         jPanel4.add(jtfCont);
-        jtfCont.setBounds(540, 160, 300, 25);
+        jtfCont.setBounds(550, 120, 300, 25);
 
         jspPiezas.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jspPiezas.setAutoscrolls(true);
         jspPiezas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jspPiezas);
-        jspPiezas.setBounds(540, 240, 300, 30);
+        jspPiezas.setBounds(550, 200, 300, 30);
 
-        jtfNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre.setBackground(new java.awt.Color(254, 254, 254));
+        jtfNombre.setForeground(new java.awt.Color(1, 1, 1));
+        jtfNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfNombre.setEnabled(false);
         jPanel4.add(jtfNombre);
-        jtfNombre.setBounds(540, 80, 300, 25);
+        jtfNombre.setBounds(550, 40, 300, 25);
 
-        jtfMarca.setBackground(new java.awt.Color(255, 255, 255));
-        jtfMarca.setForeground(new java.awt.Color(0, 0, 0));
+        jtfMarca.setBackground(new java.awt.Color(254, 254, 254));
+        jtfMarca.setForeground(new java.awt.Color(1, 1, 1));
+        jtfMarca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jtfMarca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jtfMarca.setEnabled(false);
         jPanel4.add(jtfMarca);
-        jtfMarca.setBounds(540, 120, 300, 25);
+        jtfMarca.setBounds(550, 80, 300, 25);
 
         jbtAgregar.setBackground(new java.awt.Color(182, 182, 182));
         jbtAgregar.setForeground(new java.awt.Color(0, 0, 0));
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.add(jbtAgregar);
-        jbtAgregar.setBounds(540, 310, 140, 25);
+        jbtAgregar.setBounds(550, 240, 140, 25);
 
         jLabel2.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("Total: $");
         jLabel2.setAutoscrolls(true);
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(440, 400, 440, 50);
+        jLabel2.setBounds(440, 360, 420, 50);
 
         jTabbedPane1.addTab("Caja", new javax.swing.ImageIcon(getClass().getResource("/Img/caja-registradora .png")), jPanel4); // NOI18N
 
@@ -421,7 +436,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jTabbedPane1.addTab("Agenda", new javax.swing.ImageIcon(getClass().getResource("/Img/reloj.png")), jPanel5); // NOI18N
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 100, 900, 500);
+        jTabbedPane1.setBounds(310, 120, 880, 470);
         jTabbedPane1.getAccessibleContext().setAccessibleName("Tab");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -488,24 +503,24 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public class RelogSis {
-        
+
         private Relog rlg;
-        
+
         public RelogSis() {
             rlg = Sistema.getNodo().getNodoRlg();
             rlg.setFecha(jlbFecha);
             rlg.setRelog(jlbRelog);
         }
-        
+
     }
-    
+
     public class Carrito {
-        
+
         private CL_Producto producto;
         private DefaultTableModel tb;
-        
+
         public Carrito() {
-            
+
             this.producto = null;
             this.tb = new DefaultTableModel(func.getArray("Clave", "Producto", "Contenido", "piezas", "Precio"), 0);
             //
@@ -516,7 +531,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
             jbtCobrar.addActionListener(controlador);
             jbtQuitar.addActionListener(controlador);
         }
-        
+
         public JTable getJtbCarrito() {
             return jtbCarrito;
         }
@@ -539,71 +554,71 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         public String getValue() {
             return jtfID.getText();
         }
-        
+
         public void setProducto(CL_Producto producto) {
             this.producto = producto;
             showProducto();
         }
-        
+
         public CL_Producto getProducto() {
             return producto;
         }
-        
+
         public void showProducto() {
             jtfNombre.setText(producto.getNombre());
             jtfMarca.setText(producto.getMarca());
             jtfCont.setText(producto.getContenido() + "");
             jtfPrecio.setText(producto.getPrecios() + "");
         }
-        
+
         public String getNombre() {
             return producto.getNombre();
         }
-        
+
         public String getClave() {
             return producto.getClave();
         }
-        
+
         public double getPrecio() {
             return producto.getPrecios();
         }
-        
+
         public String getContenido() {
             return producto.getContenido() + "" + producto.getUDM();
         }
-        
+
         public int getPiezas() {
             return (int) jspPiezas.getValue();
         }
-        
+
         public void clear() {
             jtfNombre.setText("");
             jtfMarca.setText("");
             jtfCont.setText("");
             jtfPrecio.setText("");
+            jspPiezas.setValue(1);
             producto = null;
         }
-        
+
         public void clear_2() {
             jcbType.setSelectedIndex(0);
             jtfID.setText("");
         }
-        
+
     }
-    
+
     public class Agenda {
-        
+
         DefaultTableModel tb;
 
         public Agenda() {
             this.tb = new DefaultTableModel(cons.Dias, 0);
             jtbAgenda.setModel(tb);
         }
-        
-        
+
         public void setModelo(DefaultTableModel tb) {
             jtbAgenda.setModel(tb);
         }
     }
-    
+
 }
