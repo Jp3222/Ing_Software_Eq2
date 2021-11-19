@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.CL_Movimiento;
 import Modelo.Operaciones;
 import Modelo.cons;
 import Modelo.func;
@@ -120,6 +121,8 @@ public class Con_MenuAdmin implements ActionListener {
     }
 
     public void Cerrar_Sesion() {
+        CL_Movimiento mov = new CL_Movimiento(Sistema.getNodo().getNodoRlg().getCl(), cons.getMovimiento(1), admin.getUsuario().getUsuario());
+        opc.setMovimiento(mov);
         admin.dispose();
         login.setVisible(true);
     }

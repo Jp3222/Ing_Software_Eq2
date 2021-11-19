@@ -103,7 +103,7 @@ public class cons {
         "Lunes",
         "Martes",
         "Miercoles",
-        "Juves",
+        "Jueves",
         "Viernes",
         "Sabado"
     };
@@ -196,17 +196,12 @@ public class cons {
     /**
      * @param i tipo de movimiento
      * @return el movimiento segun el index
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
-     * <br> 0.-
+     * <br> 0.-"Inicio de sesion"
+     * <br> 1.-"Cierre de sesion"
+     * <br> 2.-"Realizo una venta",
+     * <br> 3.-"Hizo una alta", 
+     * <br> 4.-"Hizo una baja", 
+     * <br> 5.-"Hizo una modificacion",
      *
      */
     public static String getMovimiento(int i) {

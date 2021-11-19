@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Con_MenuAdmin;
+import Controlador.Evt_Ventana;
 import Controlador.Sistema;
 import Controlador.Sistema.Relog;
 import Modelo.CL_Empleado;
@@ -31,6 +32,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private CL_Empleado Usuario;
     //Controlador de la clase
     private final Con_MenuAdmin controlador;
+    Evt_Ventana ventana;
 
     public Vista_MenuAdmin(Vista_Login login) {
         this.productos = new Vista_Productos(this);
@@ -46,6 +48,8 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         escuchas();
         OtrasClases();
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
+        ventana = Evt_Ventana.getNodo();
+        this.addWindowListener(ventana);
     }
 
     private void cont() {
@@ -72,6 +76,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
+        ventana.setEm(Usuario);
         UserInfo();
     }
 

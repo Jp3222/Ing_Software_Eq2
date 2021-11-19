@@ -1,0 +1,11 @@
+- Implementacion
+
+- Boton que genera pdfs
+- Optmizacion en codigo del sistema
+- Optimizacion del codigo de menu admin
+
+- Cambios
+- N/A
+
+- Otros.
+- Mejoras en la apariencia

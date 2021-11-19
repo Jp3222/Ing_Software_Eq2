@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Con_Inventario;
+import Controlador.Evt_Ventana;
 
 /**
  *
@@ -11,7 +12,7 @@ public class Vista_Administracion extends javax.swing.JFrame {
     private Vista_MenuAdmin admin;
     private Con_Inventario controlador;
     private Vista_Info vista;
-
+    private Evt_Ventana evt_Ventana;
     public Vista_Administracion(Vista_MenuAdmin admin) {
         this.admin = admin;
         vista = Vista_Info.getNodo();
@@ -19,6 +20,8 @@ public class Vista_Administracion extends javax.swing.JFrame {
         this.controlador = new Con_Inventario(admin, this);
         initComponents();
         addControlador();
+        evt_Ventana = Evt_Ventana.getNodo();
+        addWindowListener(evt_Ventana);
     }
 
     private void addControlador() {

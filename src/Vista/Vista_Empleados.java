@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.Con_Empleado;
+import Controlador.Evt_Ventana;
 import Modelo.CL_Empleado;
 import Modelo.cons;
 import Modelo.func;
@@ -22,7 +23,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
     private Read read;
     private Update update;
     private Delete delete;
-
+    private Evt_Ventana evt_Ventana;
     public Vista_Empleados(Vista_MenuAdmin admin) {
         //
         controlador = new Con_Empleado(this);
@@ -31,6 +32,9 @@ public class Vista_Empleados extends javax.swing.JFrame {
         initComponents();
         //
         Cont();
+        //
+        evt_Ventana = Evt_Ventana.getNodo();
+        addWindowListener(evt_Ventana);
     }
 
     private void Cont() {

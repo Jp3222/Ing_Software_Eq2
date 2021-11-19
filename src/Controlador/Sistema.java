@@ -40,6 +40,7 @@ public class Sistema {
     private Install NodoIll;
     //
     private Ficheros fc;
+    //
 
     public Install getNodoIll() {
         if (NodoIll == null) {
@@ -59,9 +60,6 @@ public class Sistema {
     public void star() {
         fc = new Ficheros();
         String sql[] = fc.leer(cons.url(1) + "/Usuario.jshop").split("-");
-        for (int i = 0; i < sql.length; i++) {
-            sql[i] = sql[i].trim().replace(" ", "");
-        }
         con = BD.getNodo(sql[0], sql[1], sql[2]);
         con.Conectar();
         opc = Operaciones.getNodo(con);
@@ -127,7 +125,9 @@ public class Sistema {
                     relog();
                     fecha();
                     if (false) {
+                        System.out.println("xddd");
                         cons.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
+                        System.exit(1);
                         throw new Excepciones(Excepciones.getMensaje(1));
                     }
                     Thread.sleep(1000);
@@ -173,6 +173,14 @@ public class Sistema {
 
         public Calendar getCl() {
             return cl;
+        }
+
+        public String getFecha() {
+            return cl.get(Calendar.DAY_OF_MONTH) + "" + (cl.get(Calendar.MONTH) + 1) + "" + cl.get(Calendar.YEAR);
+        }
+
+        public String getRelog() {
+            return cl.get(Calendar.HOUR_OF_DAY) + "" + cl.get(Calendar.MINUTE) + "" + cl.get(Calendar.SECOND);
         }
 
     }

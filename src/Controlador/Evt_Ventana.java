@@ -1,16 +1,16 @@
 package Controlador;
 
-import Modelo.BD;
 import Modelo.CL_Empleado;
+import Modelo.CL_Movimiento;
 import Modelo.Operaciones;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 /**
  *
  * @author jp
  */
-public class Evt_Ventana implements WindowListener {
+public class Evt_Ventana extends WindowAdapter {
 
     private static Evt_Ventana Nodo;
 
@@ -21,13 +21,11 @@ public class Evt_Ventana implements WindowListener {
         return Nodo;
     }
 
-    private final BD bd;
     private final Operaciones op;
     private final Sistema sis;
     private CL_Empleado em;
 
     private Evt_Ventana() {
-        bd = BD.getNodo();
         op = Operaciones.getNodo();
         sis = Sistema.getNodo();
     }
@@ -37,40 +35,12 @@ public class Evt_Ventana implements WindowListener {
     }
 
     @Override
-    public void windowOpened(WindowEvent e) {
-
-    }
-
-    @Override
     public void windowClosing(WindowEvent e) {
-        //CL_Movimiento mov = new CL_Movimiento(sis.getCl(), "Cierre del sistema", em.getUsuario());
-        //op.setMovimiento(mov);
+        if (em != null) {
+            CL_Movimiento mov = new CL_Movimiento(sis.getNodoRlg().getCl(), "Cierre del sistema", em.getUsuario());
+            op.setMovimiento(mov);
+        }
         System.exit(0);
-    }
-
-    @Override
-    public void windowClosed(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-   
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        //bd.Conectar();
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        //bd.desConectar();
     }
 
 }

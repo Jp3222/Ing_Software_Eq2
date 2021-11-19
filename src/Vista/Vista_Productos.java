@@ -1,8 +1,16 @@
 package Vista;
 
 import Controlador.Con_Productos;
+import Controlador.Evt_Ventana;
+import Controlador.Sistema;
 import Modelo.cons;
 import Modelo.CL_Producto;
+import Modelo.Reportes;
+import Modelo.func;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -10,8 +18,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
 
 public class Vista_Productos extends javax.swing.JFrame {
 
@@ -23,6 +29,8 @@ public class Vista_Productos extends javax.swing.JFrame {
     private Delete delete;
     //
     private Vista_Info info;
+    //
+    private Evt_Ventana evt_Ventana;
 
     public Vista_Productos(Vista_MenuAdmin admin) {
         //tareas
@@ -37,6 +45,9 @@ public class Vista_Productos extends javax.swing.JFrame {
         initComponents();
         addControladores(admin);
         jtfNombre.getDocument().addDocumentListener(new Evt(jtfNombre));
+        evt_Ventana = Evt_Ventana.getNodo();
+        addWindowListener(evt_Ventana);
+
     }
 
     private void addControladores(Vista_MenuAdmin admin) {
@@ -145,9 +156,13 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         public void Empty() {
             jtfNombre.setText("");
-            jcbMarcas.setSelectedIndex(0);
+            if (!jcKMarca.isSelected()) {
+                jcbMarcas.setSelectedIndex(0);
+            }
             jtfContenido.setText("");
-            jcbUDM.setSelectedIndex(0);
+            if (!jckUD.isSelected()) {
+                jcbUDM.setSelectedIndex(0);
+            }
             jtfPrecio.setText("");
 
         }
@@ -220,9 +235,9 @@ public class Vista_Productos extends javax.swing.JFrame {
             jtfID.setText("");
             jtfClave_2.setText("");
             jtfNombre_2.setText("");
-            jcbMarcas_2.setSelectedItem("");
+            jcbMarcas_2.setSelectedIndex(0);
             jtfContenido_2.setText("");
-            jcbUDM_2.setSelectedItem("");
+            jcbUDM_2.setSelectedIndex(0);
             jtfPrecio_2.setText("");
         }
 
@@ -309,6 +324,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -328,6 +344,8 @@ public class Vista_Productos extends javax.swing.JFrame {
         jtfPrecio = new javax.swing.JTextField();
         jbtAgregar = new javax.swing.JButton();
         jbtCancelar = new javax.swing.JButton();
+        jckUD = new javax.swing.JCheckBox();
+        jcKMarca = new javax.swing.JCheckBox();
         Panel_Read = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtConsultas = new javax.swing.JTable();
@@ -362,6 +380,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtaInfo = new javax.swing.JTextArea();
         jbtCancelar_3 = new javax.swing.JButton();
+        txt15 = new javax.swing.JLabel();
+        jrbClave = new javax.swing.JRadioButton();
+        jrbMarca = new javax.swing.JRadioButton();
+        jrbPrecio = new javax.swing.JRadioButton();
+        Reporte = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Productos");
@@ -458,7 +481,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jcbUDM.setBackground(new java.awt.Color(35, 35, 40));
         jcbUDM.setForeground(new java.awt.Color(254, 254, 254));
-        jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr" }));
+        jcbUDM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lt", "ml", "Kg", "gr", "Oz", "Pz", " " }));
         jcbUDM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jcbUDM);
         jcbUDM.setBounds(230, 190, 300, 25);
@@ -481,14 +504,22 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jbtAgregar);
-        jbtAgregar.setBounds(580, 30, 140, 50);
+        jbtAgregar.setBounds(230, 290, 140, 50);
 
         jbtCancelar.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar.setForeground(new java.awt.Color(0, 0, 0));
         jbtCancelar.setText("Cancelar");
         jbtCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jbtCancelar);
-        jbtCancelar.setBounds(740, 30, 140, 50);
+        jbtCancelar.setBounds(390, 290, 140, 50);
+
+        jckUD.setText("No cambiar");
+        Panel_Create.add(jckUD);
+        jckUD.setBounds(540, 190, 97, 24);
+
+        jcKMarca.setText("No cambiar");
+        Panel_Create.add(jcKMarca);
+        jcKMarca.setBounds(540, 70, 97, 24);
 
         jTabbedPane1.addTab("Insertar", Panel_Create);
 
@@ -515,11 +546,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 102, 840, 360);
+        jScrollPane1.setBounds(20, 72, 840, 340);
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(0, 0, 150, 29);
+        jbtConsultar.setBounds(20, 40, 150, 29);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
@@ -709,7 +740,7 @@ public class Vista_Productos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtaInfo);
 
         Panel_Delete.add(jScrollPane2);
-        jScrollPane2.setBounds(70, 40, 450, 410);
+        jScrollPane2.setBounds(70, 40, 450, 370);
 
         jbtCancelar_3.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar_3.setForeground(new java.awt.Color(0, 0, 0));
@@ -722,7 +753,46 @@ public class Vista_Productos extends javax.swing.JFrame {
         jTabbedPane1.addTab("Borrar", Panel_Delete);
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 10, 890, 520);
+        jTabbedPane1.setBounds(300, 10, 890, 480);
+
+        txt15.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        txt15.setForeground(new java.awt.Color(254, 254, 254));
+        txt15.setText("Caracteristicas del reporte");
+        jPanel1.add(txt15);
+        txt15.setBounds(300, 490, 240, 25);
+
+        jrbClave.setBackground(new java.awt.Color(35, 35, 40));
+        jrbClave.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jrbClave.setForeground(new java.awt.Color(254, 254, 254));
+        jrbClave.setText("Clave");
+        jPanel1.add(jrbClave);
+        jrbClave.setBounds(300, 520, 110, 24);
+
+        jrbMarca.setBackground(new java.awt.Color(35, 35, 40));
+        jrbMarca.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jrbMarca.setForeground(new java.awt.Color(254, 254, 254));
+        jrbMarca.setText("Marca");
+        jPanel1.add(jrbMarca);
+        jrbMarca.setBounds(410, 520, 110, 24);
+
+        jrbPrecio.setBackground(new java.awt.Color(35, 35, 40));
+        jrbPrecio.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        jrbPrecio.setForeground(new java.awt.Color(254, 254, 254));
+        jrbPrecio.setText("Precio");
+        jPanel1.add(jrbPrecio);
+        jrbPrecio.setBounds(300, 550, 110, 24);
+
+        Reporte.setBackground(new java.awt.Color(255, 0, 0));
+        Reporte.setForeground(new java.awt.Color(0, 0, 0));
+        Reporte.setText("Generar reporte");
+        Reporte.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Reporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Reporte);
+        Reporte.setBounds(540, 490, 140, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -745,12 +815,37 @@ public class Vista_Productos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbtInfoActionPerformed
 
+    private void ReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteActionPerformed
+        try {
+            ArrayList<String> lista = new ArrayList<>(0);
+            lista.addAll(Arrays.asList("ID" , "Nombre", "Contenido", "UDM"));
+            if (jrbMarca.isSelected()) {
+                lista.add("Marca");
+            }
+            if (jrbPrecio.isSelected()) {
+                lista.add("Precio");
+            }
+            if (jrbClave.isSelected()) {
+                lista.add("clave");
+            }
+            String p = Sistema.getNodo().getNodoRlg().getFecha();
+            String q = Sistema.getNodo().getNodoRlg().getRelog();
+            Reportes r = new Reportes(2, "Listado de productos-" + p + "-" + q);
+            r.crearReporte("productos", lista.toArray(new String[lista.size()]));
+        } catch (DocumentException | FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }//GEN-LAST:event_ReporteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Create;
     private javax.swing.JPanel Panel_Delete;
     private javax.swing.JPanel Panel_Read;
     private javax.swing.JPanel Panel_Update;
+    private javax.swing.JButton Reporte;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -768,12 +863,17 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JButton jbtConsultar;
     private javax.swing.JButton jbtInfo;
     private javax.swing.JButton jbtRemover;
+    private javax.swing.JCheckBox jcKMarca;
     private javax.swing.JComboBox<String> jcbMB;
     private javax.swing.JComboBox<String> jcbMB_2;
     private javax.swing.JComboBox<String> jcbMarcas;
     private javax.swing.JComboBox<String> jcbMarcas_2;
     private javax.swing.JComboBox<String> jcbUDM;
     private javax.swing.JComboBox<String> jcbUDM_2;
+    private javax.swing.JCheckBox jckUD;
+    private javax.swing.JRadioButton jrbClave;
+    private javax.swing.JRadioButton jrbMarca;
+    private javax.swing.JRadioButton jrbPrecio;
     private javax.swing.JTable jtConsultas;
     private javax.swing.JTextArea jtaInfo;
     private javax.swing.JTextField jtfClave_2;
@@ -792,6 +892,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JLabel txt12;
     private javax.swing.JLabel txt13;
     private javax.swing.JLabel txt14;
+    private javax.swing.JLabel txt15;
     private javax.swing.JLabel txt2;
     private javax.swing.JLabel txt3;
     private javax.swing.JLabel txt4;
