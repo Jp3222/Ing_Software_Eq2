@@ -8,7 +8,6 @@ import Modelo.CL_Empleado;
 import Modelo.CL_Producto;
 import Modelo.cons;
 import Modelo.func;
-import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -49,6 +48,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         OtrasClases();
         this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
         ventana = Evt_Ventana.getNodo();
+        this.jtfID.addKeyListener(controlador);
         this.addWindowListener(ventana);
     }
 
@@ -134,14 +134,15 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jtfPrecio = new javax.swing.JTextField();
         jbtQuitar = new javax.swing.JButton();
-        jbtCobrar = new javax.swing.JButton();
+        jbtLimpiar = new javax.swing.JButton();
         jcbType = new javax.swing.JComboBox<>();
         jtfCont = new javax.swing.JTextField();
         jspPiezas = new javax.swing.JSpinner();
         jtfNombre = new javax.swing.JTextField();
         jtfMarca = new javax.swing.JTextField();
         jbtAgregar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jlbTotal = new javax.swing.JLabel();
+        jbtCobrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jbtActualizar = new javax.swing.JButton();
         jbtGR = new javax.swing.JButton();
@@ -335,12 +336,12 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel4.add(jbtQuitar);
         jbtQuitar.setBounds(700, 240, 140, 25);
 
-        jbtCobrar.setBackground(new java.awt.Color(182, 182, 182));
-        jbtCobrar.setForeground(new java.awt.Color(0, 0, 0));
-        jbtCobrar.setText("Cobrar");
-        jbtCobrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.add(jbtCobrar);
-        jbtCobrar.setBounds(550, 280, 300, 25);
+        jbtLimpiar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtLimpiar.setText("Nuevo cobro");
+        jbtLimpiar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(jbtLimpiar);
+        jbtLimpiar.setBounds(550, 320, 300, 25);
 
         jcbType.setBackground(new java.awt.Color(35, 35, 40));
         jcbType.setForeground(new java.awt.Color(255, 255, 255));
@@ -386,12 +387,19 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         jPanel4.add(jbtAgregar);
         jbtAgregar.setBounds(550, 240, 140, 25);
 
-        jLabel2.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
-        jLabel2.setText("Total: $");
-        jLabel2.setAutoscrolls(true);
-        jPanel4.add(jLabel2);
-        jLabel2.setBounds(440, 360, 420, 50);
+        jlbTotal.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        jlbTotal.setForeground(new java.awt.Color(254, 254, 254));
+        jlbTotal.setText("Total: $0.0");
+        jlbTotal.setAutoscrolls(true);
+        jPanel4.add(jlbTotal);
+        jlbTotal.setBounds(440, 360, 420, 50);
+
+        jbtCobrar.setBackground(new java.awt.Color(182, 182, 182));
+        jbtCobrar.setForeground(new java.awt.Color(0, 0, 0));
+        jbtCobrar.setText("Cobrar");
+        jbtCobrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.add(jbtCobrar);
+        jbtCobrar.setBounds(550, 280, 300, 25);
 
         jTabbedPane1.addTab("Caja", new javax.swing.ImageIcon(getClass().getResource("/Img/caja-registradora .png")), jPanel4); // NOI18N
 
@@ -466,7 +474,6 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -488,6 +495,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jbtCobrar;
     private javax.swing.JButton jbtEmpleados;
     private javax.swing.JButton jbtGR;
+    private javax.swing.JButton jbtLimpiar;
     private javax.swing.JButton jbtPerfil;
     private javax.swing.JButton jbtProductos;
     private javax.swing.JButton jbtQuitar;
@@ -497,6 +505,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jlbFecha;
     private javax.swing.JLabel jlbNombre;
     private javax.swing.JLabel jlbRelog;
+    private javax.swing.JLabel jlbTotal;
     private javax.swing.JSpinner jspPiezas;
     private javax.swing.JTable jtbAgenda;
     private javax.swing.JTable jtbCarrito;
@@ -534,7 +543,9 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
             jbtAgregar.addActionListener(controlador);
             jbtBuscar.addActionListener(controlador);
             jbtCobrar.addActionListener(controlador);
+            jbtLimpiar.addActionListener(e -> jlbTotal.setText("Total: $0.0"));
             jbtQuitar.addActionListener(controlador);
+            
         }
 
         public JTable getJtbCarrito() {
@@ -608,6 +619,10 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         public void clear_2() {
             jcbType.setSelectedIndex(0);
             jtfID.setText("");
+        }
+
+        public void setTotal(double total) {
+            jlbTotal.setText("Total: $" + total);
         }
 
     }

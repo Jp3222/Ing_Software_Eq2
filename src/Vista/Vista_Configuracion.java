@@ -143,11 +143,14 @@ public class Vista_Configuracion extends javax.swing.JFrame {
                 so = Sistema.getNodo().getNodoIll();
                 so.Install(user, pass, url);
                 Sistema.getNodo().star();
-                Vista_Login log = new Vista_Login();
+                Vista_Login log = Vista_Login.getNodo();
                 log.setVisible(true);
             } else {
+                Vista_Login log = Vista_Login.getNodo();
+                log.dispose();
                 ft.escribirArchivo(cons.url(1) + "/Usuario.jshop", user + "-" + pass + "-" + url);
-                cons.getMessage("Para que los cambios se apliquen", "\ncierre y vuela a abrir el programa", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                cons.getMessage("Para que los cambios se apliquen", "vuela a abrir el programa", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(1);
             }
         } catch (IOException e) {
         }

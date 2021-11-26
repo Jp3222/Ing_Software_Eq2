@@ -14,10 +14,12 @@ import Vista.Vista_MenuAdmin.Carrito;
 import Vista.Vista_Productos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Con_MenuAdmin implements ActionListener {
+public class Con_MenuAdmin extends KeyAdapter implements ActionListener {
 
     private Vista_MenuAdmin admin;
     private Vista_Login login;
@@ -42,6 +44,8 @@ public class Con_MenuAdmin implements ActionListener {
                 Agregar();
             case "Quitar" ->
                 Quitar();
+            case "Cobrar" ->
+                Cobrar();
             case "Buscar" ->
                 Buscar();
             case "Perfil" ->
@@ -54,6 +58,16 @@ public class Con_MenuAdmin implements ActionListener {
                 Administracion();
             case "Cerrar Sesion" ->
                 Cerrar_Sesion();
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_ENTER ->
+                Buscar();
+            case KeyEvent.VK_SPACE ->
+                Agregar();
         }
     }
 
@@ -87,6 +101,26 @@ public class Con_MenuAdmin implements ActionListener {
         } else {
             cons.getMessage("NO hay productos", "en el carrito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+
+    private void Cobrar() {
+        EmptyCarrito((DefaultTableModel) carrito.getJtbCarrito().getModel());
+        carrito.clear();
+    }
+
+    public void EmptyCarrito(DefaultTableModel tb) {
+        if (tb.getRowCount() < 1) {
+            return;
+        }
+        double total = 0;
+        int fin = tb.getRowCount();
+        for (int i = 0; i < fin; i++) {
+            total += Double.parseDouble((String) tb.getValueAt(i, tb.getColumnCount() - 1));
+        }
+        do {
+            tb.removeRow(0);
+        } while (tb.getRowCount() != 0);
+        carrito.setTotal(total);
     }
 
     public void Buscar() {

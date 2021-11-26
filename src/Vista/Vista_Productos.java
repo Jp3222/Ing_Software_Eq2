@@ -504,14 +504,14 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtAgregar.setText("Agregar");
         jbtAgregar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jbtAgregar);
-        jbtAgregar.setBounds(230, 290, 140, 50);
+        jbtAgregar.setBounds(230, 310, 140, 50);
 
         jbtCancelar.setBackground(new java.awt.Color(255, 0, 0));
         jbtCancelar.setForeground(new java.awt.Color(0, 0, 0));
         jbtCancelar.setText("Cancelar");
         jbtCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Create.add(jbtCancelar);
-        jbtCancelar.setBounds(390, 290, 140, 50);
+        jbtCancelar.setBounds(390, 310, 140, 50);
 
         jckUD.setText("No cambiar");
         Panel_Create.add(jckUD);
@@ -543,10 +543,11 @@ public class Vista_Productos extends javax.swing.JFrame {
         jtConsultas.setFillsViewportHeight(true);
         jtConsultas.setSelectionBackground(new java.awt.Color(35, 35, 40));
         jtConsultas.setSelectionForeground(new java.awt.Color(254, 254, 254));
+        jtConsultas.setShowGrid(true);
         jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 72, 840, 340);
+        jScrollPane1.setBounds(10, 70, 860, 360);
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
@@ -582,8 +583,13 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbtBuscar.setText("Buscar");
         jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtBuscarActionPerformed(evt);
+            }
+        });
         Panel_Update.add(jbtBuscar);
-        jbtBuscar.setBounds(650, 10, 120, 25);
+        jbtBuscar.setBounds(590, 10, 140, 25);
 
         txt7.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         txt7.setForeground(new java.awt.Color(254, 254, 254));
@@ -682,15 +688,20 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtActualizar.setForeground(new java.awt.Color(0, 0, 0));
         jbtActualizar.setText("Actualizar");
         jbtActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jbtActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtActualizarActionPerformed(evt);
+            }
+        });
         Panel_Update.add(jbtActualizar);
-        jbtActualizar.setBounds(650, 60, 140, 50);
+        jbtActualizar.setBounds(590, 60, 140, 50);
 
         jbtCancelar_2.setBackground(new java.awt.Color(182, 182, 182));
         jbtCancelar_2.setForeground(new java.awt.Color(0, 0, 0));
         jbtCancelar_2.setText("Cancelar");
         jbtCancelar_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Panel_Update.add(jbtCancelar_2);
-        jbtCancelar_2.setBounds(650, 130, 140, 50);
+        jbtCancelar_2.setBounds(590, 120, 140, 50);
 
         jTabbedPane1.addTab("Modificar", Panel_Update);
 
@@ -837,6 +848,14 @@ public class Vista_Productos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ReporteActionPerformed
+
+    private void jbtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtBuscarActionPerformed
+
+    private void jbtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtActualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

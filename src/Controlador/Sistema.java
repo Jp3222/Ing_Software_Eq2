@@ -1,10 +1,14 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.CL_Movimiento;
 import Modelo.cons;
 import Modelo.Excepciones;
 import Modelo.Ficheros;
 import Modelo.Operaciones;
+import Modelo.Reportes;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Locale;
@@ -124,6 +128,10 @@ public class Sistema {
                     cl = Calendar.getInstance();
                     relog();
                     fecha();
+                    if ((cl.get(Calendar.HOUR_OF_DAY) == 22) && (cl.get(Calendar.MINUTE) == 0) && (cl.get(Calendar.SECOND) == 0)) {
+                        System.out.println("Historial creado");
+                        Historial();
+                    }
                     if (false) {
                         System.out.println("xddd");
                         cons.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
@@ -181,6 +189,19 @@ public class Sistema {
 
         public String getRelog() {
             return cl.get(Calendar.HOUR_OF_DAY) + "" + cl.get(Calendar.MINUTE) + "" + cl.get(Calendar.SECOND);
+        }
+
+        private void Historial() {
+            try {
+                CL_Movimiento mov = new CL_Movimiento(cl, "Reporte Historial", "root");
+                opc.setMovimiento(mov);
+                Reportes r = new Reportes(2, "Historial de Hoy");
+                r.crearReporte("movimientos", cons.Movimientos);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }

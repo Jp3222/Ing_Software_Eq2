@@ -14,6 +14,19 @@ import javax.swing.JTextField;
  */
 public class Vista_Login extends javax.swing.JFrame {
 
+    private static Vista_Login Nodo;
+
+    public static Vista_Login getNodo() {
+        if (Nodo == null) {
+            Nodo = new Vista_Login();
+        }
+        return Nodo;
+    }
+
+    public static void NodoNULL() {
+       Nodo = null;
+    }
+
     private final Con_Login controlador;
     private final Vista_MenuAdmin admin;
     private CL_Empleado empleado;
@@ -21,7 +34,7 @@ public class Vista_Login extends javax.swing.JFrame {
     /**
      * Creates new form Vista_Login
      */
-    public Vista_Login() {
+    private Vista_Login() {
         initComponents();
         //
         admin = new Vista_MenuAdmin(this);

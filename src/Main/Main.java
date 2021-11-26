@@ -29,7 +29,7 @@ public class Main {
             vista.setVisible(true);
         } else {
             sistema.star();
-            Vista_Login log = new Vista_Login();
+            Vista_Login log = Vista_Login.getNodo();
             log.setVisible(true);
         }
     }

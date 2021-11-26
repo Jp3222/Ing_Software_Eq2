@@ -430,22 +430,23 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(1, 1, 1)));
         jPanel2.setLayout(null);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/login.png"))); // NOI18N
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 300, 200);
+        jLabel1.setBounds(0, 0, 280, 200);
 
         jbtAtras.setBackground(new java.awt.Color(255, 0, 0));
         jbtAtras.setForeground(new java.awt.Color(0, 0, 0));
         jbtAtras.setText("Atras");
         jbtAtras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jbtAtras);
-        jbtAtras.setBounds(0, 550, 300, 50);
+        jbtAtras.setBounds(10, 520, 260, 50);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 0, 300, 600);
+        jPanel2.setBounds(10, 10, 280, 580);
 
         jTabbedPane1.setBackground(new java.awt.Color(1, 1, 1));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -525,7 +526,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jbtCancelar.setFocusPainted(false);
         jbtCancelar.setOpaque(true);
         Panel_Create.add(jbtCancelar);
-        jbtCancelar.setBounds(740, 30, 140, 50);
+        jbtCancelar.setBounds(580, 110, 140, 50);
 
         txt5.setForeground(new java.awt.Color(254, 254, 254));
         txt5.setText("Cargo");
@@ -579,6 +580,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jScrollPane1.setEnabled(false);
 
         jtConsultas.setBackground(new java.awt.Color(35, 35, 40));
+        jtConsultas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 107, 255)));
         jtConsultas.setForeground(new java.awt.Color(254, 254, 254));
         jtConsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -588,7 +590,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
                 "ID", "Clave", "Nombre", "Marca", "Contenido", "udm", "precio"
             }
         ));
-        jtConsultas.setColumnSelectionAllowed(true);
+        jtConsultas.setCellSelectionEnabled(false);
         jtConsultas.setEnabled(false);
         jtConsultas.setFillsViewportHeight(true);
         jtConsultas.setGridColor(new java.awt.Color(35, 35, 35));
@@ -599,12 +601,12 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtConsultas);
 
         Panel_Read.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 102, 850, 330);
+        jScrollPane1.setBounds(10, 72, 860, 360);
 
         jbtConsultar.setText("Actualizar Tabla");
         jbtConsultar.setFocusPainted(false);
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(10, 60, 150, 29);
+        jbtConsultar.setBounds(10, 40, 150, 29);
 
         jTabbedPane1.addTab("Consultar", null, Panel_Read, "Apartado para hacer lectura de\ntablas en la base de datos.\n");
 
@@ -825,7 +827,7 @@ public class Vista_Empleados extends javax.swing.JFrame {
         jTabbedPane1.addTab("Borrar", null, Panel_Delete, "Apartado para hacer eliminacion\nde usuarios en la base de datos.\n");
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(300, 0, 900, 500);
+        jTabbedPane1.setBounds(300, 10, 890, 480);
         jTabbedPane1.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
