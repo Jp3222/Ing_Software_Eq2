@@ -30,7 +30,7 @@ CREATE TABLE `movimientos` (
   `hora` int NOT NULL,
   `min` int NOT NULL,
   `seg` int NOT NULL,
-  `tipo` varchar(50) NOT NULL,
+  `tipo` varchar(60) NOT NULL,
   `usuario` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-09 14:04:37
+-- Dump completed on 2021-11-26  1:38:38
