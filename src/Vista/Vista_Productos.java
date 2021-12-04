@@ -6,7 +6,6 @@ import Controlador.Sistema;
 import Modelo.cons;
 import Modelo.CL_Producto;
 import Modelo.Reportes;
-import Modelo.func;
 import com.itextpdf.text.DocumentException;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,9 +14,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 public class Vista_Productos extends javax.swing.JFrame {
 
@@ -44,10 +40,8 @@ public class Vista_Productos extends javax.swing.JFrame {
         info = Vista_Info.getNodo();
         initComponents();
         addControladores(admin);
-        jtfNombre.getDocument().addDocumentListener(new Evt(jtfNombre));
         evt_Ventana = Evt_Ventana.getNodo();
         addWindowListener(evt_Ventana);
-
     }
 
     private void addControladores(Vista_MenuAdmin admin) {
@@ -68,36 +62,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtCancelar_3.addActionListener(controlador);
     }
 
-    class Evt implements DocumentListener {
-
-        JTextField s;
-
-        public Evt(JTextField s) {
-            this.s = s;
-        }
-
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            if (!s.getText().isEmpty()) {
-                s.setBorder(cons.getOkBorder());
-            } else {
-                s.setBorder(cons.getBadBorder());
-            }
-
-        }
-
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-
-        }
-
-        @Override
-        public void changedUpdate(DocumentEvent de) {
-            System.out.println("3");
-        }
-
-    }
-
     public Create getCreate() {
         return create;
     }
@@ -112,212 +76,6 @@ public class Vista_Productos extends javax.swing.JFrame {
 
     public Delete getDelete() {
         return delete;
-    }
-
-    public class Create {
-
-        public String[] values() {
-            String values[] = new String[6];
-            values[0] = "NA";
-            values[1] = jtfNombre.getText();
-            values[2] = (String) jcbMarcas.getSelectedItem();
-            values[3] = jtfContenido.getText();
-            values[4] = (String) jcbUDM.getSelectedItem();
-            values[5] = jtfPrecio.getText();
-            return values;
-        }
-
-        public boolean isEmpty() {
-            int i = 0;
-            if (jtfNombre.getText().isEmpty()) {
-                jtfNombre.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfNombre.setBorder(cons.getOkBorder());
-            }
-            if (jtfContenido.getText().isEmpty()) {
-                jtfContenido.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfContenido.setBorder(cons.getOkBorder());
-            }
-            if (jtfPrecio.getText().isEmpty()) {
-                jtfPrecio.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfPrecio.setBorder(cons.getOkBorder());
-            }
-            if (i > 0) {
-                cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
-            }
-            return i != 0;
-
-        }
-
-        public void Empty() {
-            jtfNombre.setText("");
-            if (!jcKMarca.isSelected()) {
-                jcbMarcas.setSelectedIndex(0);
-            }
-            jtfContenido.setText("");
-            if (!jckUD.isSelected()) {
-                jcbUDM.setSelectedIndex(0);
-            }
-            jtfPrecio.setText("");
-
-        }
-
-        public JButton getJbtCancelar() {
-            return jbtCancelar;
-        }
-
-    }
-
-    public class Read {
-
-        public JTable getJtConsultas() {
-            return jtConsultas;
-        }
-
-        public JButton getJbtConsultar() {
-            return jbtConsultar;
-        }
-
-    }
-
-    public class Update {
-
-        private CL_Producto producto;
-
-        public String getValue() {
-            return jtfMD.getText();
-        }
-
-        public String getCampo() {
-            int index = jcbMB.getSelectedIndex();
-            return jcbMB.getItemAt(index);
-        }
-
-        public JButton getJbtBuscar() {
-            return jbtBuscar;
-        }
-
-        public CL_Producto getProducto() {
-            producto.setNombre(jtfNombre_2.getText());
-            producto.setMarca(jcbMarcas_2.getItemAt(jcbMB_2.getSelectedIndex()));
-            producto.setContenido(Double.parseDouble(jtfContenido_2.getText()));
-            producto.setUDM(jcbUDM_2.getItemAt(jcbUDM_2.getSelectedIndex()));
-            producto.setPrecios(Double.parseDouble(jtfPrecio_2.getText()));
-            return producto;
-        }
-
-        public void setProducto(CL_Producto producto) {
-            this.producto = producto;
-            set(producto);
-        }
-
-        public void set(CL_Producto producto) {
-            jtfID.setText("" + producto.getID());
-            jtfClave_2.setText(producto.getClave());
-            jtfNombre_2.setText(producto.getNombre());
-            jcbMarcas_2.setSelectedItem(producto.getMarca());
-            jtfContenido_2.setText("" + producto.getContenido());
-            jcbUDM_2.setSelectedItem(producto.getUDM());
-            jtfPrecio_2.setText("" + producto.getPrecios());
-        }
-
-        public void clearS() {
-            jcbMB.setSelectedIndex(0);
-            jtfMD.setText("");
-        }
-
-        public void clear() {
-            jtfID.setText("");
-            jtfClave_2.setText("");
-            jtfNombre_2.setText("");
-            jcbMarcas_2.setSelectedIndex(0);
-            jtfContenido_2.setText("");
-            jcbUDM_2.setSelectedIndex(0);
-            jtfPrecio_2.setText("");
-        }
-
-        public boolean isEmpty_MD() {
-            return jtfMD.getText().isEmpty();
-        }
-
-        public boolean isEmpty_Values() {
-            int i = 0;
-            if (jtfNombre_2.getText().isEmpty()) {
-                jtfNombre_2.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfNombre_2.setBorder(cons.getOkBorder());
-            }
-            if (jtfContenido_2.getText().isEmpty()) {
-                jtfContenido_2.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfContenido_2.setBorder(cons.getOkBorder());
-            }
-            if (jtfPrecio_2.getText().isEmpty()) {
-                jtfPrecio.setBorder(cons.getBadBorder());
-                i++;
-            } else {
-                jtfPrecio_2.setBorder(cons.getOkBorder());
-            }
-            if (i > 0) {
-                cons.getMessage("Hay campos", "Vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);
-            }
-            return i != 0;
-        }
-
-    }
-
-    public class Delete {
-
-        private CL_Producto producto;
-
-        public CL_Producto getProducto() {
-            return producto;
-        }
-
-        public void setProducto(CL_Producto producto) {
-            this.producto = producto;
-            showProducto();
-        }
-
-        public boolean isEmpty() {
-            int i = 0;
-            if (jtfMB.getText().isEmpty()) {
-                i++;
-            }
-            return i > 0;
-        }
-
-        public void showProducto() {
-            if (producto != null) {
-                jtaInfo.setText(producto.toString());
-            }
-        }
-
-        public String getCampo() {
-            int index = jcbMB_2.getSelectedIndex();
-            return jcbMB_2.getItemAt(index);
-        }
-
-        public String getValue() {
-            return jtfMB.getText();
-        }
-
-        public JButton getJbtBuscar_2() {
-            return jbtBuscar_2;
-        }
-
-        public void clear() {
-            jtaInfo.setText(producto.toString());
-            producto = null;
-        }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -551,7 +309,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(20, 40, 150, 29);
+        jbtConsultar.setBounds(10, 40, 160, 29);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
@@ -583,11 +341,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtBuscar.setForeground(new java.awt.Color(0, 0, 0));
         jbtBuscar.setText("Buscar");
         jbtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jbtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtBuscarActionPerformed(evt);
-            }
-        });
         Panel_Update.add(jbtBuscar);
         jbtBuscar.setBounds(590, 10, 140, 25);
 
@@ -688,11 +441,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         jbtActualizar.setForeground(new java.awt.Color(0, 0, 0));
         jbtActualizar.setText("Actualizar");
         jbtActualizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jbtActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtActualizarActionPerformed(evt);
-            }
-        });
         Panel_Update.add(jbtActualizar);
         jbtActualizar.setBounds(590, 60, 140, 50);
 
@@ -829,7 +577,7 @@ public class Vista_Productos extends javax.swing.JFrame {
     private void ReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteActionPerformed
         try {
             ArrayList<String> lista = new ArrayList<>(0);
-            lista.addAll(Arrays.asList("ID" , "Nombre", "Contenido", "UDM"));
+            lista.addAll(Arrays.asList("ID", "Nombre", "Contenido", "UDM"));
             if (jrbMarca.isSelected()) {
                 lista.add("Marca");
             }
@@ -848,14 +596,6 @@ public class Vista_Productos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ReporteActionPerformed
-
-    private void jbtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtBuscarActionPerformed
-
-    private void jbtActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtActualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtActualizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -921,4 +661,218 @@ public class Vista_Productos extends javax.swing.JFrame {
     private javax.swing.JLabel txt8;
     private javax.swing.JLabel txt9;
     // End of variables declaration//GEN-END:variables
+
+    public class Create {
+
+        public String[] values() {
+            String values[] = new String[6];
+            values[0] = "NA";
+            values[1] = jtfNombre.getText();
+            values[2] = (String) jcbMarcas.getSelectedItem();
+            values[3] = jtfContenido.getText();
+            values[4] = (String) jcbUDM.getSelectedItem();
+            values[5] = jtfPrecio.getText();
+            return values;
+        }
+
+        public boolean isEmpty() {
+            int i = 0;
+            if (jtfNombre.getText().isEmpty()) {
+                jtfNombre.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfNombre.setBorder(cons.getOkBorder());
+            }
+            if (jtfContenido.getText().isEmpty()) {
+                jtfContenido.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfContenido.setBorder(cons.getOkBorder());
+            }
+            if (jtfPrecio.getText().isEmpty()) {
+                jtfPrecio.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfPrecio.setBorder(cons.getOkBorder());
+            }
+            if (i > 0) {
+                cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
+            }
+            return i != 0;
+
+        }
+
+        public void Empty() {
+            jtfNombre.setText("");
+            if (!jcKMarca.isSelected()) {
+                jcbMarcas.setSelectedIndex(0);
+            }
+            jtfContenido.setText("");
+            if (!jckUD.isSelected()) {
+                jcbUDM.setSelectedIndex(0);
+            }
+            jtfPrecio.setText("");
+
+        }
+
+        public JButton getJbtCancelar() {
+            return jbtCancelar;
+        }
+
+    }
+
+    public class Read {
+
+        public JTable getJtConsultas() {
+            return jtConsultas;
+        }
+
+        public JButton getJbtConsultar() {
+            return jbtConsultar;
+        }
+
+    }
+
+    public class Update {
+
+        private CL_Producto producto;
+
+        public String getValue() {
+            return jtfMD.getText();
+        }
+
+        public JButton getJbtCancelar_2() {
+            return jbtCancelar_2;
+        }
+
+        public String getCampo() {
+            int index = jcbMB.getSelectedIndex();
+            return jcbMB.getItemAt(index);
+        }
+
+        public JButton getJbtBuscar() {
+            return jbtBuscar;
+        }
+
+        public CL_Producto getProducto() {
+            producto.setNombre(jtfNombre_2.getText());
+            producto.setMarca(jcbMarcas_2.getItemAt(jcbMB_2.getSelectedIndex()));
+            producto.setContenido(Double.parseDouble(jtfContenido_2.getText()));
+            producto.setUDM(jcbUDM_2.getItemAt(jcbUDM_2.getSelectedIndex()));
+            producto.setPrecios(Double.parseDouble(jtfPrecio_2.getText()));
+            return producto;
+        }
+
+        public void setProducto(CL_Producto producto) {
+            this.producto = producto;
+            set(producto);
+        }
+
+        public void set(CL_Producto producto) {
+            jtfID.setText("" + producto.getID());
+            jtfClave_2.setText(producto.getClave());
+            jtfNombre_2.setText(producto.getNombre());
+            jcbMarcas_2.setSelectedItem(producto.getMarca());
+            jtfContenido_2.setText("" + producto.getContenido());
+            jcbUDM_2.setSelectedItem(producto.getUDM());
+            jtfPrecio_2.setText("" + producto.getPrecios());
+        }
+
+        public void clearS() {
+            jcbMB.setSelectedIndex(0);
+            jtfMD.setText("");
+        }
+
+        public void clear() {
+            jtfID.setText("");
+            jtfClave_2.setText("");
+            jtfNombre_2.setText("");
+            jcbMarcas_2.setSelectedIndex(0);
+            jtfContenido_2.setText("");
+            jcbUDM_2.setSelectedIndex(0);
+            jtfPrecio_2.setText("");
+        }
+
+        public boolean isEmpty_MD() {
+            return jtfMD.getText().isEmpty();
+        }
+
+        public boolean isEmpty_Values() {
+            int i = 0;
+            if (jtfNombre_2.getText().isEmpty()) {
+                jtfNombre_2.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfNombre_2.setBorder(cons.getOkBorder());
+            }
+            if (jtfContenido_2.getText().isEmpty()) {
+                jtfContenido_2.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfContenido_2.setBorder(cons.getOkBorder());
+            }
+            if (jtfPrecio_2.getText().isEmpty()) {
+                jtfPrecio.setBorder(cons.getBadBorder());
+                i++;
+            } else {
+                jtfPrecio_2.setBorder(cons.getOkBorder());
+            }
+            if (i > 0) {
+                cons.getMessage("Hay campos", "Vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+            return i != 0;
+        }
+
+    }
+
+    public class Delete {
+
+        private CL_Producto producto;
+
+        public CL_Producto getProducto() {
+            return producto;
+        }
+
+        public void setProducto(CL_Producto producto) {
+            this.producto = producto;
+            showProducto();
+        }
+
+        public boolean isEmpty() {
+            int i = 0;
+            if (jtfMB.getText().isEmpty()) {
+                i++;
+            }
+            return i > 0;
+        }
+
+        public void showProducto() {
+            if (producto != null) {
+                jtaInfo.setText(producto.toString());
+            }
+        }
+
+        public String getCampo() {
+            int index = jcbMB_2.getSelectedIndex();
+            return jcbMB_2.getItemAt(index);
+        }
+
+        public String getValue() {
+            return jtfMB.getText();
+        }
+
+        public JButton getJbtBuscar_2() {
+            return jbtBuscar_2;
+        }
+
+        public void clear() {
+            jtaInfo.setText(producto.toString());
+            producto = null;
+        }
+
+        public JButton getJbtCancelar_3() {
+            return jbtCancelar_3;
+        }
+    }
+
 }

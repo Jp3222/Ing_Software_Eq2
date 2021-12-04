@@ -32,7 +32,7 @@ CREATE TABLE `empleados` (
   `cargo` varchar(10) NOT NULL,
   `contra` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (1,'root','root','--','--',0,'Gerente','0000'),(4,'jc2001','Juan Pablo','Campos','Casasanero',20,'Empleado','0000'),(5,'va2000','Vianey Celerina','Ambrosio','Hernandez',22,'Empleado','root'),(6,'jl2000','Jesus Rogelio','Leyva','Silva',19,'Empleado','Leyva');
+INSERT INTO `empleados` VALUES (1,'root','root','--','--',0,'gerente','0000');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 20:23:09
+-- Dump completed on 2021-11-26  1:38:38

@@ -23,12 +23,11 @@ public class Con_Productos implements ActionListener {
 
     private final Vista_MenuAdmin admin;
     private final Vista_Productos productos;
-    private Create create;
-    private Read read;
-    private Update update;
-    private Delete delete;
+    private final Create create;
+    private final Read read;
+    private final Update update;
+    private final Delete delete;
     private String[] values;
-    private final BD conexion;
     private final Operaciones operaciones;
 
     public Con_Productos(Vista_Productos productos, Vista_MenuAdmin admin) {
@@ -38,7 +37,6 @@ public class Con_Productos implements ActionListener {
         this.read = productos.getRead();
         this.update = productos.getUpdate();
         this.delete = productos.getDelete();
-        this.conexion = BD.getNodo();
         this.operaciones = Operaciones.getNodo();
     }
 
@@ -70,10 +68,15 @@ public class Con_Productos implements ActionListener {
     }
 
     public void Cancelar(Object obj) {
-        if (create.getJbtCancelar() == obj) {
+        if (obj == create.getJbtCancelar()) {
             create.Empty();
-        } else if (true) {
-
+        }
+        if (obj == update.getJbtCancelar_2()) {
+            update.clear();
+            update.clearS();
+        }
+        if (obj == delete.getJbtCancelar_3()) {
+            delete.clear();
         }
     }
 
