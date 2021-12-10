@@ -133,6 +133,7 @@ public class BD {
     public void desConectar() {
         try {
             cn.close();
+            conexion = false;
             System.out.println("Desconectando");
         } catch (SQLException ex) {
             Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);

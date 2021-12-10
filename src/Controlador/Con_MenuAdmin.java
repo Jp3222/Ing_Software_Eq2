@@ -106,6 +106,12 @@ public class Con_MenuAdmin extends KeyAdapter implements ActionListener {
     private void Cobrar() {
         EmptyCarrito((DefaultTableModel) carrito.getJtbCarrito().getModel());
         carrito.clear();
+        CL_Movimiento mov = new CL_Movimiento(
+                Sistema.getNodo().getNodoRlg().getCl(),
+                cons.getMovimiento(2),
+                admin.getUsuario().getUsuario()
+        );
+        opc.setMovimiento(mov);
     }
 
     public void EmptyCarrito(DefaultTableModel tb) {
@@ -155,7 +161,11 @@ public class Con_MenuAdmin extends KeyAdapter implements ActionListener {
     }
 
     public void Cerrar_Sesion() {
-        CL_Movimiento mov = new CL_Movimiento(Sistema.getNodo().getNodoRlg().getCl(), cons.getMovimiento(1), admin.getUsuario().getUsuario());
+        CL_Movimiento mov = new CL_Movimiento(
+                Sistema.getNodo().getNodoRlg().getCl(),
+                cons.getMovimiento(1),
+                admin.getUsuario().getUsuario()
+        );
         opc.setMovimiento(mov);
         admin.dispose();
         login.setVisible(true);

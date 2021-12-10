@@ -1,7 +1,6 @@
 package Vista;
 
 import Controlador.Con_Login;
-import Controlador.Evt_Ventana;
 import Modelo.BD;
 import Modelo.CL_Empleado;
 import javax.swing.ImageIcon;
@@ -24,16 +23,13 @@ public class Vista_Login extends javax.swing.JFrame {
     }
 
     public static void NodoNULL() {
-       Nodo = null;
+        Nodo = null;
     }
 
     private final Con_Login controlador;
     private final Vista_MenuAdmin admin;
     private CL_Empleado empleado;
 
-    /**
-     * Creates new form Vista_Login
-     */
     private Vista_Login() {
         initComponents();
         //

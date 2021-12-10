@@ -8,14 +8,19 @@ import Modelo.Ficheros;
 import Modelo.Operaciones;
 import Modelo.Reportes;
 import com.itextpdf.text.DocumentException;
+import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -62,6 +67,9 @@ public class Sistema {
     }
 
     public void star() {
+        
+       
+        //
         fc = new Ficheros();
         String sql[] = fc.leer(cons.url(1) + "/Usuario.jshop").split("-");
         con = BD.getNodo(sql[0], sql[1], sql[2]);
@@ -197,10 +205,8 @@ public class Sistema {
                 opc.setMovimiento(mov);
                 Reportes r = new Reportes(2, "Historial de Hoy");
                 r.crearReporte("movimientos", cons.Movimientos);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (DocumentException ex) {
-                Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (FileNotFoundException | DocumentException ex) {
+                System.out.println(ex.getMessage());
             }
         }
 

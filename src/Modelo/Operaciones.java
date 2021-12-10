@@ -124,24 +124,32 @@ public class Operaciones {
     }
 
     public void actEmpleado(CL_Empleado empleado) {
-
         try {
             conexion.Update("empleados", BD.getData(
                     func.exp(cons.getUsuarios(), 0, 1), func.exp(empleado.getInfo(), 0, 1)),
                     "id = '" + empleado + "'");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * @param empleado
+     */
     public void brEmpleado(CL_Empleado empleado) {
         try {
             conexion.Delete("empleados", "id = " + empleado.getID());
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-    //Operaciones para el manejo de movimientos
+
+    /**
+     * Operaciones para el manejo de movimientos hechos en el programa
+     *
+     * @param mov - movimiento hecho en el programa listo para insertar en la
+     * base de datos
+     */
     public void setMovimiento(CL_Movimiento mov) {
         try {
             conexion.Insertar("movimientos",
@@ -153,7 +161,13 @@ public class Operaciones {
         }
     }
 
-    //Operaciones para el manejo de la base de datos general
+    /**
+     * Funcion especial para la generacion de tablas graficas para el usuario
+     *
+     * @param nom - nombre de la tabla
+     * @return DefaultTableModel - modelo de vista grafico basado en la tabla
+     * seleccionada
+     */
     public DefaultTableModel getTable(String nom) {
         DefaultTableModel tm = new DefaultTableModel();
         try {

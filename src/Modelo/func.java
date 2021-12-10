@@ -4,13 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
  * @author jp
+ * @class func clase auxiliar con funciones especiales para el manejo de
+ * arreglos y conjuntos indefinidos
  */
-public class func {//sc6014 - sc6014
+public class func {
 
+    /**
+     * arreglo de numeros primos
+     */
     private static final int NoP[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 
+    /**
+     * @param str - nombre del objeto
+     * @param cont - contenido del objeto
+     * @param precio - precio del objeto
+     * @return Hash unico para el objeto
+     */
     public static String getID(String str, String cont, String precio) {
         str = str.toLowerCase();
         String array[] = str.split(" ");
@@ -22,6 +32,10 @@ public class func {//sc6014 - sc6014
         return c;
     }
 
+    /**
+     * @param x numero de partida para el calculo de una clave unica
+     * @return un hash unico
+     */
     private static int hash(double x) {
         int i = (int) (x);
         int p = (int) (Math.random() * NoP.length);
@@ -29,55 +43,27 @@ public class func {//sc6014 - sc6014
         return i % NoP[p];
     }
 
-    public static void set(int index, String[] array, String obj) {
-        try {
-            if (index < array.length) {
-                array[index] = obj;
-            } else {
-                throw new Excepciones(Excepciones.getMensaje(105));
-            }
-        } catch (Excepciones e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    public static String get(int index, String[] array) throws Excepciones {
-        if (index < array.length) {
-            return array[index];
-        }
-        throw new Excepciones(Excepciones.getMensaje(105));
-    }
-
-    public static int LinealSearch(String obj, String[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(obj)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    
+    /**
+     * @param T conjunto de elementos indefinidos
+     * @return array de esos elementos indefinidos
+     */
     public static int[] getArray(int... T) {
-        int[] obj = new int[T.length];
-        int x = 0;
-        for (int i : T) {
-            obj[x] = i;
-            x++;
-        }
-        return obj;
+        return T;
     }
 
+    /**
+     * @param T conjunto de elementos indefinidos
+     * @return array de esos elementos indefinidos
+     */
     public static String[] getArray(String... T) {
-        String[] obj = new String[T.length];
-        int x = 0;
-        for (String i : T) {
-            obj[x] = i;
-            x++;
-        }
-        return obj;
+        return T;
     }
-    
-    //["id","nom","ap","am","edad"]{0,1}[] = ["ap","am","edad"]
+
+    /**
+     * @param array arreglo de cadenas existentes
+     * @param ex indices de las cadenas que se requieran excluir
+     * @return arreglo sin elementos excluidos
+     */
     public static String[] exp(String array[], int... ex) {
         ArrayList<String> obj = new ArrayList<>();
         int[] e = getArray(ex);
@@ -86,9 +72,14 @@ public class func {//sc6014 - sc6014
                 obj.add(array[i]);
             }
         }
-        return obj.toArray(new String[obj.size()]);
+        return obj.toArray(String[]::new);
     }
 
+    /**
+     * @param array arreglo de enteros
+     * @param obj objeto buscado
+     * @return true si el objeto pertenece al conjunto dado
+     */
     private static boolean in(int[] array, int obj) {
         for (int i : array) {
             if (obj == i) {
@@ -98,6 +89,11 @@ public class func {//sc6014 - sc6014
         return false;
     }
 
+    /**
+     * @param array arreglo de cadenas
+     * @param obj objeto buscado
+     * @return true si el objeto pertenece al conjunto dado
+     */
     public static boolean in(String[] array, String obj) {
         for (String string : array) {
             if (obj.equals(string)) {

@@ -1,9 +1,7 @@
 package Controlador;
 
-import Modelo.BD;
 import Modelo.cons;
 import Modelo.CL_Empleado;
-import Modelo.Excepciones;
 import Modelo.CL_Movimiento;
 import Modelo.Operaciones;
 import java.awt.event.ActionEvent;
@@ -59,35 +57,26 @@ class log {
     }
 
     public void Login() {
-        try {
-            String usr = login.getjtfUsuario().getText();
-            String pass = String.copyValueOf(login.getjpfPassword().getPassword());
+        String usr = login.getjtfUsuario().getText();
+        String pass = String.copyValueOf(login.getjpfPassword().getPassword());
+        //
+        CL_Empleado empleado = operacion.getEmpleado(usr);
+        evt.setEm(empleado);
+        if (empleado != null && empleado.isExists() && empleado.getPassword().equals(pass)) {
+            login.getjtfUsuario().setBorder(cons.getOkBorder());
+            login.getjpfPassword().setBorder(cons.getOkBorder());
             //
-            CL_Empleado empleado = operacion.getEmpleado(usr);
-            evt.setEm(empleado);
-            if (empleado == null) {
-                throw new Excepciones(Excepciones.getMensaje(3000));
-            }
-            if (empleado.isExists()) {
-                login.getjtfUsuario().setBorder(cons.getOkBorder());
-                if (empleado.getPassword().equals(pass)) {
-                    login.getjpfPassword().setBorder(cons.getOkBorder());
-                    //
-                    login.dispose();
-                    admin.setVisible(true);
-                    admin.setUsuario(empleado);
-                    CL_Movimiento mov = new CL_Movimiento(sistema.getNodoRlg().getCl(), cons.getMovimiento(0), empleado.getUsuario());
-                    operacion.setMovimiento(mov);
-                    clear();
-                } else {
-                    mensaje();
-                }
-            } else {
-                mensaje();
-            }
-        } catch (Excepciones e) {
-            System.out.println(e.getMessage());
+            login.dispose();
+            admin.setVisible(true);
+            admin.setUsuario(empleado);
+            CL_Movimiento mov = new CL_Movimiento(sistema.getNodoRlg().getCl(), cons.getMovimiento(0), empleado.getUsuario());
+            operacion.setMovimiento(mov);
+            clear();
+        } else {
+            mensaje();
         }
+        usr = null;
+        pass = null;
     }
 
     public void mensaje() {
