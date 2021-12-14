@@ -6,18 +6,15 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 public class cons {
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// - - - - - - - - - - - - - Direcciones y Ficheros - - - - - - - - - - - - - //
 
-    /**
-     *
-     */
     public static final String URL_DICS_1 = System.getProperty("user.home") + "/Escritorio";
-    /**
-     *
-     */
+
     public static final String URL_DICS_2 = System.getProperty("user.home") + "/Desktop";
-    /**
-     *
-     */
+
     public static final String URL_FILES = URL_DICS_2 + "/J-Shop";
 
     /**
@@ -54,7 +51,19 @@ public class cons {
                 throw new NullPointerException("Indice no valido");
         }
     }
-
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// - - - - - - - - - - - - - - - Base de datos - - - - - - - - - - - - - - - //
+    public final String[] TABLAS = {
+        "empleados",
+        "productos",
+        "movimientos"
+    };
     /**
      * Constantes de la tabla 'productos'
      */
@@ -80,6 +89,7 @@ public class cons {
         "Cargo",
         "Contra"
     };
+
     /**
      * Constantes de la tabla 'movimientos'
      */
@@ -95,6 +105,40 @@ public class cons {
         "Usuario"
     };
 
+    //tipos de movimientos
+    private static final String[] Tipo_Movimientos = {
+        "Inicio de sesion",
+        "Cierre de sesion",
+        "Realizo una venta",
+        "Se hizo una alta en la tabla",
+        "Se hizo una baja en la tabla",
+        "Se hizo una modificacion en la tabla ",
+        "Se hizo una actualizacion en la tabla"
+    };
+
+    /**
+     * @param i tipo de movimiento
+     * @return el movimiento segun el index
+     * <br> 0.-"Inicio de sesion"
+     * <br> 1.-"Cierre de sesion"
+     * <br> 2.-"Realizo una venta",
+     * <br> 3.-"alta",
+     * <br> 4.-"baja",
+     * <br> 5.-"modificacion",
+     * <br> 7.-"actualizacion",
+     */
+    public static String getMovimiento(int i) {
+        return Tipo_Movimientos[i];
+    }
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// - - - - - - - - - - - - - - - - - Tiempo - - - - - - - - - - - - - - - - - //
     /**
      * Constantes de los dias de la semana
      */
@@ -107,6 +151,21 @@ public class cons {
         "Viernes",
         "Sabado"
     };
+
+    /**
+     * @param i indice del dia escogido
+     * @return el dia de la semana segun el indice
+     * <br>0.- domingo
+     * <br>1.- lunes
+     * <br>2.- martes
+     * <br>3.- miercoles
+     * <br>4.- jueves
+     * <br>5.- viernes
+     * <br>6.- sabado
+     */
+    public static String getDay(int i) {
+        return Dias[i - 1];
+    }
 
     /**
      * Constantes de los meses del año
@@ -126,90 +185,41 @@ public class cons {
         "Diciembre"
     };
 
-    //tipos de movimientos
-    private static final String Movimiento[] = {
-        "Inicio de sesion",
-        "Cierre de sesion",
-        "Realizo una venta",
-        "Hizo una alta",
-        "Hizo una baja",
-        "Hizo una modificacion",
-        "Hizo una baja",
-        "Hizo una baja",
-        "Hizo una baja",
-        "Hizo una baja",
-        "Hizo una baja",
-        "Hizo una baja",};
-
-    private final String[] TABLAS = {
-        "empleados",
-        "productos",
-        "movimientos"
-    };
-
-    private static final LineBorder OkBorder = new LineBorder(Color.black);
-
-    private static final LineBorder BadBorder = new LineBorder(Color.red);
-
-    public String[] getTABLAS() {
-        return TABLAS;
-    }
-
-    public String getTabla(int i) {
-        return TABLAS[i];
-    }
-
-    public static String[] getProductos() {
-        return Productos;
-    }
-
-    public static String[] getUsuarios() {
-        return Usuarios;
-    }
-
-    public static String[] getMovimientos() {
-        return Movimientos;
-    }
-
-    public static Border getOkBorder() {
-        return OkBorder;
-    }
-
-    public static Border getBadBorder() {
-        return BadBorder;
-    }
-
     /**
-     * getDay funcion que devuelve los dias de la semana
-     *
-     * @param i
-     * @return
+     * @param i indice del mes escogido
+     * @return el mes del año segun el indice
+     * <br>0.- Ene
+     * <br>1.- Feb
+     * <br>2.- Mar
+     * <br>3.- Abr
+     * <br>4.- May
+     * <br>5.- Jun
+     * <br>6.- Jul
+     * <br>7.- Ago
+     * <br>8.- Sep
+     * <br>9.- Oct
+     * <br>10.- Nov
+     * <br>11.- Dic
      */
-    public static String getDay(int i) {
-        return Dias[i - 1];
-    }
-
     public static String getMes(int i) {
         return meses[i];
     }
 
     /**
-     * @param i tipo de movimiento
-     * @return el movimiento segun el index
-     * <br> 0.-"Inicio de sesion"
-     * <br> 1.-"Cierre de sesion"
-     * <br> 2.-"Realizo una venta",
-     * <br> 3.-"Hizo una alta", 
-     * <br> 4.-"Hizo una baja", 
-     * <br> 5.-"Hizo una modificacion",
-     *
+     * @param obj Motivo del mensaje
+     * @param txt Informacion complemnetaria
+     * @param title titulo del mensaje
+     * @param i tipo de icono
+     * <br>0.- Error
+     * <br>1.- Informacion
+     * <br>2.- Advertencia
      */
-    public static String getMovimiento(int i) {
-        return Movimiento[i];
+    public static void getMessage(String obj, String txt, String title, int i) {
+        JOptionPane.showMessageDialog(null, obj + " " + txt, title, i);
     }
 
-    public static void getMessage(String obj, String txt, String title, int i) {
-        JOptionPane.showMessageDialog(null, obj + "\n" + txt, title, i);
-    }
+    public static final LineBorder OkBorder = new LineBorder(Color.black);
+
+    public static final LineBorder BadBorder = new LineBorder(Color.red);
 
 }

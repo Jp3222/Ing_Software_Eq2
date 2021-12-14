@@ -21,15 +21,13 @@ public class Con_Login extends KeyAdapter implements ActionListener {
 
     private log logs;
 
-    public Con_Login(Vista_Login login, Vista_MenuAdmin admin) {
-        this.logs = new log(login, admin);
+    public Con_Login(Vista_Login login) {
+        this.logs = new log(login);
     }
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        if (true) {
-            logs.Login();
-        }
+        logs.Login();
     }
 
     @Override
@@ -49,40 +47,48 @@ class log {
     private final Sistema sistema = Sistema.getNodo();
     private final Evt_Ventana evt = Evt_Ventana.getNodo();
 
-    public log(Vista_Login login, Vista_MenuAdmin admin) {
+    public log(Vista_Login login) {
         this.login = login;
-        this.admin = admin;
+        this.admin = new Vista_MenuAdmin(login);
+        this.operacion = Operaciones.getNodo();
         login.addWindowListener(evt);
-        operacion = Operaciones.getNodo();
     }
 
     public void Login() {
+        System.out.println("xd");
+        //Obtener informacion de la vista
         String usr = login.getjtfUsuario().getText();
         String pass = String.copyValueOf(login.getjpfPassword().getPassword());
-        //
+        //Busqueda del empleado
         CL_Empleado empleado = operacion.getEmpleado(usr);
-        evt.setEm(empleado);
         if (empleado != null && empleado.isExists() && empleado.getPassword().equals(pass)) {
-            login.getjtfUsuario().setBorder(cons.getOkBorder());
-            login.getjpfPassword().setBorder(cons.getOkBorder());
-            //
+            OK();
+            sistema.setSistemUser(empleado);
             login.dispose();
             admin.setVisible(true);
             admin.setUsuario(empleado);
-            CL_Movimiento mov = new CL_Movimiento(sistema.getNodoRlg().getCl(), cons.getMovimiento(0), empleado.getUsuario());
-            operacion.setMovimiento(mov);
+            System.out.println("xd");
+            CL_Movimiento movimiento = new CL_Movimiento(
+                    sistema.getNodoRlg().getCl(),
+                    cons.getMovimiento(0),
+                    empleado.getUsuario()
+            );
+            operacion.setMovimiento(movimiento);
             clear();
         } else {
-            mensaje();
+            NotOK();
         }
-        usr = null;
-        pass = null;
     }
 
-    public void mensaje() {
-        login.getjtfUsuario().setBorder(cons.getBadBorder());
-        login.getjpfPassword().setBorder(cons.getBadBorder());
-        cons.getMessage("Usuario y/0 contraseña ", "icorrecto", "Mensaje", JOptionPane.ERROR_MESSAGE);
+    public void NotOK() {
+        login.getjtfUsuario().setBorder(cons.OkBorder);
+        login.getjpfPassword().setBorder(cons.OkBorder);
+        cons.getMessage("Usuario y/0 contraseña ", "icorrecto", "Mensaje", 0);
+    }
+
+    public void OK() {
+        login.getjtfUsuario().setBorder(cons.OkBorder);
+        login.getjpfPassword().setBorder(cons.OkBorder);
     }
 
     public void clear() {

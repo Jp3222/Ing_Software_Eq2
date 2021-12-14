@@ -22,33 +22,25 @@ public class Vista_Login extends javax.swing.JFrame {
         return Nodo;
     }
 
-    public static void NodoNULL() {
-        Nodo = null;
-    }
-
     private final Con_Login controlador;
-    private final Vista_MenuAdmin admin;
-    private CL_Empleado empleado;
 
     private Vista_Login() {
+        this.controlador = new Con_Login(this);
+        //Inicio de componentes graficos
         initComponents();
-        //
-        admin = new Vista_MenuAdmin(this);
-        controlador = new Con_Login(this, admin);
+        //Añadiendo escuchas de eventos
+        Escuchas();
+        //Comprobando la conexion de la base de datos
+        String estado = BD.getNodo().isConexion() ? "Conectado":"No conectado";
+        txtEstado.setText("Estado: " + estado);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
+    }
+
+    private void Escuchas() {
         jbtLogin.addActionListener(controlador);
         jbtLogin.addKeyListener(controlador);
         jtfUsuario.addKeyListener(controlador);
         jpfPassword.addKeyListener(controlador);
-        if (BD.getNodo().isConexion()) {
-            txtEstado.setText("Estado: Conectado");
-        } else {
-            txtEstado.setText("Estado: Desconectado");
-        }
-        this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
-    }
-
-    public void setEmpleado(CL_Empleado empleado) {
-        this.empleado = empleado;
     }
 
     @SuppressWarnings("unchecked")

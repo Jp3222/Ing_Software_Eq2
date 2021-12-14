@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.BD;
+import Modelo.CL_Empleado;
 import Modelo.CL_Movimiento;
 import Modelo.cons;
 import Modelo.Excepciones;
@@ -8,19 +9,17 @@ import Modelo.Ficheros;
 import Modelo.Operaciones;
 import Modelo.Reportes;
 import com.itextpdf.text.DocumentException;
-import java.awt.Toolkit;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.Instant;
+import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *
@@ -43,13 +42,40 @@ public class Sistema {
 
     private BD con;
     private Operaciones opc;
-    //
     private Relog NodoRlg;
-    //
     private Install NodoIll;
-    //
-    private Ficheros fc;
-    //
+    private final Ficheros fc;
+    private CL_Empleado SistemUser;
+
+    private Sistema() {
+        fc = new Ficheros();
+    }
+
+    public void star() {
+        //Lectura del archivo 
+        String sql[] = fc.leer(cons.url(1) + "/Usuario.jshop").split("-");
+        //Inicializacion del drive
+        con = BD.getNodo(sql[0], sql[1], sql[2]);
+        //Establecer Conexion 
+        con.Conectar();
+        //Iniciar operaciones
+        opc = Operaciones.getNodo(con);
+        //Inicializacion del relog
+        NodoRlg = new Relog();
+        NodoRlg.start();
+    }
+
+    public CL_Empleado getSistemUser() {
+        return SistemUser;
+    }
+
+    public void setSistemUser(CL_Empleado SistemUser) {
+        this.SistemUser = SistemUser;
+    }
+
+    public Relog getNodoRlg() {
+        return NodoRlg;
+    }
 
     public Install getNodoIll() {
         if (NodoIll == null) {
@@ -58,30 +84,9 @@ public class Sistema {
         return NodoIll;
     }
 
-    public Relog getNodoRlg() {
-        return NodoRlg;
-    }
-
-    private Sistema() {
-
-    }
-
-    public void star() {
-        
-       
-        //
-        fc = new Ficheros();
-        String sql[] = fc.leer(cons.url(1) + "/Usuario.jshop").split("-");
-        con = BD.getNodo(sql[0], sql[1], sql[2]);
-        con.Conectar();
-        opc = Operaciones.getNodo(con);
-        NodoRlg = new Relog();
-        NodoRlg.start();
-    }
-
     public class Install {
 
-        private Ficheros fch;
+        private final Ficheros fch;
 
         public Install() {
             this.fch = new Ficheros();
@@ -130,18 +135,15 @@ public class Sistema {
         }
 
         @Override
+        @SuppressWarnings("SleepWhileInLoop")
         public void run() {
+            Timers();
             try {
                 while (true) {
                     cl = Calendar.getInstance();
                     relog();
                     fecha();
-                    if ((cl.get(Calendar.HOUR_OF_DAY) == 22) && (cl.get(Calendar.MINUTE) == 0) && (cl.get(Calendar.SECOND) == 0)) {
-                        System.out.println("Historial creado");
-                        Historial();
-                    }
-                    if (false) {
-                        System.out.println("xddd");
+                    if (!abrir()) {
                         cons.getMessage("El sistema", "ha cerrado", "Mensaje del Sistema", 0);
                         System.exit(1);
                         throw new Excepciones(Excepciones.getMensaje(1));
@@ -199,15 +201,45 @@ public class Sistema {
             return cl.get(Calendar.HOUR_OF_DAY) + "" + cl.get(Calendar.MINUTE) + "" + cl.get(Calendar.SECOND);
         }
 
-        private void Historial() {
-            try {
-                CL_Movimiento mov = new CL_Movimiento(cl, "Reporte Historial", "root");
-                opc.setMovimiento(mov);
-                Reportes r = new Reportes(2, "Historial de Hoy");
-                r.crearReporte("movimientos", cons.Movimientos);
-            } catch (FileNotFoundException | DocumentException ex) {
-                System.out.println(ex.getMessage());
+        public void Timers() {
+            Tareas obj = new Tareas();
+            Calendar cls = Calendar.getInstance();
+            cls.set(Calendar.YEAR, cls.get(Calendar.YEAR));
+            cls.set(Calendar.MONTH, cls.get(Calendar.MONTH));
+            cls.set(Calendar.DAY_OF_WEEK, cls.get(Calendar.DAY_OF_WEEK));
+            cls.set(Calendar.HOUR_OF_DAY, 21);
+            cls.set(Calendar.MINUTE, 59);
+            cls.set(Calendar.SECOND, 0);
+            cls.set(Calendar.MILLISECOND, 0);
+            Timer t = new Timer();
+            t.schedule(obj, cls.getTime());
+            t.purge();
+
+        }
+
+        class Tareas extends TimerTask {
+
+            @Override
+            public void run() {
+                Historial();
             }
+
+            /**
+             *
+             */
+            private void Historial() {
+                try {
+                    CL_Movimiento mov = new CL_Movimiento(cl, "Reporte Historial", "root");
+                    opc.setMovimiento(mov);
+                    Reportes r = new Reportes(2, "Historial de Hoy");
+                    r.crearReporte("movimientos", cons.Movimientos);
+                    //
+                    BD.getNodo().Vaciar("movimientos");
+                } catch (SQLException | FileNotFoundException | DocumentException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+
         }
 
     }

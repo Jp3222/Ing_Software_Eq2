@@ -21,24 +21,26 @@ public class Evt_Ventana extends WindowAdapter {
         return Nodo;
     }
 
-    private final Operaciones op;
-    private final Sistema sis;
-    private CL_Empleado em;
+    private final Operaciones operaciones;
+    private final Sistema sistema;
+    private CL_Empleado empleado;
 
     private Evt_Ventana() {
-        op = Operaciones.getNodo();
-        sis = Sistema.getNodo();
+        operaciones = Operaciones.getNodo();
+        sistema = Sistema.getNodo();
+        empleado = sistema.getSistemUser();
     }
 
-    public void setEm(CL_Empleado em) {
-        this.em = em;
-    }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        if (em != null) {
-            CL_Movimiento mov = new CL_Movimiento(sis.getNodoRlg().getCl(), "Cierre del sistema", em.getUsuario());
-            op.setMovimiento(mov);
+        if (empleado != null) {
+            CL_Movimiento mov = new CL_Movimiento(
+                    sistema.getNodoRlg().getCl(),
+                    "Cierre del sistema",
+                    empleado.getUsuario()
+            );
+            operaciones.setMovimiento(mov);
         }
         System.exit(0);
     }

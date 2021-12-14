@@ -561,7 +561,6 @@
                             <Column editable="true" title="precio" type="java.lang.Object"/>
                           </Table>
                         </Property>
-                        <Property name="cellSelectionEnabled" type="boolean" value="false"/>
                         <Property name="enabled" type="boolean" value="false"/>
                         <Property name="fillsViewportHeight" type="boolean" value="true"/>
                         <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

@@ -37,46 +37,49 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         this.productos = new Vista_Productos(this);
         this.empleados = new Vista_Empleados(this);
         this.administracion = new Vista_Administracion(this);
-        //
-        initComponents();
-        //
-        controlador = new Con_MenuAdmin(this);
-        controlador.setLogin(login);
-        //
-        cont();
-        escuchas();
-        OtrasClases();
-        this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
-        ventana = Evt_Ventana.getNodo();
+        //Inicializacion de componentes graficos
+        this.initComponents();
+        //Inicializacion de controlador de eventos
+        this.controlador = new Con_MenuAdmin(this);
+        this.controlador.setLogin(login);
+        //asignacion de controladores
+        this.controladores();
+        //asignacion de escuchas
+        this.escuchas();
+        //Inicio de otras clases
+        this.OtrasClases();
+        this.ventana = Evt_Ventana.getNodo();
         this.jtfID.addKeyListener(controlador);
+        //Añadiendo eventos del sistema
         this.addWindowListener(ventana);
+        //Añadiendo icono del sistema
+        this.setIconImage(new ImageIcon(getClass().getResource("/Img/JSHOP_2.png")).getImage());
     }
 
-    private void cont() {
-        controlador.setAdministracion(administracion);
-        controlador.setEmpleados(empleados);
-        controlador.setProductos(productos);
+    private void controladores() {
+        this.controlador.setAdministracion(administracion);
+        this.controlador.setEmpleados(empleados);
+        this.controlador.setProductos(productos);
     }
 
     private void escuchas() {
         //Botones
-        jbtSalir.addActionListener(controlador);
-        jbtProductos.addActionListener(controlador);
-        jbtEmpleados.addActionListener(controlador);
-        jbtPerfil.addActionListener(controlador);
-        jbtAdministracion.addActionListener(controlador);
+        this.jbtSalir.addActionListener(controlador);
+        this.jbtProductos.addActionListener(controlador);
+        this.jbtEmpleados.addActionListener(controlador);
+        this.jbtPerfil.addActionListener(controlador);
+        this.jbtAdministracion.addActionListener(controlador);
         //
     }
 
     private void OtrasClases() {
         carrito = new Carrito();
         agenda = new Agenda();
-        RelogSis rlg = new RelogSis();
+        RelogSistema rlg = new RelogSistema();
     }
 
     public void setUsuario(CL_Empleado Usuario) {
         this.Usuario = Usuario;
-        ventana.setEm(Usuario);
         UserInfo();
     }
 
@@ -96,6 +99,10 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
         return Usuario;
     }
 
+    /**
+     * Instancia de la clase carrito
+     * @return 
+     */
     public Carrito getCarrito() {
         if (carrito == null) {
             carrito = new Carrito();
@@ -516,25 +523,30 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jtfPrecio;
     // End of variables declaration//GEN-END:variables
 
-    public class RelogSis {
+    /**
+     * Clase encargada de instanciar el un relog del sistema
+     */
+    public class RelogSistema {
 
-        private Relog rlg;
+        private final Relog rlg;
 
-        public RelogSis() {
+        public RelogSistema() {
             rlg = Sistema.getNodo().getNodoRlg();
             rlg.setFecha(jlbFecha);
             rlg.setRelog(jlbRelog);
         }
-
     }
 
+    /**
+     * "Clase Carrito" clase encargada de controlar y gestionar eventos
+     * relacionados a las compras
+     */
     public class Carrito {
 
         private CL_Producto producto;
-        private DefaultTableModel tb;
+        private final DefaultTableModel tb;
 
         public Carrito() {
-
             this.producto = null;
             this.tb = new DefaultTableModel(func.getArray("Clave", "Producto", "Contenido", "piezas", "Precio"), 0);
             //
@@ -545,7 +557,7 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
             jbtCobrar.addActionListener(controlador);
             jbtLimpiar.addActionListener(e -> jlbTotal.setText("Total: $0.0"));
             jbtQuitar.addActionListener(controlador);
-            
+
         }
 
         public JTable getJtbCarrito() {
@@ -627,9 +639,13 @@ public class Vista_MenuAdmin extends javax.swing.JFrame {
 
     }
 
+    /**
+     * " Clase Agenda " clase encargada de controlar la informacio y/o eventos
+     * dedicatos a la tabla de agenda
+     */
     public class Agenda {
 
-        DefaultTableModel tb;
+        private DefaultTableModel tb;
 
         public Agenda() {
             this.tb = new DefaultTableModel(cons.Dias, 0);

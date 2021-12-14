@@ -100,45 +100,45 @@ public class Vista_Empleados extends javax.swing.JFrame {
             int i = 0;
             //
             if (jtfUsuario.getText().isEmpty()) {
-                jtfUsuario.setBorder(cons.getBadBorder());
+                jtfUsuario.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfUsuario.setBorder(cons.getOkBorder());
+                jtfUsuario.setBorder(cons.OkBorder);
             }
             //
             if (jtfNombre.getText().isEmpty()) {
-                jtfNombre.setBorder(cons.getBadBorder());
+                jtfNombre.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfNombre.setBorder(cons.getOkBorder());
+                jtfNombre.setBorder(cons.OkBorder);
             }
             //
             if (jtfApaterno.getText().isEmpty()) {
-                jtfApaterno.setBorder(cons.getBadBorder());
+                jtfApaterno.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfApaterno.setBorder(cons.getOkBorder());
+                jtfApaterno.setBorder(cons.OkBorder);
             }
             //
             if (jtfAmaterno.getText().isEmpty()) {
-                jtfAmaterno.setBorder(cons.getBadBorder());
+                jtfAmaterno.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfAmaterno.setBorder(cons.getOkBorder());
+                jtfAmaterno.setBorder(cons.OkBorder);
             }
             //
             if (jtfEdad.getText().isEmpty()) {
-                jtfEdad.setBorder(cons.getBadBorder());
+                jtfEdad.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfEdad.setBorder(cons.getOkBorder());
+                jtfEdad.setBorder(cons.OkBorder);
             }
             //
             if (jtfPassword.getText().isEmpty()) {
-                jtfPassword.setBorder(cons.getBadBorder());
+                jtfPassword.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfPassword.setBorder(cons.getOkBorder());
+                jtfPassword.setBorder(cons.OkBorder);
             }
             if (i > 0) {
                 cons.getMessage("Hay campos", "vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);
@@ -208,45 +208,45 @@ public class Vista_Empleados extends javax.swing.JFrame {
             int i = 0;
             //
             if (jtfUsuario_2.getText().isEmpty()) {
-                jtfUsuario_2.setBorder(cons.getBadBorder());
+                jtfUsuario_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfUsuario_2.setBorder(cons.getOkBorder());
+                jtfUsuario_2.setBorder(cons.OkBorder);
             }
             //
             if (jtfNombre_2.getText().isEmpty()) {
-                jtfNombre_2.setBorder(cons.getBadBorder());
+                jtfNombre_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfNombre_2.setBorder(cons.getOkBorder());
+                jtfNombre_2.setBorder(cons.OkBorder);
             }
             //
             if (jtfApaterno_2.getText().isEmpty()) {
-                jtfApaterno_2.setBorder(cons.getBadBorder());
+                jtfApaterno_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfApaterno_2.setBorder(cons.getOkBorder());
+                jtfApaterno_2.setBorder(cons.OkBorder);
             }
             //
             if (jtfAmaterno_2.getText().isEmpty()) {
-                jtfAmaterno_2.setBorder(cons.getBadBorder());
+                jtfAmaterno_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfAmaterno_2.setBorder(cons.getOkBorder());
+                jtfAmaterno_2.setBorder(cons.OkBorder);
             }
             //
             if (jtfEdad_2.getText().isEmpty()) {
-                jtfEdad_2.setBorder(cons.getBadBorder());
+                jtfEdad_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfEdad_2.setBorder(cons.getOkBorder());
+                jtfEdad_2.setBorder(cons.OkBorder);
             }
             //
             if (jtfPassword_2.getText().isEmpty()) {
-                jtfPassword_2.setBorder(cons.getBadBorder());
+                jtfPassword_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfPassword_2.setBorder(cons.getOkBorder());
+                jtfPassword_2.setBorder(cons.OkBorder);
             }
             if (i > 0) {
                 cons.getMessage("Hay campos", "vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);

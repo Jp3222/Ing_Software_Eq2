@@ -273,11 +273,11 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jckUD.setText("No cambiar");
         Panel_Create.add(jckUD);
-        jckUD.setBounds(540, 190, 97, 24);
+        jckUD.setBounds(540, 190, 130, 23);
 
         jcKMarca.setText("No cambiar");
         Panel_Create.add(jcKMarca);
-        jcKMarca.setBounds(540, 70, 97, 24);
+        jcKMarca.setBounds(540, 70, 120, 23);
 
         jTabbedPane1.addTab("Insertar", Panel_Create);
 
@@ -309,7 +309,7 @@ public class Vista_Productos extends javax.swing.JFrame {
 
         jbtConsultar.setText("Mostrar");
         Panel_Read.add(jbtConsultar);
-        jbtConsultar.setBounds(10, 40, 160, 29);
+        jbtConsultar.setBounds(10, 40, 160, 28);
 
         jTabbedPane1.addTab("Consultar", Panel_Read);
 
@@ -525,21 +525,21 @@ public class Vista_Productos extends javax.swing.JFrame {
         jrbClave.setForeground(new java.awt.Color(254, 254, 254));
         jrbClave.setText("Clave");
         jPanel1.add(jrbClave);
-        jrbClave.setBounds(300, 520, 110, 24);
+        jrbClave.setBounds(300, 520, 110, 23);
 
         jrbMarca.setBackground(new java.awt.Color(35, 35, 40));
         jrbMarca.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jrbMarca.setForeground(new java.awt.Color(254, 254, 254));
         jrbMarca.setText("Marca");
         jPanel1.add(jrbMarca);
-        jrbMarca.setBounds(410, 520, 110, 24);
+        jrbMarca.setBounds(410, 520, 110, 23);
 
         jrbPrecio.setBackground(new java.awt.Color(35, 35, 40));
         jrbPrecio.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
         jrbPrecio.setForeground(new java.awt.Color(254, 254, 254));
         jrbPrecio.setText("Precio");
         jPanel1.add(jrbPrecio);
-        jrbPrecio.setBounds(300, 550, 110, 24);
+        jrbPrecio.setBounds(300, 550, 110, 23);
 
         Reporte.setBackground(new java.awt.Color(255, 0, 0));
         Reporte.setForeground(new java.awt.Color(0, 0, 0));
@@ -678,22 +678,22 @@ public class Vista_Productos extends javax.swing.JFrame {
         public boolean isEmpty() {
             int i = 0;
             if (jtfNombre.getText().isEmpty()) {
-                jtfNombre.setBorder(cons.getBadBorder());
+                jtfNombre.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfNombre.setBorder(cons.getOkBorder());
+                jtfNombre.setBorder(cons.OkBorder);
             }
             if (jtfContenido.getText().isEmpty()) {
-                jtfContenido.setBorder(cons.getBadBorder());
+                jtfContenido.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfContenido.setBorder(cons.getOkBorder());
+                jtfContenido.setBorder(cons.OkBorder);
             }
             if (jtfPrecio.getText().isEmpty()) {
-                jtfPrecio.setBorder(cons.getBadBorder());
+                jtfPrecio.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfPrecio.setBorder(cons.getOkBorder());
+                jtfPrecio.setBorder(cons.OkBorder);
             }
             if (i > 0) {
                 cons.getMessage("Hay campos", "Vacios", "", JOptionPane.WARNING_MESSAGE);
@@ -800,22 +800,22 @@ public class Vista_Productos extends javax.swing.JFrame {
         public boolean isEmpty_Values() {
             int i = 0;
             if (jtfNombre_2.getText().isEmpty()) {
-                jtfNombre_2.setBorder(cons.getBadBorder());
+                jtfNombre_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfNombre_2.setBorder(cons.getOkBorder());
+                jtfNombre_2.setBorder(cons.OkBorder);
             }
             if (jtfContenido_2.getText().isEmpty()) {
-                jtfContenido_2.setBorder(cons.getBadBorder());
+                jtfContenido_2.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfContenido_2.setBorder(cons.getOkBorder());
+                jtfContenido_2.setBorder(cons.OkBorder);
             }
             if (jtfPrecio_2.getText().isEmpty()) {
-                jtfPrecio.setBorder(cons.getBadBorder());
+                jtfPrecio.setBorder(cons.BadBorder);
                 i++;
             } else {
-                jtfPrecio_2.setBorder(cons.getOkBorder());
+                jtfPrecio_2.setBorder(cons.OkBorder);
             }
             if (i > 0) {
                 cons.getMessage("Hay campos", "Vacios", "Mensaje", JOptionPane.WARNING_MESSAGE);

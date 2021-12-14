@@ -50,7 +50,6 @@ public class Reportes {
             System.out.println(e.getMessage());
         }
         JOptionPane.showMessageDialog(null, "Documento Generado");
-
     }
 
 }

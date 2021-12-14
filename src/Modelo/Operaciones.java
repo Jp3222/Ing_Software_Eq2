@@ -36,9 +36,9 @@ public class Operaciones {
             if (rs.next()) {
                 producto = new CL_Producto();
                 producto.setExists(true);
-                String[] info = new String[cons.getProductos().length];
+                String[] info = new String[cons.Productos.length];
                 int i = 0;
-                for (String producto1 : cons.getProductos()) {
+                for (String producto1 : cons.Productos) {
                     info[i] = rs.getString(producto1);
                     i++;
                 }
@@ -56,7 +56,7 @@ public class Operaciones {
     public void newProducto(CL_Producto producto) {
         try {
             conexion.Insertar("productos",
-                    BD.getColums(func.exp(cons.getProductos(), 0)),
+                    BD.getColums(func.exp(cons.Productos, 0)),
                     BD.getValues(true, func.exp(producto.getInfo(), 0)));
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -66,7 +66,7 @@ public class Operaciones {
     public void ActProducto(CL_Producto producto) {
         try {
             conexion.Update("productos", BD.getData(
-                    func.exp(cons.getProductos(), 0, 1), func.exp(producto.getInfo(), 0, 1)),
+                    func.exp(cons.Productos, 0, 1), func.exp(producto.getInfo(), 0, 1)),
                     "id = '" + producto.getID() + "'");
         } catch (SQLException ex) {
             Logger.getLogger(Operaciones.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,8 +95,8 @@ public class Operaciones {
                 empleado = new CL_Empleado();
                 empleado.setExists(true);
                 int i = 0;
-                values = new String[cons.getUsuarios().length];
-                for (String colums : cons.getUsuarios()) {
+                values = new String[cons.Usuarios.length];
+                for (String colums : cons.Usuarios) {
                     values[i] = rs.getString(colums);
                     i++;
                 }
@@ -115,7 +115,7 @@ public class Operaciones {
     public void newEmpleado(CL_Empleado empleado) {
         try {
             conexion.Insertar("empleados",
-                    BD.getColums(func.exp(cons.getUsuarios(), 0)),
+                    BD.getColums(func.exp(cons.Usuarios, 0)),
                     BD.getValues(false, func.exp(empleado.getInfo(), 0))
             );
         } catch (SQLException e) {
@@ -126,7 +126,7 @@ public class Operaciones {
     public void actEmpleado(CL_Empleado empleado) {
         try {
             conexion.Update("empleados", BD.getData(
-                    func.exp(cons.getUsuarios(), 0, 1), func.exp(empleado.getInfo(), 0, 1)),
+                    func.exp(cons.Usuarios, 0, 1), func.exp(empleado.getInfo(), 0, 1)),
                     "id = '" + empleado + "'");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -153,7 +153,7 @@ public class Operaciones {
     public void setMovimiento(CL_Movimiento mov) {
         try {
             conexion.Insertar("movimientos",
-                    BD.getColums(func.exp(cons.getMovimientos(), 0)),
+                    BD.getColums(func.exp(cons.Movimientos, 0)),
                     BD.getValues(true, mov.getInfo()));
 
         } catch (SQLException e) {
@@ -174,9 +174,9 @@ public class Operaciones {
             String array[] = new String[1];
             switch (nom) {
                 case "productos" ->
-                    array = cons.getProductos();
+                    array = cons.Productos;
                 case "empleados" ->
-                    array = cons.getUsuarios();
+                    array = cons.Usuarios;
             }
             for (String colm : array) {
                 tm.addColumn(colm);

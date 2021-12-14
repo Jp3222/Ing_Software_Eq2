@@ -226,7 +226,13 @@ public class BD {
     }
 
     public void BuscarClose() throws SQLException {
+        //st.close();
+    }
 
+    public void Vaciar(String Tabla) throws SQLException {
+        st = cn.createStatement();
+        st.execute("truncate table " + Tabla);
+        st.close();
     }
 
     private String SELECT(String Tabla, String Campo, String Where) {
@@ -245,7 +251,7 @@ public class BD {
         return "update " + Tabla + " set " + campo + " = " + "'" + dato + "'" + " where " + where;
     }
 
-    public String DELETE(String Tabla, String where) {
+    private String DELETE(String Tabla, String where) {
         return "delete from " + Tabla + " where " + where;
     }
 
