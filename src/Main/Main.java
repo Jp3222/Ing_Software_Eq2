@@ -1,11 +1,11 @@
 package Main;
 
-import javax.swing.SwingUtilities;
 import Controlador.Sistema;
 import Modelo.Ficheros;
 import Modelo.cons;
 import Vista.Vista_Configuracion;
 import Vista.Vista_Login;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -13,7 +13,7 @@ import Vista.Vista_Login;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //Arranque de un hilo independiente
         SwingUtilities.invokeLater(() -> Star());
     }

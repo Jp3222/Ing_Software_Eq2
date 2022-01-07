@@ -53,6 +53,15 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        txt4 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jTextField4 = new javax.swing.JTextField();
+        jbtBuscar1 = new javax.swing.JButton();
+        txt5 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jbtActualizar1 = new javax.swing.JButton();
+        jbtInsertar1 = new javax.swing.JButton();
+        jbtEliminar1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtMarcas = new javax.swing.JTable();
@@ -149,20 +158,58 @@ public class Vista_Administracion extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(1, 1, 1));
         jTextField1.setText("jTextField1");
         jPanel4.add(jTextField1);
-        jTextField1.setBounds(560, 0, 220, 27);
+        jTextField1.setBounds(560, 0, 220, 35);
 
         jTabbedPane1.addTab("Inventario", null, jPanel4, "Consulta un listado de los productos\nen inventario ");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 868, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(35, 35, 40));
+        jPanel3.setLayout(null);
+
+        txt4.setForeground(new java.awt.Color(0, 0, 0));
+        txt4.setText("Buscar:");
+        jPanel3.add(txt4);
+        txt4.setBounds(300, 20, 70, 25);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Marca" }));
+        jPanel3.add(jComboBox3);
+        jComboBox3.setBounds(460, 10, 110, 25);
+        jPanel3.add(jTextField4);
+        jTextField4.setBounds(570, 10, 200, 25);
+
+        jbtBuscar1.setBackground(new java.awt.Color(213, 216, 220));
+        jbtBuscar1.setForeground(new java.awt.Color(0, 0, 0));
+        jbtBuscar1.setText("Buscar");
+        jbtBuscar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(jbtBuscar1);
+        jbtBuscar1.setBounds(460, 40, 310, 25);
+
+        txt5.setForeground(new java.awt.Color(0, 0, 0));
+        txt5.setText("Empresa :");
+        jPanel3.add(txt5);
+        txt5.setBounds(390, 100, 70, 25);
+        jPanel3.add(jTextField5);
+        jTextField5.setBounds(460, 100, 310, 25);
+
+        jbtActualizar1.setBackground(new java.awt.Color(213, 216, 220));
+        jbtActualizar1.setForeground(new java.awt.Color(0, 0, 0));
+        jbtActualizar1.setText("Actualizar");
+        jbtActualizar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(jbtActualizar1);
+        jbtActualizar1.setBounds(390, 180, 100, 30);
+
+        jbtInsertar1.setBackground(new java.awt.Color(213, 216, 220));
+        jbtInsertar1.setForeground(new java.awt.Color(0, 0, 0));
+        jbtInsertar1.setText("Insertar");
+        jbtInsertar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(jbtInsertar1);
+        jbtInsertar1.setBounds(520, 180, 100, 30);
+
+        jbtEliminar1.setBackground(new java.awt.Color(213, 216, 220));
+        jbtEliminar1.setForeground(new java.awt.Color(0, 0, 0));
+        jbtEliminar1.setText("Eliminar");
+        jbtEliminar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(jbtEliminar1);
+        jbtEliminar1.setBounds(660, 180, 100, 30);
 
         jTabbedPane1.addTab("Agenda", jPanel3);
 
@@ -278,6 +325,7 @@ public class Vista_Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -292,16 +340,24 @@ public class Vista_Administracion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton jbtActualizar;
+    private javax.swing.JButton jbtActualizar1;
     private javax.swing.JButton jbtActualizar_TB;
     private javax.swing.JButton jbtBuscar;
+    private javax.swing.JButton jbtBuscar1;
     private javax.swing.JButton jbtEliminar;
+    private javax.swing.JButton jbtEliminar1;
     private javax.swing.JButton jbtInsertar;
+    private javax.swing.JButton jbtInsertar1;
     private javax.swing.JButton jbtInventario;
     private javax.swing.JButton jbtSalir;
     private javax.swing.JTable jtMarcas;
     private javax.swing.JLabel txt2;
     private javax.swing.JLabel txt3;
+    private javax.swing.JLabel txt4;
+    private javax.swing.JLabel txt5;
     // End of variables declaration//GEN-END:variables
 
     public class Marcas {

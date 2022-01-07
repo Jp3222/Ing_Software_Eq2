@@ -1,13 +1,9 @@
 package Modelo;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import javax.swing.JOptionPane;
 
 public class Ficheros {
 
@@ -15,6 +11,10 @@ public class Ficheros {
     private String txt;
     private FileReader fr;
     private PrintWriter pw;
+
+    public Ficheros() {
+        file = new File("/");
+    }
 
     public boolean Exists(String url) {
         file = new File(url);
@@ -43,15 +43,19 @@ public class Ficheros {
         return url + "/" + nom;
     }
 
-    public void escribirArchivo(String url, String txt) throws FileNotFoundException, UnsupportedEncodingException, IOException {
-        file = new File(url);
-        if (file.exists()) {
-            pw = new PrintWriter(file, "utf-8");
-            pw.print(txt);
-            pw.close();
-        } else {
-            file.createNewFile();
-            escribirArchivo(url, txt);
+    public void escribirArchivo(String url, String txt) {
+        try {
+            file = new File(url);
+            if (file.exists()) {
+                pw = new PrintWriter(file, "utf-8");
+                pw.print(txt);
+                pw.close();
+            } else {
+                file.createNewFile();
+                escribirArchivo(url, txt);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -67,10 +71,8 @@ public class Ficheros {
             } while (x != -1);
             fr.close();
             return str.substring(0, str.length() - 1);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Fichero no encontrado");
-        } catch (IOException ex) {
-            System.out.println("Problemas con el buffer");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
         return "Fichero no encontrado";
     }
