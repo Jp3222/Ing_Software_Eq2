@@ -1,5 +1,5 @@
 package Vista;
-
+//Importamos las librerias
 import Controlador.Con_Login;
 import Modelo.BD;
 import Modelo.CL_Empleado;
